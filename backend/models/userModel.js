@@ -1,4 +1,10 @@
-const mongoose = require(mongoose);
+const mongoose = require("mongoose");
+
+const goalSchema = new mongoose.Schema({
+    description: String,
+    targetAmount: Number,
+    targetDate: Date,
+});
 
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -11,6 +17,12 @@ const userSchema = new mongoose.Schema({
     },
     googleId: String,
     aiAdvisorName: String,
+    budget: {
+        amount: { type: Number, required: true },
+        startDate: Date,
+        endDate: Date,
+    },
+    goals: [goalSchema],
     wallets: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -20,3 +32,5 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", userSchema);
+
+module.exports = { User };
