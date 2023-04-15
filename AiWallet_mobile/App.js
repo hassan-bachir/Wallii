@@ -8,7 +8,7 @@ export default function App() {
                 <Text>hassan bachir</Text>
             </View>
             <Text>hassan bachir</Text>
-            <Button title="hello byatsh" />
+            <Button title="hello " />
         </View>
     );
 }
