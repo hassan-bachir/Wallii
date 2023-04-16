@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, text } from "react-native";
 
-export default function Home() {
+export default function ChooseAdvisor() {
     retrun(
         <View style={StyleSheet.container}>
             <Text>Choose Advisor Screen</Text>
