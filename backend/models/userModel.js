@@ -8,6 +8,7 @@ const goalSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
+    lastName: String,
     email: { type: String, required: true, unique: true },
     password: {
         type: String,
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema({
             return !this.googleId;
         },
     },
+    defaultCurrency: String,
     googleId: String,
     aiAdvisorName: String,
     budget: {
