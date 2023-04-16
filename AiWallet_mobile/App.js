@@ -12,10 +12,4 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    hassan: {
-        margin: 16,
-        padding: 16,
-        borderWidth: 2,
-        borderColor: "red",
-    },
 });
