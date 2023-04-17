@@ -8,7 +8,7 @@ import ChooseEmail from "../screens/Register/ChooseEmailScreen4";
 
 const Stack = createStackNavigator();
 
-export default function RegisterStack() {
+function RegisterStack() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
@@ -20,3 +20,4 @@ export default function RegisterStack() {
         </NavigationContainer>
     );
 }
+export default RegisterStack;
