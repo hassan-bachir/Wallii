@@ -13,15 +13,15 @@ const getFonts = () =>
 
 export default function App() {
     const [fontsLoaded, setFontsLoaded] = useState(false);
-    return <Home />;
-    // if (fontsLoaded) {
-    //     return <Home />;
-    // } else {
-    //     return (
-    //         <AppLoading
-    //             startAsync={getFonts}
-    //             onFinish={() => setFontsLoaded(true)}
-    //         />
-    //     );
-    // }
+    // return <Home />;
+    if (fontsLoaded) {
+        return <Home />;
+    } else {
+        return (
+            <AppLoading
+                startAsync={getFonts}
+                onFinish={() => setFontsLoaded(true)}
+            />
+        );
+    }
 }
