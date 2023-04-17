@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Home from "./screens/HomeScreen";
 import * as Font from "expo-font";
+import { AppLoading } from "expo";
 
 const getFonts = () =>
     Font.loadAsync({
@@ -12,5 +13,16 @@ const getFonts = () =>
     });
 
 export default function App() {
-    return <Home />;
+    const [fontsLoaded, setFontsLoaded] = useState(false);
+
+    if (fontsLoaded) {
+        return <Home />;
+    } else {
+        return (
+            <AppLoading
+                startAsync={getFonts}
+                onFinish={() => setFontsLoaded(true)}
+            />
+        );
+    }
 }
