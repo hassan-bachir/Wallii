@@ -9,9 +9,3 @@ export default function ChooseAdvisor() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 24,
-    },
-});
