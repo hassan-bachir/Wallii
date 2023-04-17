@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 
 export default function Welcome() {
     return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
             <Text>Welcome Screen</Text>
         </View>
     );

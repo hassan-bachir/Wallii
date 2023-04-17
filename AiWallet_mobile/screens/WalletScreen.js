@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 
 export default function Wallet() {
     return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
             <Text>Wallet screen</Text>
         </View>
     );
