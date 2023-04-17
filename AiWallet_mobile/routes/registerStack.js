@@ -24,19 +24,3 @@ const screens = {
 const RegisterStack = createStackNavigator(screens);
 
 export default createAppContainer(RegisterStack);
-
-// const Stack = createStackNavigator();
-
-// function RegisterStack() {
-//     return (
-//         <NavigationContainer>
-//             <Stack.Navigator>
-//                 <Stack.Screen name="Welcome" component={Welcome} />
-//                 <Stack.Screen name="ChooseAdvisor" component={ChooseAdvisor} />
-//                 <Stack.Screen name="ChooseName" component={ChooseName} />
-//                 <Stack.Screen name="ChooseEmail" component={ChooseEmail} />
-//             </Stack.Navigator>
-//         </NavigationContainer>
-//     );
-// }
-// export default RegisterStack;

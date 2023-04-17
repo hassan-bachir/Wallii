@@ -35,5 +35,5 @@ export default function App() {
         return null;
     }
 
-    return <Home />;
+    return <RegisterStack />;
 }
