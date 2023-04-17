@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 
 export default function ChooseAdvisor() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <Text>Choose Advisor Screen</Text>
         </View>
     );

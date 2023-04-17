@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 
 export default function Welcome() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <Text>Welcome Screen</Text>
         </View>
     );

@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 
 export default function Login() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <Text>Login Screen</Text>
         </View>
     );

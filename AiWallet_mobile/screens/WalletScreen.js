@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 
 export default function Wallet() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <Text>Wallet screen</Text>
         </View>
     );

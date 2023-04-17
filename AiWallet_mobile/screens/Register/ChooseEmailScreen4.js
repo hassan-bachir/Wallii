@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 
 export default function ChooseEmail() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <Text>Choose Email Screen </Text>
         </View>
     );

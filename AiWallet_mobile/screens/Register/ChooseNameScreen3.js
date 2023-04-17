@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 
 export default function ChooseName() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <Text>Choose Name screen</Text>
         </View>
     );

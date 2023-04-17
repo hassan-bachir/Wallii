@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 
 export default function HomeSettings() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             <Text>Home Screen Settings</Text>
         </View>
     );
