@@ -10,7 +10,7 @@ export default function Welcome({ navigation }) {
     return (
         <View style={globalStyles.container}>
             <Text>Welcome Screen</Text>
-            <Button title="Get Started" onPress={pressHandler}></Button>
+            <Button title="Next" onPress={pressHandler}></Button>
         </View>
     );
 }
