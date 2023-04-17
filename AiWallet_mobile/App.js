@@ -36,15 +36,3 @@ export default function App() {
 
     return <Home />;
 }
-
-// return <Home />;
-// if (fontsLoaded) {
-//     return <Home />;
-// } else {
-//     return (
-//         <AppLoading
-//             startAsync={getFonts}
-//             onFinish={() => setFontsLoaded(true)}
-//         />
-//     );
-// }

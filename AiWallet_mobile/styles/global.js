@@ -7,7 +7,7 @@ export const globalStyles = StyleSheet.create({
     },
     titleText: {
         fontSize: 18,
-        fontFamily: "Montserrat-medium",
+        fontFamily: "Montserrat-semiBold",
     },
     paragraph: {
         marginVertical: 8,
