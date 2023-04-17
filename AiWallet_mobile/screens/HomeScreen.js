@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, View, text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 export default function Home() {
-    retrun(
+    return (
         <View style={StyleSheet.container}>
             <Text>Home Screen</Text>
         </View>
@@ -11,6 +11,6 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 24,
+        padding: 70,
     },
 });

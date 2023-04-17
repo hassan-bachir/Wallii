@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, View, text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 export default function ChooseName() {
-    retrun(
+    return (
         <View style={StyleSheet.container}>
             <Text>Choose Name screen</Text>
         </View>
