@@ -12,6 +12,11 @@ const walletSchema = new mongoose.Schema({
             ref: "Transaction",
         },
     ],
+    budget: {
+        amount: { type: Number, required: true },
+        startDate: Date,
+        endDate: Date,
+    },
 });
 
 const Wallet = mongoose.model("Wallet", walletSchema);

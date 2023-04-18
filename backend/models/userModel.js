@@ -19,11 +19,7 @@ const userSchema = new mongoose.Schema({
     defaultCurrency: String,
     googleId: String,
     aiAdvisorName: String,
-    budget: {
-        amount: { type: Number, required: true },
-        startDate: Date,
-        endDate: Date,
-    },
+
     goals: [goalSchema],
     wallets: [
         {
