@@ -15,6 +15,7 @@ const getFonts = () =>
 
 export default function App() {
     const [fontsLoaded, setFontsLoaded] = useState(false);
+
     useEffect(() => {
         const loadFontsAndHideSplashScreen = async () => {
             try {
