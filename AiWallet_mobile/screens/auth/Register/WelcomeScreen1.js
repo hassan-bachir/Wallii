@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
-import { globalStyles } from "../../styles/global";
+import { globalStyles } from "../../../styles/global";
 
 export default function Welcome({ navigation }) {
     const pressHandler = () => {
