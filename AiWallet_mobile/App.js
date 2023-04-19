@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Home from "./screens/HomeScreen";
+import Home from "./screens/home/HomeScreen";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import RegisterStack from "./routes/registerStack";
 
 const getFonts = () =>
     Font.loadAsync({
