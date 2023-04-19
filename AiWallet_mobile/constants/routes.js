@@ -10,4 +10,6 @@ export default {
 
     WALLET: "Wallet",
     WALLET_SETTINGS: "Wallet Settings",
+    WALLET_STATS: "Wallet Stats",
+    WALLET_BUDGET: "Wallet Budget",
 };
