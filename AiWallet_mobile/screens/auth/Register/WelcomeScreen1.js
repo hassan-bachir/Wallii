@@ -14,7 +14,8 @@ export default function Welcome({ navigation }) {
     return (
         <View style={globalStyles.container}>
             <Text>Welcome Screen</Text>
-            <Button title="Next" onPress={pressHandler}></Button>
+            <Button title="lOGIN" onPress={navigateToLogin} />
+            <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
         </View>
     );
 }
