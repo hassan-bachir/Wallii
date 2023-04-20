@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Home from "./screens/home/HomeScreen";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
+import AuthStack from "./routes/authStack";
 
 import { loadFonts } from "./constants";
 
@@ -27,6 +27,9 @@ export default function App() {
     if (!fontsLoaded) {
         return null;
     }
-
-    return <Home />;
+    return (
+        <NavigationContainer>
+            <AuthStack />
+        </NavigationContainer>
+    );
 }

@@ -1,7 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { View, Text, Button } from "react-native";
 import { globalStyles } from "../../../styles/global";
-import { ROUTES } from "../../../constants";
 
 export default function ChooseEmail() {
     return (

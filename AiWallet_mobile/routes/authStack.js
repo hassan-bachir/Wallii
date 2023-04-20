@@ -6,7 +6,7 @@ import {
     ChooseName,
     ChooseEmail,
 } from "../screens";
-import { ROUTES } from "../constants/";
+import { ROUTES } from "../constants";
 
 const Stack = createStackNavigator();
 
