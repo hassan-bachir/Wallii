@@ -4,13 +4,13 @@ import { globalStyles } from "../../../styles/global";
 import { ROUTES } from "../../../constants";
 
 export default function ChooseName({ navigation }) {
-    const pressHandler = () => {
+    const navogateToChooseEmail = () => {
         navigation.push("ChooseEmail");
     };
     return (
         <View style={globalStyles.container}>
             <Text>Choose Name screen</Text>
-            <Button title="Next" onPress={pressHandler}></Button>
+            <Button title="Next" onPress={navogateToChooseEmail}></Button>
         </View>
     );
 }

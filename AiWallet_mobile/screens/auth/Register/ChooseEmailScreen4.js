@@ -7,7 +7,7 @@ export default function ChooseEmail() {
     return (
         <View style={globalStyles.container}>
             <Text>Choose Email Screen </Text>
-            <Button title="Done"></Button>
+            <Button title="Done" />
         </View>
     );
 }
