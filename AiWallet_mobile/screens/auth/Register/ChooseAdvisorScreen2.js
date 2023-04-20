@@ -7,15 +7,11 @@ export default function ChooseAdvisor({ navigation }) {
     const navigateToChooseName = () => {
         navigation.push(ROUTES.CHOOSE_NAME);
     };
-    const navigateBack = () => {
-        navigation.navigate(ROUTES.CHOOSE_NAME);
-    };
 
     return (
         <View style={globalStyles.container}>
             <Text>Choose Advisor Screen</Text>
             <Button title="Next" onPress={navigateToChooseName} />
-            <Button title="Go Back" onPress={navigateBack} />
         </View>
     );
 }
