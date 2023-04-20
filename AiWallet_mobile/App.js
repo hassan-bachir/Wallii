@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Home from "./screens/home/HomeScreen";
-import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { useFonts } from "expo-font";
-
-const getFonts = () =>
-    Font.loadAsync({
-        "Montserrat-regular": require("./assets/fonts/MontserratAlternates-Regular.ttf"),
-        "Montserrat-medium": require("./assets/fonts/MontserratAlternates-Medium.ttf"),
-        "Montserrat-italic": require("./assets/fonts/MontserratAlternates-Italic.ttf"),
-        "Montserrat-semiBold": require("./assets/fonts/MontserratAlternates-SemiBold.ttf"),
-        "Montserrat-bold": require("./assets/fonts/MontserratAlternates-Bold.ttf"),
-    });
+import { loadFonts } from "./constants";
 
 export default function App() {
     const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -22,7 +12,7 @@ export default function App() {
         const loadFontsAndHideSplashScreen = async () => {
             try {
                 await SplashScreen.preventAutoHideAsync();
-                await getFonts();
+                await loadFonts();
             } catch (error) {
                 console.error(error);
             } finally {
