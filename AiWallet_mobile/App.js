@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import Home from "./screens/home/HomeScreen";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { NavigationContainer } from "@react-navigation/native";
+
+import { useFonts } from "expo-font";
 
 const getFonts = () =>
     Font.loadAsync({
