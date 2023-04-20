@@ -5,7 +5,7 @@ import { ROUTES } from "../../../constants";
 
 export default function ChooseName({ navigation }) {
     const navogateToChooseEmail = () => {
-        navigation.push("ChooseEmail");
+        navigation.push(ROUTES.CHOOSE_EMAIL);
     };
     return (
         <View style={globalStyles.container}>
