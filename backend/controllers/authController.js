@@ -6,7 +6,7 @@ const generateToken = (user) => {
     return jwt.sign(
         { id: user._id, email: user.email },
         process.env.JWT_SECRET,
-        { expiresIn: "30d" } // Change this value to set a longer expiration time, e.g., '30d' for 30 days
+        { expiresIn: "30d" }
     );
 };
 
