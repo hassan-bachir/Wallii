@@ -9,6 +9,7 @@ const generateToken = (user) => {
         { expiresIn: "30d" } // Change this value to set a longer expiration time, e.g., '30d' for 30 days
     );
 };
+
 exports.register = async (req, res) => {
     const { email, password, role } = req.body;
 
