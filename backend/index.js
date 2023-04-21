@@ -8,6 +8,7 @@ const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 
 const userRoutes = require("./routes/user.routes");
+app.use("/api", userRoutes);
 
 app.listen(process.env.PORT, (err) => {
     if (err) console.error(err);
