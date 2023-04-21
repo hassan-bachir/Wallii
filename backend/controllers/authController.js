@@ -43,20 +43,32 @@ const register = async (req, res) => {
     }
 };
 
-exports.login = async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-    if (!user) return res.status(404).json({ message: "Invalid Credentials" });
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res
+                .status(400)
+                .json({ message: "Invalid email or password" });
+        }
 
-    const isMatched = user.matchPassword(password);
-    if (!isMatched)
-        return res.status(404).json({ message: "Invalid Credentials" });
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res
+                .status(400)
+                .json({ message: "Invalid email or password" });
+        }
 
-    const token = jwt.sign(
-        { id: user._id, email: user.email },
-        process.env.SECRET_KEY
-    );
+        const token = generateToken(user);
 
-    res.json({ token });
+        res.status(200).json({
+            message: "Logged in successfully",
+            user,
+            token,
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
+    }
 };
