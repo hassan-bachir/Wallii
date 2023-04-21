@@ -9,7 +9,7 @@ exports.authMiddleware = async (req, res, next) => {
             return res.status(403).json({ message: "Unauthenticated" });
         }
 
-        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findById(decoded.id, "-password");
 
         req.user = user;
