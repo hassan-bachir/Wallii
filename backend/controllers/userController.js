@@ -12,3 +12,17 @@ const updateUser = async (req, res) => {
         res.status(500).json({ message: "Error updating user", error });
     }
 };
+const readUserInfo = async (req, res) => {
+    try {
+        const { userId } = req;
+        const user = await User.findById(userId);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching user info", error });
+    }
+};
+
+module.exports = {
+    updateUser,
+    readUserInfo,
+};
