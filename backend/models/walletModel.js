@@ -8,6 +8,7 @@ const walletSchema = new mongoose.Schema({
     },
     name: { type: String, required: true },
     currency: { type: String, required: true },
+    initialBalance: { type: Number, default: 0 },
     transactions: [
         {
             type: mongoose.Schema.Types.ObjectId,
