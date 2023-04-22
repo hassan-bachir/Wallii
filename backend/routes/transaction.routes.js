@@ -21,5 +21,11 @@ router.put(
     checkToken,
     transactionController.updateTransaction
 );
+//delete transaction
+router.delete(
+    "/:transactionId",
+    checkToken,
+    transactionController.deleteTransaction
+);
 
 module.exports = router;
