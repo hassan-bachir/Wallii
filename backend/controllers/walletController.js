@@ -68,6 +68,30 @@ const updateWallet = async (req, res) => {
     }
 };
 
+const addBudget = async (req, res) => {
+    try {
+        const { walletId } = req.params;
+        const { amount, startDate, endDate } = req.body;
+
+        const wallet = await Wallet.findById(walletId);
+
+        if (!wallet) {
+            return res.status(404).json({ message: "Wallet not found" });
+        }
+
+        wallet.budget = {
+            amount,
+            startDate,
+            endDate,
+        };
+
+        const updatedWallet = await wallet.save();
+        res.status(200).json(updatedWallet);
+    } catch (error) {
+        res.status(500).json({ message: "Error adding budget", error });
+    }
+};
+
 module.exports = {
     addWallet,
     getUserWallets,
