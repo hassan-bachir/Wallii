@@ -92,11 +92,34 @@ const addBudget = async (req, res) => {
         res.status(500).json({ message: "Error adding budget", error });
     }
 };
+const deleteBudget = async (req, res) => {
+    try {
+        const { walletId } = req.params;
 
+        // Find the wallet by its ID and unset the budget
+        const updatedWallet = await Wallet.findByIdAndUpdate(
+            walletId,
+            {
+                $unset: { budget: "" },
+            },
+            { new: true }
+        );
+
+        if (!updatedWallet) {
+            return res.status(404).json({ message: "Wallet not found" });
+        }
+
+        res.status(200).json(updatedWallet);
+    } catch (error) {
+        console.error("Error deleting budget:", error);
+        res.status(500).json({ message: "Error deleting budget", error });
+    }
+};
 module.exports = {
     addWallet,
     getUserWallets,
     updateWallet,
     getWallet,
     addBudget,
+    deleteBudget,
 };
