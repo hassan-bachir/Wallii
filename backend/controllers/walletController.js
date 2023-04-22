@@ -30,12 +30,13 @@ const getWallet = async (req, res) => {
 const addWallet = async (req, res) => {
     try {
         const { userId } = req;
-        const { name, currency } = req.body;
+        const { name, currency, initialBalance } = req.body;
 
         const newWallet = new Wallet({
             userId,
             name,
             currency,
+            initialBalance,
         });
 
         const savedWallet = await newWallet.save();
