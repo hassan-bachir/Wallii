@@ -23,3 +23,7 @@ const addWallet = async (req, res) => {
         res.status(500).json({ message: "Error creating wallet", error });
     }
 };
+
+module.exports = {
+    addWallet,
+};
