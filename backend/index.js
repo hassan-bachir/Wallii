@@ -13,6 +13,9 @@ app.use("/user", userRoutes);
 const walletRoutes = require("./routes/wallet.routes");
 app.use("/wallet", walletRoutes);
 
+const transactionRoutes = require("./routes/transaction.routes");
+app.use("/api/transaction", transactionRoutes);
+
 app.listen(process.env.PORT, (err) => {
     if (err) console.error(err);
     console.log("sever is running on port", process.env.PORT);
