@@ -50,8 +50,25 @@ const getAllTransactions = async (req, res) => {
         res.status(500).json({ message: "Error fetching transactions", error });
     }
 };
+const updateTransaction = async (req, res) => {
+    try {
+        const { transactionId } = req.params;
+        const updatedTransaction = await Transaction.findByIdAndUpdate(
+            transactionId,
+            req.body,
+            {
+                new: true,
+            }
+        );
+
+        res.status(200).json(updatedTransaction);
+    } catch (error) {
+        res.status(500).json({ message: "Error updating transaction", error });
+    }
+};
 
 module.exports = {
     addTransaction,
     getAllTransactions,
+    updateTransaction,
 };
