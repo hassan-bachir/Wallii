@@ -15,5 +15,7 @@ router.put("/:walletId", checkToken, walletController.updateWallet);
 router.get("/:walletId", checkToken, walletController.getWallet);
 //create budget
 router.post("/:walletId/budget", checkToken, walletController.addBudget);
+// Delete budget
+router.delete("/:walletId/budget", checkToken, walletController.deleteBudget);
 
 module.exports = router;
