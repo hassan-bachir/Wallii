@@ -4,3 +4,6 @@ const transactionController = require("../controllers/transactionController");
 const {
     authMiddleware: checkToken,
 } = require("../middlewares/auth.middleware");
+
+// Add transaction
+router.post("/:walletId", checkToken, transactionController.addTransaction);
