@@ -1,3 +1,6 @@
+const Wallet = require("../models/walletModel");
+const User = require("../models/userModel");
+
 const addWallet = async (req, res) => {
     try {
         const { userId } = req;
