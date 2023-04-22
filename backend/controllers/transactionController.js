@@ -35,6 +35,7 @@ const addTransaction = async (req, res) => {
 
         res.status(201).json(savedTransaction);
     } catch (error) {
+        console.error("Error adding transaction:", error);
         res.status(500).json({ message: "Error adding transaction", error });
     }
 };
