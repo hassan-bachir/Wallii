@@ -9,7 +9,7 @@ const {
 router.post("/:walletId", checkToken, transactionController.addTransaction);
 //get all transactions
 router.get("/:walletId", checkToken, transactionController.getAllTransactions);
-
+//get tra
 //update transaction
 router.put(
     "/:transactionId",
