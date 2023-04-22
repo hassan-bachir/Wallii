@@ -12,6 +12,21 @@ const getUserWallets = async (req, res) => {
     }
 };
 
+const getWallet = async (req, res) => {
+    try {
+        const { walletId } = req.params;
+        const wallet = await Wallet.findById(walletId);
+
+        if (!wallet) {
+            return res.status(404).json({ message: "Wallet not found" });
+        }
+
+        res.status(200).json(wallet);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching wallet data", error });
+    }
+};
+
 const addWallet = async (req, res) => {
     try {
         const { userId } = req;
@@ -57,4 +72,5 @@ module.exports = {
     addWallet,
     getUserWallets,
     updateWallet,
+    getWallet,
 };
