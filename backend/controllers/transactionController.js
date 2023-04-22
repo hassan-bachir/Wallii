@@ -80,9 +80,27 @@ const getTransactionById = async (req, res) => {
         res.status(500).json({ message: "Error getting transaction", error });
     }
 };
+const deleteTransaction = async (req, res) => {
+    try {
+        const { transactionId } = req.params;
+        const transaction = await Transaction.findById(transactionId);
+
+        if (!transaction) {
+            res.status(404).json({ message: "Transaction not found" });
+        } else {
+            await Transaction.findByIdAndDelete(transactionId);
+            res.status(200).json({
+                message: "Transaction deleted successfully",
+            });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting transaction", error });
+    }
+};
 module.exports = {
     addTransaction,
     getAllTransactions,
     updateTransaction,
     getTransactionById,
+    deleteTransaction,
 };
