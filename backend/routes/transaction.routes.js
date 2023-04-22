@@ -7,3 +7,5 @@ const {
 
 // Add transaction
 router.post("/:walletId", checkToken, transactionController.addTransaction);
+
+module.exports = router;
