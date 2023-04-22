@@ -11,7 +11,7 @@ router.post("/:walletId", checkToken, transactionController.addTransaction);
 router.get("/:walletId", checkToken, transactionController.getAllTransactions);
 //get transaction by ID
 router.get(
-    "/:transactionId",
+    "/byid/:transactionId",
     checkToken,
     transactionController.getTransactionById
 );
