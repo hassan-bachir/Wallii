@@ -10,7 +10,6 @@ app.use("/auth", authRouter);
 const userRoutes = require("./routes/user.routes");
 app.use("/api", userRoutes);
 
-//
 const walletRoutes = require("./routes/wallet.routes");
 app.use("/api", walletRoutes);
 
