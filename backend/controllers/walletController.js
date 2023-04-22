@@ -97,4 +97,5 @@ module.exports = {
     getUserWallets,
     updateWallet,
     getWallet,
+    addBudget,
 };
