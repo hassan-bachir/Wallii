@@ -15,6 +15,7 @@ const walletSchema = new mongoose.Schema({
         },
     ],
     budget: {
+        name: String,
         amount: Number,
         startDate: Date,
         endDate: Date,

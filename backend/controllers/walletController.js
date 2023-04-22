@@ -71,7 +71,7 @@ const updateWallet = async (req, res) => {
 const addBudget = async (req, res) => {
     try {
         const { walletId } = req.params;
-        const { amount, startDate, endDate } = req.body;
+        const { name, amount, startDate, endDate } = req.body;
 
         const wallet = await Wallet.findById(walletId);
 
@@ -80,6 +80,7 @@ const addBudget = async (req, res) => {
         }
 
         wallet.budget = {
+            name,
             amount,
             startDate,
             endDate,
