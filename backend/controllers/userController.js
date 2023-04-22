@@ -6,7 +6,7 @@ const updateUser = async (req, res) => {
         const { userId } = req;
         const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
             new: true,
-        });
+        }).select("-password -wallets -_id");
         res.status(200).json(updatedUser);
     } catch (error) {
         res.status(500).json({ message: "Error updating user", error });
