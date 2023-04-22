@@ -53,4 +53,5 @@ const getAllTransactions = async (req, res) => {
 
 module.exports = {
     addTransaction,
+    getAllTransactions,
 };
