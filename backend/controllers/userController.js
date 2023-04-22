@@ -14,7 +14,7 @@ const updateUser = async (req, res) => {
 };
 const readUserInfo = async (req, res) => {
     try {
-        const { userId } = req;
+        const { userId } = req.user;
         const user = await User.findById(userId);
         res.status(200).json(user);
     } catch (error) {
