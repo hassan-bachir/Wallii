@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const bcrypt = require("bcrypt");
 
 const updateUser = async (req, res) => {
     try {
