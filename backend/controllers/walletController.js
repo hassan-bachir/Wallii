@@ -20,6 +20,7 @@ const addWallet = async (req, res) => {
 
         res.status(201).json(savedWallet);
     } catch (error) {
+        console.error("Error creating wallet:", error);
         res.status(500).json({ message: "Error creating wallet", error });
     }
 };

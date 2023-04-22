@@ -15,10 +15,10 @@ const walletSchema = new mongoose.Schema({
         },
     ],
     budget: {
-        amount: { type: Number, required: true },
+        amount: Number,
         startDate: Date,
         endDate: Date,
     },
 });
-
 const Wallet = mongoose.model("Wallet", walletSchema);
+module.exports = Wallet;
