@@ -5,7 +5,13 @@ const bcrypt = require("bcrypt");
 const updateUser = async (req, res) => {
     try {
         const { userId } = req;
-        const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
+        const userData = req.body;
+
+        if (userData.password) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(userId, userData, {
             new: true,
         }).select("-password -wallets -_id");
         res.status(200).json(updatedUser);
