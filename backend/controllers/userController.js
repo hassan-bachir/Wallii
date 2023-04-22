@@ -28,8 +28,30 @@ const readUserInfo = async (req, res) => {
         res.status(500).json({ message: "Error fetching user info", error });
     }
 };
+const addGoal = async (req, res) => {
+    try {
+        const { userId } = req;
+        const { description, targetAmount, targetDate } = req.body;
+
+        const goal = { description, targetAmount, targetDate };
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { $push: { goals: goal } },
+            { new: true }
+        );
+
+        res.status(200).json({
+            message: "Goal added successfully",
+            updatedUser,
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Error adding goal", error });
+    }
+};
 
 module.exports = {
     updateUser,
     readUserInfo,
+    addGoal,
 };

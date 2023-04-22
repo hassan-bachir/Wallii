@@ -7,5 +7,6 @@ const {
 
 router.get("/user", checkToken, userController.readUserInfo);
 router.put("/user", checkToken, userController.updateUser);
+router.post("/user/goals", checkToken, userController.addGoal);
 
 module.exports = router;
