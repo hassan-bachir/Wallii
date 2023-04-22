@@ -84,4 +84,5 @@ module.exports = {
     addTransaction,
     getAllTransactions,
     updateTransaction,
+    getTransactionById,
 };
