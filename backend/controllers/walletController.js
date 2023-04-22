@@ -38,4 +38,5 @@ const addWallet = async (req, res) => {
 
 module.exports = {
     addWallet,
+    getUserWallets,
 };
