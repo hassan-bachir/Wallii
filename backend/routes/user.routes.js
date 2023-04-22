@@ -5,8 +5,8 @@ const {
     authMiddleware: checkToken,
 } = require("../middlewares/auth.middleware");
 
-router.get("/user", checkToken, userController.readUserInfo);
-router.put("/user", checkToken, userController.updateUser);
-router.post("/user/goals", checkToken, userController.addGoal);
+router.get("/", checkToken, userController.readUserInfo);
+router.put("/", checkToken, userController.updateUser);
+router.post("/goals", checkToken, userController.addGoal);
 
 module.exports = router;
