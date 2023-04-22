@@ -7,6 +7,6 @@ const {
 
 router.post("/wallet", checkToken, walletController.addWallet);
 
-router.get("/", checkToken, walletController.getUserWallets);
+router.get("/wallet ", checkToken, walletController.getUserWallets);
 
 module.exports = router;
