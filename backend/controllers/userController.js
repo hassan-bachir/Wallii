@@ -32,6 +32,7 @@ const addGoal = async (req, res) => {
     try {
         const { userId } = req;
         const { description, targetAmount, targetDate } = req.body;
+        targetDate = new Date(targetDate);
 
         const goal = { description, targetAmount, targetDate };
 
