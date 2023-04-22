@@ -117,10 +117,46 @@ const deleteTransaction = async (req, res) => {
         res.status(500).json({ message: "Error deleting transaction", error });
     }
 };
+
+const getWalletSummary = async (req, res) => {
+    try {
+        const { walletId } = req.params;
+        const wallet = await Wallet.findById(walletId).populate("transactions");
+
+        if (!wallet) {
+            res.status(404).json({ message: "Wallet not found" });
+        } else {
+            let totalIncome = 0;
+            let totalExpenses = 0;
+
+            wallet.transactions.forEach((transaction) => {
+                if (transaction.type === "income") {
+                    totalIncome += transaction.amount;
+                } else if (transaction.type === "expense") {
+                    totalExpenses += transaction.amount;
+                }
+            });
+
+            const totalDifference = totalIncome - totalExpenses;
+
+            res.status(200).json({
+                totalIncome,
+                totalExpenses,
+                totalDifference,
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching wallet summary",
+            error,
+        });
+    }
+};
 module.exports = {
     addTransaction,
     getAllTransactions,
     updateTransaction,
     getTransactionById,
     deleteTransaction,
+    getWalletSummary,
 };
