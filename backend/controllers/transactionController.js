@@ -53,6 +53,7 @@ const getAllTransactions = async (req, res) => {
 const updateTransaction = async (req, res) => {
     try {
         const { transactionId } = req.params;
+        const oldTransaction = await Transaction.findById(transactionId);
         const updatedTransaction = await Transaction.findByIdAndUpdate(
             transactionId,
             req.body,
@@ -60,9 +61,23 @@ const updateTransaction = async (req, res) => {
                 new: true,
             }
         );
+        if (
+            req.body.walletId &&
+            oldTransaction.walletId.toString() !== req.body.walletId.toString()
+        ) {
+            await Wallet.findByIdAndUpdate(oldTransaction.walletId, {
+                $pull: { transactions: transactionId },
+            });
+
+            await Wallet.findByIdAndUpdate(req.body.walletId, {
+                $push: { transactions: transactionId },
+            });
+        }
 
         res.status(200).json(updatedTransaction);
     } catch (error) {
+        console.error("Error updating transaction:", error);
+
         res.status(500).json({ message: "Error updating transaction", error });
     }
 };
