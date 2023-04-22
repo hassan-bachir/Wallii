@@ -14,7 +14,7 @@ const walletRoutes = require("./routes/wallet.routes");
 app.use("/wallet", walletRoutes);
 
 const transactionRoutes = require("./routes/transaction.routes");
-app.use("/api/transaction", transactionRoutes);
+app.use("/transaction", transactionRoutes);
 
 app.listen(process.env.PORT, (err) => {
     if (err) console.error(err);
