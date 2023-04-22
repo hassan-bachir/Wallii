@@ -40,6 +40,17 @@ const addTransaction = async (req, res) => {
     }
 };
 
+const getAllTransactions = async (req, res) => {
+    try {
+        const { walletId } = req.params;
+        const transactions = await Transaction.find({ walletId });
+
+        res.status(200).json(transactions);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching transactions", error });
+    }
+};
+
 module.exports = {
     addTransaction,
 };
