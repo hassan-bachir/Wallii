@@ -36,7 +36,25 @@ const addWallet = async (req, res) => {
     }
 };
 
+const updateWallet = async (req, res) => {
+    try {
+        const { walletId } = req.params;
+        const updatedWallet = await Wallet.findByIdAndUpdate(
+            walletId,
+            req.body,
+            {
+                new: true,
+            }
+        );
+
+        res.status(200).json(updatedWallet);
+    } catch (error) {
+        res.status(500).json({ message: "Error updating wallet", error });
+    }
+};
+
 module.exports = {
     addWallet,
     getUserWallets,
+    updateWallet,
 };
