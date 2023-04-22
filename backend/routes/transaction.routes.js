@@ -10,4 +10,11 @@ router.post("/:walletId", checkToken, transactionController.addTransaction);
 //get all transactions
 router.get("/:walletId", checkToken, transactionController.getAllTransactions);
 
+//update transaction
+router.put(
+    "/:transactionId",
+    checkToken,
+    transactionController.updateTransaction
+);
+
 module.exports = router;
