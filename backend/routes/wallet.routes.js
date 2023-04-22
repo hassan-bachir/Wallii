@@ -13,5 +13,7 @@ router.get("/wallet", checkToken, walletController.getUserWallets);
 router.put("/:walletId", checkToken, walletController.updateWallet);
 //get wallet by ID
 router.get("/:walletId", checkToken, walletController.getWallet);
+//create budget
+router.post("/:walletId/budget", checkToken, walletController.addBudget);
 
 module.exports = router;
