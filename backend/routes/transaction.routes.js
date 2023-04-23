@@ -10,11 +10,11 @@ const {
 router.post("/:walletId", checkToken, transactionController.addTransaction);
 
 //get all transactions
-// (/transaction/:walletId)
+// (/transaction/:walletId) GET
 router.get("/:walletId", checkToken, transactionController.getAllTransactions);
 
 //get transaction by ID
-// (/transaction/register)
+// (/transaction/byid/:transactionId) GET
 router.get(
     "/byid/:transactionId",
     checkToken,
@@ -22,7 +22,7 @@ router.get(
 );
 
 //update transaction
-// (/transaction/register)
+// (/transaction/:transactionId) PUT
 router.put(
     "/:transactionId",
     checkToken,
@@ -30,7 +30,7 @@ router.put(
 );
 
 //delete transaction
-// (/transaction/register)
+// (/transaction/:transactionId) DELETE
 router.delete(
     "/:transactionId",
     checkToken,
@@ -38,7 +38,7 @@ router.delete(
 );
 
 // Get transactions grouped by date
-// (/transaction/register)
+// (/transaction/:walletId/by-date) GET
 router.get(
     "/:walletId/by-date",
     checkToken,
