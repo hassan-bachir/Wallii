@@ -17,5 +17,7 @@ router.get("/:walletId", checkToken, walletController.getWallet);
 router.post("/:walletId/budget", checkToken, walletController.addBudget);
 // Delete budget
 router.delete("/:walletId/budget", checkToken, walletController.deleteBudget);
+// Get wallet summary
+router.get("/:walletId/summary", checkToken, walletController.getWalletSummary);
 
 module.exports = router;
