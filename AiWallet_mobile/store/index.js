@@ -1,7 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./rootReducer";
+import authReducer from "./slices/authSlice";
+import walletReducer from "./slices/walletSlice";
+import transactionReducer from "./slices/transactionSlice";
 
 const store = configureStore({
-    reducer: rootReducer,
+    reducer: {
+        auth: authReducer,
+        wallet: walletReducer,
+        transaction: transactionReducer,
+    },
 });
+
 export default store;
