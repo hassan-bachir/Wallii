@@ -51,8 +51,37 @@ const addGoal = async (req, res) => {
     }
 };
 
+const deleteGoal = async (req, res) => {
+    try {
+        const { userId } = req.user;
+        const { goalId } = req.params;
+
+        const user = await User.findById(userId);
+        if (!user) {
+            res.status(404).json({ message: "User not found" });
+            return;
+        }
+
+        const goalIndex = user.goals.findIndex(
+            (goal) => goal._id.toString() === goalId
+        );
+        if (goalIndex === -1) {
+            res.status(404).json({ message: "Goal not found" });
+            return;
+        }
+
+        user.goals.splice(goalIndex, 1);
+        await user.save();
+
+        res.status(200).json({ message: "Goal deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting goal", error });
+    }
+};
+
 module.exports = {
     updateUser,
     readUserInfo,
     addGoal,
+    deleteGoal,
 };
