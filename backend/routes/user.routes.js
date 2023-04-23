@@ -6,10 +6,19 @@ const {
 } = require("../middlewares/auth.middleware");
 
 //get user info
+// (/user/) POST
 router.get("/", checkToken, userController.readUserInfo);
+
 //update user info
+// (/user/) PUT
 router.put("/", checkToken, userController.updateUser);
+
 //add goal
+// (/user/goals) POST
 router.post("/goals", checkToken, userController.addGoal);
+
+// Delete goal
+// (/user/goals/:goalId) POST
+router.delete("/goals/:goalId", checkToken, userController.deleteGoal);
 
 module.exports = router;
