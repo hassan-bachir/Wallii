@@ -117,6 +117,25 @@ const deleteTransaction = async (req, res) => {
         res.status(500).json({ message: "Error deleting transaction", error });
     }
 };
+const getTotalAmountByCategory = async (req, res) => {
+    try {
+        const { walletId, category } = req.params;
+        const transactions = await Transaction.find({ walletId, category });
+
+        let totalAmount = 0;
+
+        transactions.forEach((transaction) => {
+            totalAmount += transaction.amount;
+        });
+
+        res.status(200).json({ category, totalAmount });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching total amount by category",
+            error,
+        });
+    }
+};
 
 module.exports = {
     addTransaction,
@@ -124,4 +143,5 @@ module.exports = {
     updateTransaction,
     getTransactionById,
     deleteTransaction,
+    getTotalAmountByCategory,
 };
