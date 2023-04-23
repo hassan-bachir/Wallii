@@ -29,8 +29,10 @@ export default function App() {
         return null;
     }
     return (
-        <NavigationContainer>
-            <HomeStack />
-        </NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer>
+                <HomeStack />
+            </NavigationContainer>
+        </Provider>
     );
 }
