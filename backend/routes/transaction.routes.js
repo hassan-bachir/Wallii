@@ -27,5 +27,11 @@ router.delete(
     checkToken,
     transactionController.deleteTransaction
 );
+// Get transactions grouped by date
+router.get(
+    "/:walletId/by-date",
+    checkToken,
+    transactionController.getTransactionsByDate
+);
 
 module.exports = router;

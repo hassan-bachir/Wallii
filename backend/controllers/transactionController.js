@@ -177,4 +177,5 @@ module.exports = {
     getTransactionById,
     deleteTransaction,
     getTotalAmountByCategory,
+    getTransactionsByDate,
 };
