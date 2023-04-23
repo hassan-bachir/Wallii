@@ -27,7 +27,5 @@ router.delete(
     checkToken,
     transactionController.deleteTransaction
 );
-// Get wallet summary
-router.get("/:walletId/summary", checkToken, walletController.getWalletSummary);
 
 module.exports = router;
