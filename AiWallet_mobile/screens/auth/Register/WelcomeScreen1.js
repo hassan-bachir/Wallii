@@ -13,7 +13,7 @@ export default function Welcome({ navigation }) {
     };
     return (
         <ImageBackground
-            source={require("../../../assets/images/background2.png")}
+            source={require("../../../assets/")}
             style={styles.background}
             resizeMode="cover"
         >
