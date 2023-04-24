@@ -15,6 +15,7 @@ export default function Welcome({ navigation }) {
         <ImageBackground
             source={require("../../../assets/images/background2.png")}
             style={styles.background}
+            resizeMode="cover"
         >
             <View style={globalStyles.container}>
                 <Text>Welcome Screen</Text>
