@@ -1,4 +1,4 @@
-const wallieLogo = require("../assets/images/wallie-logo.png");
+const wallieLogo = require("../assets/images/logo.png");
 
 export default {
     wallieLogo,
