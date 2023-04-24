@@ -13,7 +13,7 @@ export default function Welcome({ navigation }) {
     };
     return (
         <View style={globalStyles.container}>
-            <Text>Welcome Screen</Text>
+            <Text style={globalStyles.titleText}>Welcome Screen</Text>
             <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
             <Button title="lOGIN" onPress={navigateToLogin} />
         </View>
