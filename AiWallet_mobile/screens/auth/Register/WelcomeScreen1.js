@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet, ImageBackground } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import { ROUTES } from "../../../constants";
 
@@ -12,10 +12,15 @@ export default function Welcome({ navigation }) {
         navigation.navigate(ROUTES.CHOOSE_ADVISOR);
     };
     return (
-        <View style={globalStyles.container}>
-            <Text>Welcome Screen</Text>
-            <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
-            <Button title="lOGIN" onPress={navigateToLogin} />
-        </View>
+        <ImageBackground
+            source={require("../../../assets/images/background")}
+            style={styles.background}
+        >
+            <View style={globalStyles.container}>
+                <Text>Welcome Screen</Text>
+                <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
+                <Button title="lOGIN" onPress={navigateToLogin} />
+            </View>
+        </ImageBackground>
     );
 }
