@@ -18,7 +18,7 @@ router.put("/", checkToken, userController.updateUser);
 router.post("/goals", checkToken, userController.addGoal);
 
 // Delete goal
-// (/user/goals/:goalId) POST
+// (/user/goals/:goalId) DELETE
 router.delete("/goals/:goalId", checkToken, userController.deleteGoal);
 
 module.exports = router;
