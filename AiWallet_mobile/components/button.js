@@ -8,7 +8,7 @@ const Button = ({ onPress, title, style }) => {
             <TouchableOpacity
                 style={{
                     height: 45,
-                    backgroundColor: COLORS.primary,
+                    backgroundColor: COLORS.orange,
                     borderRadius: SIZES.radius / 1.5,
                     alignItems: "center",
                     justifyContent: "center",
