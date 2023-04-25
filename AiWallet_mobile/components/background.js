@@ -1,10 +1,12 @@
 import React from "react";
 import backgroundImg from "../assets/images/background.png";
+import { images } from "../constants";
+
 import { ImageBackground, StyleSheet } from "react-native";
 
 const Background = ({ children }) => {
     return (
-        <ImageBackground source={backgroundImg} style={styles.background}>
+        <ImageBackground source={images.background} style={styles.background}>
             {children}
         </ImageBackground>
     );
