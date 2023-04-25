@@ -1,4 +1,4 @@
 import Button from "./Button";
 import Background from "./Background";
-import Logo from "./logo";
+import Logo from "./Logo";
 export { Background, Button, Logo };
