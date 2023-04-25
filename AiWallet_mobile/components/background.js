@@ -1,5 +1,4 @@
 import React from "react";
-import backgroundImg from "../assets/images/background.png";
 import { images } from "../constants";
 
 import { ImageBackground, StyleSheet } from "react-native";
