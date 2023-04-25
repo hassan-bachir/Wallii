@@ -9,6 +9,8 @@ import {
 import { globalStyles } from "../../../styles/global";
 import { ROUTES, FONTS, COLORS } from "../../../constants";
 import { Background, Button } from "../../../components";
+import { useDispatch } from "react-redux";
+import { setSelectedAdvisor } from "../../../store/slices/registrationSlice";
 
 export default function ChooseAdvisor({ navigation }) {
     const navigateToChooseName = () => {
