@@ -1,4 +1,4 @@
-import Button from "./button";
-import Background from "./background";
-
-export { Background, Button };
+import Button from "./Button";
+import Background from "./Background";
+import Logo from "./logo";
+export { Background, Button, Logo };

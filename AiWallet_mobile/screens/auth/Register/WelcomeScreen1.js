@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import { ROUTES } from "../../../constants";
-import { Background, Button } from "../../../components";
+import { Background, Button, Logo } from "../../../components";
 
 export default function Welcome({ navigation }) {
     const navigateToLogin = () => {
@@ -15,7 +15,7 @@ export default function Welcome({ navigation }) {
     return (
         <Background>
             <View style={globalStyles.container}>
-                <Text style={globalStyles.titleText}>Welcome Screen</Text>
+                <Logo />
                 <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
                 <Button title="LOGIN" onPress={navigateToLogin} />
             </View>
