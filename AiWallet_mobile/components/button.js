@@ -4,11 +4,11 @@ import { COLORS, SIZES, FONTS } from "../constants";
 
 const Button = ({ onPress, title, style }) => {
     return (
-        <View style={{ margin: SIZES.padding * 3 }}>
+        <View style={{ margin: SIZES.padding * 1 }}>
             <TouchableOpacity
                 style={{
-                    height: 60,
-                    backgroundColor: COLORS.black,
+                    height: 45,
+                    backgroundColor: COLORS.primary,
                     borderRadius: SIZES.radius / 1.5,
                     alignItems: "center",
                     justifyContent: "center",
@@ -16,7 +16,7 @@ const Button = ({ onPress, title, style }) => {
                 }}
                 onPress={onPress}
             >
-                <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
+                <Text style={{ color: COLORS.white, ...FONTS.body3 }}>
                     {title}
                 </Text>
             </TouchableOpacity>
