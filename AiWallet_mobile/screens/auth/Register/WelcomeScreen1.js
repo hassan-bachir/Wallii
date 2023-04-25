@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import { ROUTES } from "../../../constants";
+import { Background, Button } from "../../../components"; // Import Background and Button components
 
 export default function Welcome({ navigation }) {
     const navigateToLogin = () => {
@@ -12,11 +13,13 @@ export default function Welcome({ navigation }) {
         navigation.navigate(ROUTES.CHOOSE_ADVISOR);
     };
     return (
-        <View style={globalStyles.container}>
-            <Text style={globalStyles.titleText}>Welcome Screen</Text>
-            <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
-            <Button title="lOGIN" onPress={navigateToLogin} />
-        </View>
+        <Background>
+            <View style={globalStyles.container}>
+                <Text style={globalStyles.titleText}>Welcome Screen</Text>
+                <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
+                <Button title="LOGIN" onPress={navigateToLogin} />
+            </View>
+        </Background>
     );
 }
 
