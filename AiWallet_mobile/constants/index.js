@@ -1,7 +1,7 @@
 import ROUTES from "./constants/routes";
-import COLORS from "./constants/colors";
 import loadFonts from "./constants/fonts";
 import icons from "./constants/icons";
 import images from "./constants/images";
+import theme from "./constants/theme";
 
-export { ROUTES, COLORS, loadFonts, images, icons };
+export { ROUTES, theme, loadFonts, images, icons };

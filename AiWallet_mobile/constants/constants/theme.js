@@ -92,3 +92,5 @@ export const FONTS = {
         lineHeight: 22,
     },
 };
+const theme = { COLORS, SIZES, FONTS };
+export default theme;
