@@ -21,7 +21,9 @@ export default function Welcome({ navigation }) {
                     Finances!
                 </Text>
                 <Button title="GET STARTED" onPress={navigateToChooseAdvisor} />
-                <Button title="LOGIN" onPress={navigateToLogin} />
+                <Text style={styles.loginLink} onPress={navigateToLogin}>
+                    Already a user? Login
+                </Text>
             </View>
         </Background>
     );
@@ -33,5 +35,12 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingHorizontal: 20,
         marginBottom: 20,
+    },
+    loginLink: {
+        ...FONTS.body3,
+        color: COLORS.white,
+        textAlign: "center",
+        textDecorationLine: "underline",
+        marginTop: 10,
     },
 });
