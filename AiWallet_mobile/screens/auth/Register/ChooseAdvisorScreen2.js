@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import { setSelectedAdvisor } from "../../../store/slices/registrationSlice";
 
 export default function ChooseAdvisor({ navigation }) {
+    const dispatch = useDispatch();
+
     const navigateToChooseName = () => {
         navigation.push(ROUTES.CHOOSE_NAME);
     };
