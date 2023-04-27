@@ -3,11 +3,12 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
 const AdvisorCard = ({ advisor, onPress }) => {
     const { name, image } = advisor;
+    const imageSource = typeof image === "string" ? { uri: image } : image;
 
     return (
         <TouchableOpacity style={styles.card} onPress={onPress}>
             <View style={styles.imageContainer}>
-                <Image source={{ uri: image }} style={styles.image} />
+                <Image source={imageSource} style={styles.image} />
             </View>
             <Text style={styles.name}>{name}</Text>
         </TouchableOpacity>
