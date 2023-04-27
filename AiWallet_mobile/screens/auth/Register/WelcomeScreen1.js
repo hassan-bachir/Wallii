@@ -10,12 +10,13 @@ export default function Welcome({ navigation }) {
     };
 
     const navigateToChooseAdvisor = () => {
+        //
         navigation.navigate(ROUTES.CHOOSE_ADVISOR);
     };
     return (
         <Background>
             <SafeAreaView style={styles.safeArea}>
-                <View style={globalStyles.container}>
+                <Container>
                     <View style={styles.logoContainer}>
                         <Logo />
                     </View>
@@ -37,7 +38,7 @@ export default function Welcome({ navigation }) {
                             Already a user? Login
                         </Text>
                     </View>
-                </View>
+                </Container>
             </SafeAreaView>
         </Background>
     );
