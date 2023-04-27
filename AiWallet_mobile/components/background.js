@@ -1,11 +1,11 @@
 import React from "react";
-import { images } from "../constants";
+import { IMAGES } from "../constants";
 
 import { ImageBackground, StyleSheet } from "react-native";
 
 const Background = ({ children }) => {
     return (
-        <ImageBackground source={images.BACKGROUND} style={styles.background}>
+        <ImageBackground source={IMAGES.BACKGROUND} style={styles.background}>
             {children}
         </ImageBackground>
     );

@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { images } from "../constants";
+import { IMAGES } from "../constants";
 
 const Logo = (props) => {
     return (
         <View style={styles.container}>
             <Image
-                source={images.LOGO}
+                source={IMAGES.LOGO}
                 style={styles.logo}
                 resizeMode="contain"
             />
