@@ -6,7 +6,7 @@ const Logo = (props) => {
     return (
         <View style={styles.container}>
             <Image
-                source={images.Logo}
+                source={images.LOGO}
                 style={styles.logo}
                 resizeMode="contain"
             />

@@ -5,7 +5,7 @@ import { ImageBackground, StyleSheet } from "react-native";
 
 const Background = ({ children }) => {
     return (
-        <ImageBackground source={images.background} style={styles.background}>
+        <ImageBackground source={images.BACKGROUND} style={styles.background}>
             {children}
         </ImageBackground>
     );
