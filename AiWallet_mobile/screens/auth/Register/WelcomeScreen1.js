@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import { ROUTES, FONTS, COLORS } from "../../../constants";
-import { Background, Button, Logo } from "../../../components";
+import { Background, Button, Logo, Container } from "../../../components";
 
 export default function Welcome({ navigation }) {
     const navigateToLogin = () => {
