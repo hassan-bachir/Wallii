@@ -57,7 +57,7 @@ const updateWallet = async (req, res) => {
         const { walletId } = req.params;
         const updatedWallet = await Wallet.findByIdAndUpdate(
             walletId,
-            req.body,
+            req.body, //better to destruct for security
             {
                 new: true,
             }

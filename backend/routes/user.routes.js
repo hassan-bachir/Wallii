@@ -6,7 +6,7 @@ const {
 } = require("../middlewares/auth.middleware");
 
 //get user info
-// (/user/) POST
+// (/user/) GET
 router.get("/", checkToken, userController.readUserInfo);
 
 //update user info
