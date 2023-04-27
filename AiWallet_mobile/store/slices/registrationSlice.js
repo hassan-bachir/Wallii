@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    selectedAdvisor: "",
+    aiAdvisorName: "",
 };
 
 const registrationSlice = createSlice({
@@ -9,7 +9,7 @@ const registrationSlice = createSlice({
     initialState,
     reducers: {
         setSelectedAdvisor: (state, action) => {
-            state.selectedAdvisor = action.payload;
+            state.aiAdvisorName = action.payload;
         },
     },
 });

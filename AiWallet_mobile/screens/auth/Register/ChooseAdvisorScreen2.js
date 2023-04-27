@@ -5,16 +5,21 @@ import {
     StyleSheet,
     SafeAreaView,
     Text,
+    Image,
 } from "react-native";
 import { globalStyles } from "../../../styles/global";
-import { ROUTES, FONTS, COLORS, images } from "../../../constants";
+import { ROUTES, FONTS, COLORS, IMAGES } from "../../../constants";
 import { Background, Button } from "../../../components";
 import { useDispatch } from "react-redux";
 import { setSelectedAdvisor } from "../../../store/slices/registrationSlice";
 
 const advisors = [
-    { id: 1, name: "Advisor 1", image: "https://example.com/advisor1.jpg" },
-    { id: 2, name: "Advisor 2", image: "https://example.com/advisor2.jpg" },
+    { id: 1, name: "Elon Musk", image: IMAGES.ELONMUSK },
+    { id: 2, name: "Robert Kiyosaki", image: IMAGES.ROBERTKIYOSAKI },
+    { id: 3, name: "Warren Buffet", image: IMAGES.WARRENBUFFET },
+    { id: 4, name: "Bill Gates", image: IMAGES.BILLGATES },
+    { id: 5, name: "ChatGPT", image: IMAGES.CHATGPT },
+    { id: 6, name: "default", image: IMAGES.ANIKA },
 ];
 
 export default function ChooseAdvisor({ navigation }) {
