@@ -9,7 +9,12 @@ import {
 } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import { ROUTES, FONTS, COLORS, IMAGES } from "../../../constants";
-import { Background, Button, AdvisorCard } from "../../../components";
+import {
+    Background,
+    Button,
+    AdvisorCard,
+    Container,
+} from "../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAdvisor } from "../../../store/slices/registrationSlice";
 
@@ -41,23 +46,27 @@ export default function ChooseAdvisor({ navigation }) {
 
     return (
         <Background>
-            <SafeAreaView style={globalStyles.container}>
-                <View style={styles.cardsContainer}>
-                    {advisors.map((advisor) => (
-                        <AdvisorCard
-                            key={advisor.id}
-                            advisor={advisor}
-                            onPress={() => handleSelectAdvisor(advisor)}
-                        />
-                    ))}
-                    <Text>{selectedAdvisor}</Text>
-                </View>
-                <View style={styles.buttonsContainer}>
-                    <Button title="Next" onPress={navigateToChooseName} />
-                    <TouchableOpacity onPress={navigateBackToWelcome}>
-                        <Text style={styles.goBackLink}>Back to Welcome</Text>
-                    </TouchableOpacity>
-                </View>
+            <SafeAreaView style={styles.container}>
+                <Container>
+                    <View style={styles.cardsContainer}>
+                        {advisors.map((advisor) => (
+                            <AdvisorCard
+                                key={advisor.id}
+                                advisor={advisor}
+                                onPress={() => handleSelectAdvisor(advisor)}
+                            />
+                        ))}
+                    </View>
+                    <View style={styles.buttonsContainer}>
+                        <Text>{selectedAdvisor}</Text>
+                        <Button title="Next" onPress={navigateToChooseName} />
+                        <TouchableOpacity onPress={navigateBackToWelcome}>
+                            <Text style={styles.goBackLink}>
+                                Back to Welcome
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </Container>
             </SafeAreaView>
         </Background>
     );
@@ -68,14 +77,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     cardsContainer: {
-        flex: 1,
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
+        paddingBottom: 20,
     },
     buttonsContainer: {
-        flex: 1,
         justifyContent: "center",
         marginBottom: 20,
     },
