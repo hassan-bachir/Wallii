@@ -7,14 +7,14 @@ import {
     Text,
     Image,
 } from "react-native";
-import { globalStyles } from "../../../styles/global";
-import { ROUTES, FONTS, COLORS, IMAGES } from "../../../constants";
 import {
     Background,
     Button,
     AdvisorCard,
     Container,
 } from "../../../components";
+import { globalStyles } from "../../../styles/global";
+import { ROUTES, FONTS, COLORS, IMAGES } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAdvisor } from "../../../store/slices/registrationSlice";
 
@@ -34,7 +34,7 @@ export default function ChooseAdvisor({ navigation }) {
         dispatch(setSelectedAdvisor(advisor.name));
     };
     const selectedAdvisor = useSelector(
-        (state) => state.registration.selectedAdvisor
+        (state) => state.registration.aiAdvisorName
     );
     const navigateToChooseName = () => {
         navigation.push(ROUTES.CHOOSE_NAME);
