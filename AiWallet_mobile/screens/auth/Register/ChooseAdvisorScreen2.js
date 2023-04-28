@@ -37,13 +37,13 @@ export default function ChooseAdvisor({ navigation }) {
         (state) => state.registration.aiAdvisorName
     );
     const navigateToChooseName = () => {
-        navigation.push(ROUTES.CHOOSE_NAME);
+        navigation.push(ROUTES.REGISTER);
     };
 
     const navigateBackToWelcome = () => {
         navigation.goBack();
     };
-    const isNextButtonDisabled = !selectedAdvisor; // The next button is disabled if no advisor is selected
+    const isNextButtonDisabled = !selectedAdvisor;
     return (
         <Background>
             <SafeAreaView style={styles.container}>
