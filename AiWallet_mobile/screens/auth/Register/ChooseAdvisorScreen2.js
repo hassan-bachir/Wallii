@@ -62,7 +62,11 @@ export default function ChooseAdvisor({ navigation }) {
                         ))}
                     </View>
                     <View style={styles.buttonsContainer}>
-                        <Button title="Next" onPress={navigateToChooseName} />
+                        <Button
+                            title="Next"
+                            onPress={navigateToChooseName}
+                            disabled={isNextButtonDisabled}
+                        />
                         <TouchableOpacity onPress={navigateBackToWelcome}>
                             <Text style={styles.goBackLink}>
                                 Back to Welcome
