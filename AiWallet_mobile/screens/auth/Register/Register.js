@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView } from "react-native";
+import { View, SafeAreaView, StyleSheet } from "react-native";
 
 import { ROUTES } from "../../../constants";
 import { Background, Button } from "../../../components";
