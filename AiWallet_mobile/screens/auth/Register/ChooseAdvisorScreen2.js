@@ -57,6 +57,7 @@ export default function ChooseAdvisor({ navigation }) {
                                 key={advisor.id}
                                 advisor={advisor}
                                 onPress={() => handleSelectAdvisor(advisor)}
+                                isSelected={selectedAdvisor === advisor.name}
                             />
                         ))}
                     </View>

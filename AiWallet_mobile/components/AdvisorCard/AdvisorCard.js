@@ -34,12 +34,14 @@ const AdvisorCard = ({ advisor, onPress, isSelected }) => {
     });
 
     return (
-        <TouchableOpacity style={styles.card} onPress={onPress}>
-            <View style={styles.imageContainer}>
-                <Image source={imageSource} style={styles.image} />
-            </View>
-            <Text style={styles.name}>{name}</Text>
-        </TouchableOpacity>
+        <TouchableWithoutFeedback onPress={onPress}>
+            <Animated.View style={[styles.card, { backgroundColor }]}>
+                <View style={styles.imageContainer}>
+                    <Image source={imageSource} style={styles.image} />
+                </View>
+                <Text style={styles.name}>{name}</Text>
+            </Animated.View>
+        </TouchableWithoutFeedback>
     );
 };
 const styles = StyleSheet.create({
@@ -48,7 +50,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         margin: 10,
         width: width * 0.4 * scaleFactor,
-        backgroundColor: COLORS.primary,
         borderRadius: 10,
         padding: 10,
     },
