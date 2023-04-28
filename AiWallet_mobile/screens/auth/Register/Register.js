@@ -1,5 +1,11 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet } from "react-native";
+import {
+    View,
+    SafeAreaView,
+    StyleSheet,
+    TouchableOpacity,
+    Text,
+} from "react-native";
 
 import { ROUTES, FONTS, COLORS } from "../../../constants";
 import { Background, Button } from "../../../components";
@@ -11,7 +17,14 @@ export default function Register({ navigation }) {
     return (
         <Background>
             <SafeAreaView style={styles.container}>
-                <Button title="Done"></Button>
+                <View style={styles.buttonsContainer}>
+                    <Button title="Done" />
+                    <TouchableOpacity onPress={navigateBackToChooseAdvisor}>
+                        <Text style={styles.goBackLink}>
+                            Back to Advisor Screen
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </SafeAreaView>
         </Background>
     );
