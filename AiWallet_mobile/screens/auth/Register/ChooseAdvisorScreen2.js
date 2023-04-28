@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
         justifyContent: "center",
+        marginTop: 10,
         marginBottom: 20,
     },
     goBackLink: {
