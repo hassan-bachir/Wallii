@@ -43,7 +43,7 @@ export default function ChooseAdvisor({ navigation }) {
     const navigateBackToWelcome = () => {
         navigation.goBack();
     };
-
+    const isNextButtonDisabled = !selectedAdvisor; // The next button is disabled if no advisor is selected
     return (
         <Background>
             <SafeAreaView style={styles.container}>
