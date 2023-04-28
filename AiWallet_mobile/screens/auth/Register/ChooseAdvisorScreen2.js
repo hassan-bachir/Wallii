@@ -48,6 +48,9 @@ export default function ChooseAdvisor({ navigation }) {
         <Background>
             <SafeAreaView style={styles.container}>
                 <Container>
+                    <Text style={styles.chooseAdvisorText}>
+                        Choose your favorite AI advisor
+                    </Text>
                     <View style={styles.cardsContainer}>
                         {advisors.map((advisor) => (
                             <AdvisorCard
@@ -93,5 +96,12 @@ const styles = StyleSheet.create({
         textAlign: "center",
         textDecorationLine: "underline",
         marginTop: 10,
+    },
+    chooseAdvisorText: {
+        ...FONTS.h2,
+        color: COLORS.white,
+        textAlign: "center",
+        marginTop: 20,
+        marginBottom: 30,
     },
 });
