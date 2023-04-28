@@ -4,7 +4,7 @@ import { COLORS, FONTS, SIZES } from "../../constants";
 import { Dimensions } from "react-native";
 const { width } = Dimensions.get("window");
 
-const scaleFactor = width / 414; // 414 is the reference width (iPhone 11 Pro Max)
+const scaleFactor = width / 414; // (iPhone 11 Pro Max)
 
 const AdvisorCard = ({ advisor, onPress }) => {
     const { name, image } = advisor;
@@ -24,15 +24,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         margin: 10,
-        width: width * 0.4 * scaleFactor, // Adjust the width based on scaleFactor
+        width: width * 0.4 * scaleFactor,
         backgroundColor: COLORS.primary,
         borderRadius: 10,
         padding: 10,
     },
     imageContainer: {
-        width: 80 * scaleFactor, // Adjust the width based on scaleFactor
-        height: 80 * scaleFactor, // Adjust the height based on scaleFactor
-        borderRadius: 40 * scaleFactor, // Adjust the borderRadius based on scaleFactor
+        width: 80 * scaleFactor,
+        height: 80 * scaleFactor,
+        borderRadius: 40 * scaleFactor,
         overflow: "hidden",
         marginBottom: 10,
     },
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     name: {
         ...FONTS.body3,
-        fontSize: 16 * scaleFactor, // Adjust the fontSize based on scaleFactor
+        fontSize: 16 * scaleFactor,
         fontWeight: "bold",
         color: COLORS.white,
         fontFamily: FONTS.body3.fontFamily,
