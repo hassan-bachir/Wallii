@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { IMAGES } from "../constants";
+import { IMAGES } from "../../constants";
 
 const Logo = (props) => {
     return (

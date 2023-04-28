@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGES } from "../constants";
+import { IMAGES } from "../../constants";
 
 import { ImageBackground, StyleSheet } from "react-native";
 
