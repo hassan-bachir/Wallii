@@ -1,5 +1,13 @@
 import React, { useRef, useEffect } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    StyleSheet,
+    TouchableWithoutFeedback,
+    Animated,
+} from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants";
 import { Dimensions } from "react-native";
 const { width } = Dimensions.get("window");
