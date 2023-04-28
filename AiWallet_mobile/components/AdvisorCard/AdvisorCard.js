@@ -14,9 +14,11 @@ const { width } = Dimensions.get("window");
 
 const scaleFactor = width / 414; // (iPhone 11 Pro Max)
 
-const AdvisorCard = ({ advisor, onPress }) => {
+const AdvisorCard = ({ advisor, onPress, isSelected }) => {
     const { name, image } = advisor;
     const imageSource = typeof image === "string" ? { uri: image } : image;
+
+    const animatedValue = useRef(new Animated.Value(0)).current;
 
     return (
         <TouchableOpacity style={styles.card} onPress={onPress}>
