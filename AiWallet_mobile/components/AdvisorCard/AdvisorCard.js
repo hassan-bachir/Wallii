@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         height: "100%",
     },
     name: {
+        ...FONTS.body3,
         fontSize: 16 * scaleFactor, // Adjust the fontSize based on scaleFactor
         fontWeight: "bold",
         color: COLORS.white,
