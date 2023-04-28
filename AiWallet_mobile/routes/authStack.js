@@ -1,12 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 
-import {
-    Login,
-    Welcome,
-    ChooseAdvisor,
-    ChooseName,
-    ChooseEmail,
-} from "../screens";
+import { Login, Welcome, ChooseAdvisor, ChooseName } from "../screens";
 import { ROUTES } from "../constants";
 
 const Stack = createStackNavigator();
@@ -24,7 +18,6 @@ function AuthStack() {
                 component={ChooseAdvisor}
             />
             <Stack.Screen name={ROUTES.CHOOSE_NAME} component={ChooseName} />
-            <Stack.Screen name={ROUTES.CHOOSE_EMAIL} component={ChooseEmail} />
         </Stack.Navigator>
     );
 }

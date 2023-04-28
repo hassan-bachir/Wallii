@@ -4,7 +4,7 @@ export default {
     WELCOME: "Welcome",
     CHOOSE_ADVISOR: "Choose Advisor",
     CHOOSE_NAME: "Choose name",
-    CHOOSE_EMAIL: "Choose Email",
+    REGISTER: "Register",
 
     HOME: "Home",
     HOME_SETTINGS: "Home Settings",
