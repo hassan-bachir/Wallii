@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { COLORS, SIZES, FONTS } from "../../constants";
 
-const Button = ({ onPress, title, style }) => {
+const Button = ({ onPress, title, style, disabled = false }) => {
     return (
         <View style={{ margin: SIZES.padding * 1 }}>
             <TouchableOpacity
