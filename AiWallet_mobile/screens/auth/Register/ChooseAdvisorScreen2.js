@@ -13,7 +13,6 @@ import {
     AdvisorCard,
     Container,
 } from "../../../components";
-import { globalStyles } from "../../../styles/global";
 import { ROUTES, FONTS, COLORS, IMAGES } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAdvisor } from "../../../store/slices/registrationSlice";
