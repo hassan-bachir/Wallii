@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { COLORS, SIZES, FONTS } from "../../constants";
 
 const Button = ({ onPress, title, style, disabled = false }) => {
+    const backgroundColor = disabled ? COLORS.gray : COLORS.secondary;
     return (
         <View style={{ margin: SIZES.padding * 1 }}>
             <TouchableOpacity
@@ -14,7 +15,8 @@ const Button = ({ onPress, title, style, disabled = false }) => {
                     justifyContent: "center",
                     ...style,
                 }}
-                onPress={onPress}
+                onPress={disabled ? null : onPress} // Disable onPress action when disabled
+                disabled={disabled} // Add the disabled prop to TouchableOpacity
             >
                 <Text style={{ color: COLORS.white, ...FONTS.body3 }}>
                     {title}
