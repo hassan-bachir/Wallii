@@ -20,6 +20,19 @@ const AdvisorCard = ({ advisor, onPress, isSelected }) => {
 
     const animatedValue = useRef(new Animated.Value(0)).current;
 
+    useEffect(() => {
+        Animated.timing(animatedValue, {
+            toValue: isSelected ? 1 : 0,
+            duration: 200,
+            useNativeDriver: false,
+        }).start();
+    }, [isSelected]);
+
+    const backgroundColor = animatedValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [COLORS.primary, COLORS.secondary],
+    });
+
     return (
         <TouchableOpacity style={styles.card} onPress={onPress}>
             <View style={styles.imageContainer}>
