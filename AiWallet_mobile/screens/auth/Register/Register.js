@@ -97,5 +97,6 @@ const styles = StyleSheet.create({
     },
     inputsGroup: {
         marginBottom: SIZES.padding * 2,
+        marginTop: SIZES.padding * 2,
     },
 });
