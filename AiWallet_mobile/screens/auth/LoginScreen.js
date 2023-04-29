@@ -17,9 +17,11 @@ import {
     CustomTextInput,
     Logo,
 } from "../../components";
+import { loginValidationSchema } from "../../validations/validationSchema";
 
 export default function Login({ navigation }) {
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState({});
 
     const email = useSelector((state) => state.login.email);
     const password = useSelector((state) => state.login.password);
