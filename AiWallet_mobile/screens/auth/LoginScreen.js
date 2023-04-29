@@ -28,6 +28,21 @@ export default function Login({ navigation }) {
                     <View>
                         <Logo />
                     </View>
+                    <View style={styles.inputsGroup}>
+                        <CustomTextInput
+                            label="Email*"
+                            placeholder="john@email.com"
+                            // onChangeText={(text) => dispatch(setEmail(text))}
+                            // errorMessage={errors.email}
+                        />
+                        <CustomTextInput
+                            label="Password*"
+                            placeholder="Enter Password"
+                            type="password"
+                            // onChangeText={(text) => dispatch(setPassword(text))}
+                            // errorMessage={errors.password}
+                        />
+                    </View>
                     <View style={styles.buttonsContainer}>
                         <Button title="Login" />
                         <TouchableOpacity onPress={navigateToWelcome}>
@@ -60,5 +75,9 @@ const styles = StyleSheet.create({
         textAlign: "center",
         textDecorationLine: "underline",
         marginTop: 10,
+    },
+    inputsGroup: {
+        marginBottom: SIZES.padding * 2,
+        marginTop: SIZES.padding * 2,
     },
 });
