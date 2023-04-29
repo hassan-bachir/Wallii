@@ -6,10 +6,17 @@ import {
     TouchableOpacity,
     Text,
     TextInput,
+    Keyboard,
+    TouchableWithoutFeedback,
 } from "react-native";
 
 import { ROUTES, FONTS, COLORS, SIZES } from "../../../constants";
-import { Background, Button, Container } from "../../../components";
+import {
+    Background,
+    Button,
+    Container,
+    CustomTextInput,
+} from "../../../components";
 
 export default function Register({ navigation }) {
     const navigateBackToChooseAdvisor = () => {
@@ -20,12 +27,12 @@ export default function Register({ navigation }) {
             <SafeAreaView style={styles.container}>
                 <Container>
                     <View style={styles.nameInputContainer}>
-                        <Text style={styles.nameInputLabel}>Full Name</Text>
-                        <TextInput
-                            style={styles.nameInput}
-                            placeholder="Enter Full Name"
-                            placeholderTextColor={COLORS.white}
-                            selectionColor={COLORS.white}
+                        <CustomTextInput
+                            label="First Name"
+                            placeholder="Enter First Name"
+                            onChangeText={(text) =>
+                                console.log("First Name:", text)
+                            }
                         />
                     </View>
                     <View style={styles.buttonsContainer}>
