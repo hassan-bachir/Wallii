@@ -28,6 +28,29 @@ export default function Register({ navigation }) {
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
 
+    const validateForm = async () => {
+        try {
+            await registerValidationSchema.validate(
+                {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                },
+                { abortEarly: false }
+            );
+            setErrors({});
+            // If there are no validation errors, proceed with the API call to register the user
+        } catch (err) {
+            if (err instanceof Yup.ValidationError) {
+                const validationErrors = {};
+                err.inner.forEach((error) => {
+                    validationErrors[error.path] = error.message;
+                });
+                setErrors(validationErrors);
+            }
+        }
+    };
     const navigateBackToChooseAdvisor = () => {
         navigation.goBack();
     };
