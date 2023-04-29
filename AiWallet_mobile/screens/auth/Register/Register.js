@@ -23,17 +23,7 @@ import {
     Logo,
 } from "../../../components";
 
-//debugging
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-
 export default function Register({ navigation }) {
-    //dubug
-    const registration = useSelector((state) => state.registration);
-    useEffect(() => {
-        console.log("Registration state:", registration);
-    }, [registration]);
-
     const dispatch = useDispatch();
     const navigateBackToChooseAdvisor = () => {
         navigation.goBack();
