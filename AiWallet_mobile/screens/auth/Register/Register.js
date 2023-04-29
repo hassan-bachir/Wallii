@@ -5,10 +5,11 @@ import {
     StyleSheet,
     TouchableOpacity,
     Text,
+    TextInput,
 } from "react-native";
 
-import { ROUTES, FONTS, COLORS } from "../../../constants";
-import { Background, Button } from "../../../components";
+import { ROUTES, FONTS, COLORS, SIZES } from "../../../constants";
+import { Background, Button, Container } from "../../../components";
 
 export default function Register({ navigation }) {
     const navigateBackToChooseAdvisor = () => {
@@ -17,14 +18,25 @@ export default function Register({ navigation }) {
     return (
         <Background>
             <SafeAreaView style={styles.container}>
-                <View style={styles.buttonsContainer}>
-                    <Button title="Done" />
-                    <TouchableOpacity onPress={navigateBackToChooseAdvisor}>
-                        <Text style={styles.goBackLink}>
-                            Back to Advisor Screen
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                <Container>
+                    <View style={styles.nameInputContainer}>
+                        <Text style={styles.nameInputLabel}>Full Name</Text>
+                        <TextInput
+                            style={styles.nameInput}
+                            placeholder="Enter Full Name"
+                            placeholderTextColor={COLORS.white}
+                            selectionColor={COLORS.white}
+                        />
+                    </View>
+                    <View style={styles.buttonsContainer}>
+                        <Button title="Done" />
+                        <TouchableOpacity onPress={navigateBackToChooseAdvisor}>
+                            <Text style={styles.goBackLink}>
+                                Back to Advisor Screen
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </Container>
             </SafeAreaView>
         </Background>
     );
@@ -32,6 +44,21 @@ export default function Register({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    nameInputContainer: {
+        marginTop: SIZES.padding * 3,
+    },
+    nameInputLabel: {
+        color: COLORS.lightGreen,
+        ...FONTS.body3,
+    },
+    nameInput: {
+        marginVertical: SIZES.padding,
+        borderBottomColor: COLORS.white,
+        borderBottomWidth: 1,
+        height: 40,
+        color: COLORS.white,
+        ...FONTS.body3,
     },
     buttonsContainer: {
         justifyContent: "center",
