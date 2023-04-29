@@ -2,7 +2,7 @@ export { default as Login } from "./auth/LoginScreen";
 
 export { default as Welcome } from "./auth/Register/WelcomeScreen1";
 export { default as ChooseAdvisor } from "./auth/Register/ChooseAdvisorScreen2";
-export { default as Register } from "./auth/Register/Register";
+export { default as Register } from "./auth/Register/RegisterScreen";
 
 export { default as Home } from "./home/HomeScreen";
 export { default as HomeSettings } from "./home/HomeSettingsScreen";

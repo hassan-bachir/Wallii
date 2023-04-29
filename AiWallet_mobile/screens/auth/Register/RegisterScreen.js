@@ -26,6 +26,7 @@ import {
 
 export default function Register({ navigation }) {
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState({});
 
     const navigateBackToChooseAdvisor = () => {
         navigation.goBack();
