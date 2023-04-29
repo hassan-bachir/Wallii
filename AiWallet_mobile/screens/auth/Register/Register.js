@@ -24,15 +24,14 @@ export default function Register({ navigation }) {
         <Background>
             <SafeAreaView style={styles.container}>
                 <Container>
-                    <View style={styles.nameInputContainer}>
-                        <CustomTextInput
-                            label="First Name"
-                            placeholder="Enter First Name"
-                            onChangeText={(text) =>
-                                console.log("First Name:", text)
-                            }
-                        />
-                    </View>
+                    <CustomTextInput
+                        label="First Name"
+                        placeholder="Enter First Name"
+                        onChangeText={(text) =>
+                            console.log("First Name:", text)
+                        }
+                    />
+
                     <View style={styles.buttonsContainer}>
                         <Button title="Done" />
                         <TouchableOpacity onPress={navigateBackToChooseAdvisor}>
@@ -50,21 +49,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    nameInputContainer: {
-        marginTop: SIZES.padding * 3,
-    },
-    nameInputLabel: {
-        color: COLORS.lightGreen,
-        ...FONTS.body3,
-    },
-    nameInput: {
-        marginVertical: SIZES.padding,
-        borderBottomColor: COLORS.white,
-        borderBottomWidth: 1,
-        height: 40,
-        color: COLORS.white,
-        ...FONTS.body3,
-    },
+
     buttonsContainer: {
         justifyContent: "center",
         marginTop: 10,
