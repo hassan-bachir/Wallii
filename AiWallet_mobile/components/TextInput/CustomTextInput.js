@@ -19,7 +19,6 @@ const CustomTextInput = ({
                 selectionColor={COLORS.white}
                 onChangeText={onChangeText}
                 secureTextEntry={secureTextEntry}
-                {...otherProps}
             />
         </View>
     );
