@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput as RNTextInput, StyleSheet } from "react-native";
-import { COLORS, FONTS, SIZES } from "../../constants";
+import { COLORS, FONTS, SIZES, ICONS } from "../../constants";
 
 const CustomTextInput = ({
     label,
