@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import * as Yup from "yup";
+
 import { registerValidationSchema } from "../../../validations/validationSchema";
 import {
     View,
@@ -8,7 +10,7 @@ import {
     Text,
     TextInput,
 } from "react-native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
     setFirstName,
     setLastName,
@@ -26,6 +28,10 @@ import {
 
 export default function Register({ navigation }) {
     const dispatch = useDispatch();
+    const firstName = useSelector((state) => state.registration.name);
+    const lastName = useSelector((state) => state.registration.lastName);
+    const email = useSelector((state) => state.registration.email);
+    const password = useSelector((state) => state.registration.password);
     const [errors, setErrors] = useState({});
 
     const validateForm = async () => {
@@ -39,7 +45,9 @@ export default function Register({ navigation }) {
                 },
                 { abortEarly: false }
             );
+
             setErrors({});
+
             // If there are no validation errors, proceed with the API call to register the user
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
@@ -68,27 +76,31 @@ export default function Register({ navigation }) {
                             onChangeText={(text) =>
                                 dispatch(setFirstName(text))
                             }
+                            errorMessage={errors.firstName}
                         />
                         <CustomTextInput
                             label="Last Name(Optional)"
                             placeholder="Doe"
                             onChangeText={(text) => dispatch(setLastName(text))}
+                            errorMessage={errors.lastName}
                         />
                         <CustomTextInput
                             label="Email*"
                             placeholder="john@email.com"
                             onChangeText={(text) => dispatch(setEmail(text))}
+                            errorMessage={errors.email}
                         />
                         <CustomTextInput
                             label="Password*"
                             placeholder="Enter Password"
                             type="password"
                             onChangeText={(text) => dispatch(setPassword(text))}
+                            errorMessage={errors.password}
                         />
                     </View>
 
                     <View style={styles.buttonsContainer}>
-                        <Button title="Done" />
+                        <Button title="Done" onPress={validateForm} />
                         <TouchableOpacity onPress={navigateBackToChooseAdvisor}>
                             <Text style={styles.goBackLink}>
                                 Back to Advisor Screen
