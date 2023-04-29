@@ -10,6 +10,7 @@ const CustomTextInput = ({
     type,
 }) => {
     const [isFocused, setIsFocused] = useState(false);
+    const [showPassword, setShowPassword] = useState(secureTextEntry);
 
     const handleFocus = () => {
         setIsFocused(true);
