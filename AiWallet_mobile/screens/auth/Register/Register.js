@@ -31,6 +31,12 @@ export default function Register({ navigation }) {
                             console.log("First Name:", text)
                         }
                     />
+                    <CustomTextInput
+                        label="Password"
+                        placeholder="Enter Password"
+                        type="password"
+                        onChangeText={(text) => console.log("Password:", text)}
+                    />
 
                     <View style={styles.buttonsContainer}>
                         <Button title="Done" />

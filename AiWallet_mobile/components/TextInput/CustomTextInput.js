@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TextInput as RNTextInput, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    TextInput as RNTextInput,
+    StyleSheet,
+    TouchableOpacity,
+    Image,
+} from "react-native";
 import { COLORS, FONTS, SIZES, ICONS } from "../../constants";
 
 const CustomTextInput = ({
@@ -36,10 +43,23 @@ const CustomTextInput = ({
                 placeholderTextColor={COLORS.white}
                 selectionColor={COLORS.white}
                 onChangeText={onChangeText}
-                secureTextEntry={secureTextEntry}
+                secureTextEntry={
+                    type === "password" ? !showPassword : secureTextEntry
+                }
                 onFocus={handleFocus}
                 onBlur={handleBlur}
             />
+            {type === "password" && (
+                <TouchableOpacity
+                    style={styles.eyeIconContainer}
+                    onPress={() => setShowPassword(!showPassword)}
+                >
+                    <Image
+                        source={showPassword ? ICONS.disable_eye : ICONS.eye}
+                        style={styles.eyeIcon}
+                    />
+                </TouchableOpacity>
+            )}
         </View>
     );
 };
@@ -59,6 +79,18 @@ const styles = StyleSheet.create({
         height: 40,
         color: COLORS.white,
         ...FONTS.body3,
+    },
+    eyeIconContainer: {
+        position: "absolute",
+        right: 0,
+        bottom: 10,
+        height: 30,
+        width: 30,
+    },
+    eyeIcon: {
+        height: 20,
+        width: 20,
+        tintColor: COLORS.white,
     },
 });
 
