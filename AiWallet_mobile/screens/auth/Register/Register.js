@@ -49,7 +49,7 @@ export default function Register({ navigation }) {
                             onChangeText={(text) => dispatch(setLastName(text))}
                         />
                         <CustomTextInput
-                            label="Email"
+                            label="Email*"
                             placeholder="john@email.com"
                             onChangeText={(text) => dispatch(setEmail(text))}
                         />
