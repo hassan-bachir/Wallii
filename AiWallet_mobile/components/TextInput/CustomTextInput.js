@@ -33,7 +33,7 @@ const CustomTextInput = ({
                 style={[
                     styles.label,
                     {
-                        color: hasError ? COLORS.red : COLORS.lightGreen,
+                        color: hasError ? COLORS.red : COLORS.white,
                     },
                 ]}
             >
