@@ -10,7 +10,6 @@ export default function Welcome({ navigation }) {
     };
 
     const navigateToChooseAdvisor = () => {
-        //
         navigation.navigate(ROUTES.CHOOSE_ADVISOR);
     };
     return (
