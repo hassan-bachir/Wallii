@@ -7,7 +7,6 @@ const CustomTextInput = ({
     placeholder,
     onChangeText,
     secureTextEntry = false,
-    ...otherProps
 }) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -28,6 +27,7 @@ const CustomTextInput = ({
                         borderBottomColor: isFocused
                             ? COLORS.secondary
                             : COLORS.white,
+                        borderBottomWidth: isFocused ? 2 : 1,
                     },
                 ]}
                 placeholder={placeholder}
