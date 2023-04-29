@@ -24,19 +24,34 @@ export default function Register({ navigation }) {
         <Background>
             <SafeAreaView style={styles.container}>
                 <Container>
-                    <CustomTextInput
-                        label="First Name"
-                        placeholder="Enter First Name"
-                        onChangeText={(text) =>
-                            console.log("First Name:", text)
-                        }
-                    />
-                    <CustomTextInput
-                        label="Password"
-                        placeholder="Enter Password"
-                        type="password"
-                        onChangeText={(text) => console.log("Password:", text)}
-                    />
+                    <View style={styles.formContainer}>
+                        <CustomTextInput
+                            label="First Name*"
+                            placeholder="John"
+                            // onChangeText={(text) =>
+                            //     console.log("First Name:", text)
+                            // }
+                        />
+                        <CustomTextInput
+                            label="Last Name"
+                            placeholder="John"
+                            // onChangeText={(text) =>
+                            //     console.log("First Name:", text)
+                            // }
+                        />
+                        <CustomTextInput
+                            label="Email*"
+                            placeholder="example@example.com"
+                            keyboardType="email-address"
+                            // onChangeText={(text) => console.log("Email:", text)}
+                        />
+                        <CustomTextInput
+                            label="Password*"
+                            placeholder="Enter Password"
+                            secureTextEntry
+                            // onChangeText={(text) => console.log("Password:", text)}
+                        />
+                    </View>
 
                     <View style={styles.buttonsContainer}>
                         <Button title="Done" />
@@ -54,6 +69,9 @@ export default function Register({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    formContainer: {
+        marginBottom: 20,
     },
 
     buttonsContainer: {
