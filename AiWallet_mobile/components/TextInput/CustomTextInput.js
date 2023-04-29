@@ -66,7 +66,7 @@ const CustomTextInput = ({
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: SIZES.padding * 3,
+        marginTop: SIZES.padding,
     },
     label: {
         color: COLORS.lightGreen,

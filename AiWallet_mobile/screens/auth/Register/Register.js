@@ -24,7 +24,7 @@ export default function Register({ navigation }) {
         <Background>
             <SafeAreaView style={styles.container}>
                 <Container>
-                    <View style={styles.formContainer}>
+                    <View style={styles.inputsGroup}>
                         <CustomTextInput
                             label="First Name*"
                             placeholder="John"
@@ -40,16 +40,17 @@ export default function Register({ navigation }) {
                             // }
                         />
                         <CustomTextInput
-                            label="Email*"
-                            placeholder="example@example.com"
-                            keyboardType="email-address"
-                            // onChangeText={(text) => console.log("Email:", text)}
+                            label="Email"
+                            placeholder="john@email.com"
+                            // onChangeText={(text) =>
+                            //     console.log("First Name:", text)
+                            // }
                         />
                         <CustomTextInput
                             label="Password*"
                             placeholder="Enter Password"
-                            secureTextEntry
-                            // onChangeText={(text) => console.log("Password:", text)}
+                            type="password"
+                            //onChangeText={(text) => console.log("Password:", text)}
                         />
                     </View>
 
@@ -70,9 +71,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    formContainer: {
-        marginBottom: 20,
-    },
 
     buttonsContainer: {
         justifyContent: "center",
@@ -85,5 +83,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
         textDecorationLine: "underline",
         marginTop: 10,
+    },
+    inputsGroup: {
+        marginBottom: SIZES.padding * 2,
     },
 });
