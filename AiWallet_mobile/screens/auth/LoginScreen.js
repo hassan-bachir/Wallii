@@ -27,6 +27,12 @@ export default function Login({ navigation }) {
     const navigateToWelcome = () => {
         navigation.navigate(ROUTES.WELCOME);
     };
+    const handleLogin = () => {
+        console.log("Email:", email);
+        console.log("Password:", password);
+
+        // Add your login logic here (e.g., validation, API calls, etc.)
+    };
 
     return (
         <Background>
@@ -39,19 +45,19 @@ export default function Login({ navigation }) {
                         <CustomTextInput
                             label="Email*"
                             placeholder="john@email.com"
-                            // onChangeText={(text) => dispatch(setEmail(text))}
+                            onChangeText={(text) => dispatch(setEmail(text))}
                             // errorMessage={errors.email}
                         />
                         <CustomTextInput
                             label="Password*"
                             placeholder="Enter Password"
                             type="password"
-                            // onChangeText={(text) => dispatch(setPassword(text))}
+                            onChangeText={(text) => dispatch(setPassword(text))}
                             // errorMessage={errors.password}
                         />
                     </View>
                     <View style={styles.buttonsContainer}>
-                        <Button title="Login" />
+                        <Button title="Login" onPress={handleLogin} />
                         <TouchableOpacity onPress={navigateToWelcome}>
                             <Text style={styles.goBackLink}>
                                 Back to Welcome
