@@ -115,7 +115,6 @@ export default function Register({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
     },
     centeredContainer: {
         justifyContent: "center",
