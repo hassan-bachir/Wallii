@@ -24,14 +24,19 @@ export default function Login({ navigation }) {
     return (
         <Background>
             <SafeAreaView style={styles.container}>
-                <View style={styles.buttonsContainer}>
-                    <Button title="Login" />
-                    <TouchableOpacity onPress={navigateToWelcome}>
-                        <Text style={styles.goBackLink}>
-                            Back to Advisor Screen
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                <Container style={styles.centeredContainer}>
+                    <View>
+                        <Logo />
+                    </View>
+                    <View style={styles.buttonsContainer}>
+                        <Button title="Login" />
+                        <TouchableOpacity onPress={navigateToWelcome}>
+                            <Text style={styles.goBackLink}>
+                                Back to Advisor Screen
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </Container>
             </SafeAreaView>
         </Background>
     );
@@ -40,6 +45,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    centeredContainer: {
+        justifyContent: "center",
+    },
+
     buttonsContainer: {
         justifyContent: "center",
         marginTop: 10,
