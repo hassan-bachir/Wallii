@@ -15,6 +15,7 @@ const CustomTextInput = ({
     onChangeText,
     secureTextEntry = false,
     type,
+    hasError = false,
 }) => {
     const [isFocused, setIsFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(secureTextEntry);
@@ -28,15 +29,26 @@ const CustomTextInput = ({
     };
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>{label}</Text>
+            <Text
+                style={[
+                    styles.label,
+                    {
+                        color: hasError ? COLORS.red : COLORS.lightGreen,
+                    },
+                ]}
+            >
+                {label}
+            </Text>
             <RNTextInput
                 style={[
                     styles.input,
                     {
-                        borderBottomColor: isFocused
+                        borderBottomColor: hasError
+                            ? COLORS.red
+                            : isFocused
                             ? COLORS.secondary
                             : COLORS.white,
-                        borderBottomWidth: isFocused ? 2 : 1,
+                        borderBottomWidth: hasError || isFocused ? 2 : 1,
                     },
                 ]}
                 placeholder={placeholder}
