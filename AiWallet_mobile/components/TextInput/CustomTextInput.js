@@ -15,7 +15,7 @@ const CustomTextInput = ({
     onChangeText,
     secureTextEntry = false,
     type,
-    isRequired = false,
+    errorMessage,
 }) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -61,6 +61,9 @@ const CustomTextInput = ({
                         style={styles.eyeIcon}
                     />
                 </TouchableOpacity>
+            )}
+            {errorMessage && (
+                <Text style={styles.errorText}>{errorMessage}</Text>
             )}
         </View>
     );
