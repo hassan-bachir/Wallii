@@ -7,7 +7,13 @@ import {
     Text,
     TextInput,
 } from "react-native";
-
+import { useDispatch } from "react-redux";
+import {
+    setFirstName,
+    setLastName,
+    setEmail,
+    setPassword,
+} from "../../../store/slices/registrationSlice";
 import { ROUTES, FONTS, COLORS, SIZES } from "../../../constants";
 import {
     Background,
