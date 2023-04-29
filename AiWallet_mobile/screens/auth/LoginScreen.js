@@ -47,7 +47,7 @@ export default function Login({ navigation }) {
                         <Button title="Login" />
                         <TouchableOpacity onPress={navigateToWelcome}>
                             <Text style={styles.goBackLink}>
-                                Back to Advisor Screen
+                                Back to Welcome
                             </Text>
                         </TouchableOpacity>
                     </View>
