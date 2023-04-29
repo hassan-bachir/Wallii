@@ -97,6 +97,11 @@ const styles = StyleSheet.create({
         width: 20,
         tintColor: COLORS.white,
     },
+    errorText: {
+        color: COLORS.red,
+        ...FONTS.body4,
+        marginTop: SIZES.base,
+    },
 });
 
 export default CustomTextInput;
