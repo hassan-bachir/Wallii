@@ -7,6 +7,8 @@ import {
     Text,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import { setEmail, setPassword } from "../../store/slices/loginSlice";
+
 import { ROUTES, FONTS, COLORS, SIZES } from "../../constants";
 import {
     Background,
