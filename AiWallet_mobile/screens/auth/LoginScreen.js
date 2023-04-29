@@ -19,6 +19,11 @@ import {
 } from "../../components";
 
 export default function Login({ navigation }) {
+    const dispatch = useDispatch();
+
+    const email = useSelector((state) => state.login.email);
+    const password = useSelector((state) => state.login.password);
+
     const navigateToWelcome = () => {
         navigation.navigate(ROUTES.WELCOME);
     };
