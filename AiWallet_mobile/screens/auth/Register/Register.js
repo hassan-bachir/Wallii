@@ -20,9 +20,11 @@ import {
     Button,
     Container,
     CustomTextInput,
+    Logo,
 } from "../../../components";
 
 export default function Register({ navigation }) {
+    const dispatch = useDispatch();
     const navigateBackToChooseAdvisor = () => {
         navigation.goBack();
     };
@@ -30,33 +32,32 @@ export default function Register({ navigation }) {
         <Background>
             <SafeAreaView style={styles.container}>
                 <Container>
+                    <View style={styles.logo}>
+                        <Logo />
+                    </View>
                     <View style={styles.inputsGroup}>
                         <CustomTextInput
                             label="First Name*"
                             placeholder="John"
-                            // onChangeText={(text) =>
-                            //     console.log("First Name:", text)
-                            // }
+                            onChangeText={(text) =>
+                                dispatch(setFirstName(text))
+                            }
                         />
                         <CustomTextInput
                             label="Last Name"
                             placeholder="John"
-                            // onChangeText={(text) =>
-                            //     console.log("First Name:", text)
-                            // }
+                            onChangeText={(text) => dispatch(setLastName(text))}
                         />
                         <CustomTextInput
                             label="Email"
                             placeholder="john@email.com"
-                            // onChangeText={(text) =>
-                            //     console.log("First Name:", text)
-                            // }
+                            onChangeText={(text) => dispatch(setEmail(text))}
                         />
                         <CustomTextInput
                             label="Password*"
                             placeholder="Enter Password"
                             type="password"
-                            //onChangeText={(text) => console.log("Password:", text)}
+                            onChangeText={(text) => dispatch(setPassword(text))}
                         />
                     </View>
 
@@ -76,8 +77,11 @@ export default function Register({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: "center",
     },
-
+    logo: {
+        marginTop: 10,
+    },
     buttonsContainer: {
         justifyContent: "center",
         marginTop: 10,
