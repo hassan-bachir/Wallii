@@ -1,8 +1,17 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import {
+    View,
+    StyleSheet,
+    TouchableWithoutFeedback,
+    Keyboard,
+} from "react-native";
 
 const Container = ({ children }) => {
-    return <View style={styles.container}>{children}</View>;
+    return (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>{children}</View>
+        </TouchableWithoutFeedback>
+    );
 };
 
 export default Container;

@@ -6,8 +6,6 @@ import {
     TouchableOpacity,
     Text,
     TextInput,
-    Keyboard,
-    TouchableWithoutFeedback,
 } from "react-native";
 
 import { ROUTES, FONTS, COLORS, SIZES } from "../../../constants";
@@ -25,29 +23,25 @@ export default function Register({ navigation }) {
     return (
         <Background>
             <SafeAreaView style={styles.container}>
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <Container>
-                        <View style={styles.nameInputContainer}>
-                            <CustomTextInput
-                                label="First Name"
-                                placeholder="Enter First Name"
-                                onChangeText={(text) =>
-                                    console.log("First Name:", text)
-                                }
-                            />
-                        </View>
-                        <View style={styles.buttonsContainer}>
-                            <Button title="Done" />
-                            <TouchableOpacity
-                                onPress={navigateBackToChooseAdvisor}
-                            >
-                                <Text style={styles.goBackLink}>
-                                    Back to Advisor Screen
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
-                    </Container>
-                </TouchableWithoutFeedback>
+                <Container>
+                    <View style={styles.nameInputContainer}>
+                        <CustomTextInput
+                            label="First Name"
+                            placeholder="Enter First Name"
+                            onChangeText={(text) =>
+                                console.log("First Name:", text)
+                            }
+                        />
+                    </View>
+                    <View style={styles.buttonsContainer}>
+                        <Button title="Done" />
+                        <TouchableOpacity onPress={navigateBackToChooseAdvisor}>
+                            <Text style={styles.goBackLink}>
+                                Back to Advisor Screen
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </Container>
             </SafeAreaView>
         </Background>
     );

@@ -3,5 +3,5 @@ import Background from "./Background/Background";
 import Logo from "./Logo/Logo";
 import Container from "./Container/Container";
 import AdvisorCard from "./AdvisorCard/AdvisorCard";
-import CustomTextInput from "./TextInput/TextInput";
+import CustomTextInput from "./TextInput/CustomTextInput";
 export { Background, Button, Logo, Container, AdvisorCard, CustomTextInput };
