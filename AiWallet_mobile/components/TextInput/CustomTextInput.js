@@ -40,7 +40,7 @@ const CustomTextInput = ({
                     },
                 ]}
                 placeholder={placeholder}
-                placeholderTextColor={COLORS.white}
+                placeholderTextColor={COLORS.gray}
                 selectionColor={COLORS.white}
                 onChangeText={onChangeText}
                 secureTextEntry={
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         marginTop: SIZES.padding,
     },
     label: {
-        color: COLORS.lightGreen,
+        color: COLORS.white,
         ...FONTS.body3,
     },
     input: {
