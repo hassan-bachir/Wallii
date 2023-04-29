@@ -45,7 +45,7 @@ export default function Register({ navigation }) {
                         />
                         <CustomTextInput
                             label="Last Name(Optional)"
-                            placeholder="John"
+                            placeholder="Doe"
                             onChangeText={(text) => dispatch(setLastName(text))}
                         />
                         <CustomTextInput
