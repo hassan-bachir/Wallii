@@ -25,25 +25,29 @@ export default function Register({ navigation }) {
     return (
         <Background>
             <SafeAreaView style={styles.container}>
-                <Container>
-                    <View style={styles.nameInputContainer}>
-                        <CustomTextInput
-                            label="First Name"
-                            placeholder="Enter First Name"
-                            onChangeText={(text) =>
-                                console.log("First Name:", text)
-                            }
-                        />
-                    </View>
-                    <View style={styles.buttonsContainer}>
-                        <Button title="Done" />
-                        <TouchableOpacity onPress={navigateBackToChooseAdvisor}>
-                            <Text style={styles.goBackLink}>
-                                Back to Advisor Screen
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </Container>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <Container>
+                        <View style={styles.nameInputContainer}>
+                            <CustomTextInput
+                                label="First Name"
+                                placeholder="Enter First Name"
+                                onChangeText={(text) =>
+                                    console.log("First Name:", text)
+                                }
+                            />
+                        </View>
+                        <View style={styles.buttonsContainer}>
+                            <Button title="Done" />
+                            <TouchableOpacity
+                                onPress={navigateBackToChooseAdvisor}
+                            >
+                                <Text style={styles.goBackLink}>
+                                    Back to Advisor Screen
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </Container>
+                </TouchableWithoutFeedback>
             </SafeAreaView>
         </Background>
     );
