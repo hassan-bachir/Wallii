@@ -31,8 +31,8 @@ export default function Register({ navigation }) {
     return (
         <Background>
             <SafeAreaView style={styles.container}>
-                <Container>
-                    <View style={styles.logo}>
+                <Container style={styles.centeredContainer}>
+                    <View>
                         <Logo />
                     </View>
                     <View style={styles.inputsGroup}>
@@ -79,9 +79,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
     },
-    logo: {
-        marginTop: 10,
+    centeredContainer: {
+        justifyContent: "center",
     },
+
     buttonsContainer: {
         justifyContent: "center",
         marginTop: 10,
