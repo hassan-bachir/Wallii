@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import * as Yup from "yup";
+
 import {
     View,
     SafeAreaView,
@@ -29,11 +31,29 @@ export default function Login({ navigation }) {
     const navigateToWelcome = () => {
         navigation.navigate(ROUTES.WELCOME);
     };
-    const handleLogin = () => {
-        console.log("Email:", email);
-        console.log("Password:", password);
+    const handleLogin = async () => {
+        try {
+            await loginValidationSchema.validate(
+                {
+                    email: email,
+                    password: password,
+                },
+                { abortEarly: false }
+            );
+            console.log("Validation passed");
+            setErrors({});
 
-        // Add your login logic here (e.g., validation, API calls, etc.)
+            // If there are no validation errors, proceed with the API call to log in the user
+        } catch (err) {
+            console.log("Error caught:", err);
+            if (err instanceof Yup.ValidationError) {
+                const validationErrors = {};
+                err.inner.forEach((error) => {
+                    validationErrors[error.path] = error.message;
+                });
+                setErrors(validationErrors);
+            }
+        }
     };
 
     return (
@@ -48,14 +68,14 @@ export default function Login({ navigation }) {
                             label="Email*"
                             placeholder="john@email.com"
                             onChangeText={(text) => dispatch(setEmail(text))}
-                            // errorMessage={errors.email}
+                            errorMessage={errors.email}
                         />
                         <CustomTextInput
                             label="Password*"
                             placeholder="Enter Password"
                             type="password"
                             onChangeText={(text) => dispatch(setPassword(text))}
-                            // errorMessage={errors.password}
+                            errorMessage={errors.password}
                         />
                     </View>
                     <View style={styles.buttonsContainer}>
