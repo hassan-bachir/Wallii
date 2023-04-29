@@ -7,6 +7,7 @@ const CustomTextInput = ({
     placeholder,
     onChangeText,
     secureTextEntry = false,
+    type,
 }) => {
     const [isFocused, setIsFocused] = useState(false);
 
