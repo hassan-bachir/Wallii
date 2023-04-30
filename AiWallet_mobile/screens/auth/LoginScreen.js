@@ -54,7 +54,7 @@ export default function Login({ navigation }) {
                 const { token } = response;
                 await AsyncStorage.setItem("@auth_token", token);
                 console.log("New token:", token); // debugg
-                // navigation.navigate(ROUTES.YOUR_NEXT_SCREEN);
+                navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
                 console.error("Error logging in user:", error);
                 // Handle error, e.g., show a message to the user

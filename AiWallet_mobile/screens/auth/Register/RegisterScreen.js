@@ -65,7 +65,7 @@ export default function Register({ navigation }) {
                 const { token } = response;
                 await AsyncStorage.setItem("@auth_token", token);
 
-                // navigation.navigate(ROUTES.YOUR_NEXT_SCREEN);
+                navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
                 console.error("Error registering user:", error);
                 // Handle error, e.g., show a message to the user

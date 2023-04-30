@@ -10,7 +10,7 @@ export default function Home({ navigation }) {
 
     return (
         <View>
-            <Text style={globalStyles.titleText}>Home Screen</Text>
+            <Text>Home Screen</Text>
             <Button title="settings" onPress={navigateToHome} />
         </View>
     );
