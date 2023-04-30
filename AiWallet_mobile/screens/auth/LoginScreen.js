@@ -52,7 +52,7 @@ export default function Login({ navigation }) {
                 };
                 const response = await loginUser(userData);
                 const { token } = response;
-                await AsyncStorage.setItem("@auth_token", token);
+                await AsyncStorage.setItem("token", token);
                 console.log("New token:", token); // debugg
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {

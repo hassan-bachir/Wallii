@@ -63,7 +63,7 @@ export default function Register({ navigation }) {
                 };
                 const response = await registerUser(userData);
                 const { token } = response;
-                await AsyncStorage.setItem("@auth_token", token);
+                await AsyncStorage.setItem("token", token);
 
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
