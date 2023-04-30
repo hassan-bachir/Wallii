@@ -6,6 +6,7 @@ const WARRENBUFFET = require("../../assets/images/Warren-Buffet.jpg");
 const BILLGATES = require("../../assets/images/bill-gates.jpg");
 const CHATGPT = require("../../assets/images/chatGPT.jpg");
 const ROBERTKIYOSAKI = require("../../assets/images/kiyosaki.jpeg");
+const HOMEBACKGROUND = require("../../assets/images/homeBackground.png");
 
 export default {
     LOGO,
@@ -16,4 +17,5 @@ export default {
     BILLGATES,
     CHATGPT,
     ROBERTKIYOSAKI,
+    HOMEBACKGROUND,
 };
