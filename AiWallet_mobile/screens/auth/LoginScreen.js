@@ -45,7 +45,20 @@ export default function Login({ navigation }) {
             console.log("Validation passed");
             setErrors({});
 
-            // If there are no validation errors, proceed with the API call to log in the user
+            try {
+                const userData = {
+                    email: email,
+                    password: password,
+                };
+                const response = await loginUser(userData);
+                const { token } = response;
+                await AsyncStorage.setItem("@auth_token", token);
+                console.log("New token:", token); // debugg
+                // navigation.navigate(ROUTES.YOUR_NEXT_SCREEN);
+            } catch (error) {
+                console.error("Error logging in user:", error);
+                // Handle error, e.g., show a message to the user
+            }
         } catch (err) {
             console.log("Error caught:", err);
             if (err instanceof Yup.ValidationError) {

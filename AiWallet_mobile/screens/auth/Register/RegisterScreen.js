@@ -65,10 +65,10 @@ export default function Register({ navigation }) {
                 const { token } = response;
                 await AsyncStorage.setItem("@auth_token", token);
 
-                // navigation.navigate(ROUTES.NEXT_SCREEN);
+                // navigation.navigate(ROUTES.YOUR_NEXT_SCREEN);
             } catch (error) {
                 console.error("Error registering user:", error);
-                r;
+                // Handle error, e.g., show a message to the user
             }
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
