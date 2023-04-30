@@ -34,6 +34,10 @@ export default function Register({ navigation }) {
     const lastName = useSelector((state) => state.registration.lastName);
     const email = useSelector((state) => state.registration.email);
     const password = useSelector((state) => state.registration.password);
+    const aiAdvisorName = useSelector(
+        (state) => state.registration.aiAdvisorName
+    );
+
     const [errors, setErrors] = useState({});
 
     const validateForm = async () => {
