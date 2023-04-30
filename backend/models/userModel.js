@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
             return !this.googleId;
         },
     },
-    defaultCurrency: String,
+    defaultCurrency: { type: String, default: "USD" },
+
     googleId: String,
     aiAdvisorName: String,
 
