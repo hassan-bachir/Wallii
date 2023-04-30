@@ -10,9 +10,27 @@ const Stack = createStackNavigator();
 function AppStack() {
     const [userToken, setUserToken] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const bootstrapAsync = async () => {
+            try {
+                const storedToken = await AsyncStorage.getItem("token");
+                setUserToken(storedToken);
+            } catch (e) {
+                // Handle error, e.g., show a message to the user
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        bootstrapAsync();
+    }, []);
+    if (isLoading) {
+        return null; // You can return a loading component here if you want
+    }
+
     return (
         <Stack.Navigator
-            initialRouteName={ROUTES.AUTH}
+            initialRouteName={userToken ? ROUTES.HOME_STACK : ROUTES.AUTH}
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
