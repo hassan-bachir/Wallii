@@ -10,6 +10,9 @@ export default function Home({ navigation }) {
 
     return (
         <SafeAreaView style={styles.Safe}>
+            <View style={styles.header}>
+                <Text>Wallet</Text>
+            </View>
             <Text>Home Screen</Text>
             <Button title="settings" onPress={navigateToHomeSettings} />
         </SafeAreaView>
