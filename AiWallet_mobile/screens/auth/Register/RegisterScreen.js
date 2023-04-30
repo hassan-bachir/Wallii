@@ -53,8 +53,24 @@ export default function Register({ navigation }) {
             );
 
             setErrors({});
+            try {
+                const userData = {
+                    name: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                    aiAdvisorName: aiAdvisorName,
+                };
+                const response = await registerUser(userData);
+                const { token } = response;
+                await AsyncStorage.setItem("@auth_token", token);
+                console.error("Error registering user:");
 
-            // If there are no validation errors, proceed with the API call to register the user
+                // navigation.navigate(ROUTES.YOUR_NEXT_SCREEN);
+            } catch (error) {
+                console.error("Error registering user:", error);
+                // Handle error, e.g., show a message to the user
+            }
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
                 const validationErrors = {};
