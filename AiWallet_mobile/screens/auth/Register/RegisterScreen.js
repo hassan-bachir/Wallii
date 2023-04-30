@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
+import { registerUser } from "../../../api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { registerValidationSchema } from "../../../validations/validationSchema";
 import {
