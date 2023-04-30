@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
-import { Button, Background } from "../../components";
+import { Button, Background, FinanceSummaryBanner } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 import { Colors } from "react-native/Libraries/NewAppScreen";
@@ -22,6 +22,7 @@ export default function Home({ navigation }) {
                         onPress={navigateToHomeSettings}
                     />
                 </View>
+                <FinanceSummaryBanner />
             </SafeAreaView>
         </Background>
     );
