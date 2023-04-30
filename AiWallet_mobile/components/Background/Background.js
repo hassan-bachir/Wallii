@@ -3,9 +3,10 @@ import { IMAGES } from "../../constants";
 
 import { ImageBackground, StyleSheet } from "react-native";
 
-const Background = ({ children }) => {
+const Background = ({ children, image }) => {
+    const backgroundImage = image ? image : IMAGES.BACKGROUND;
     return (
-        <ImageBackground source={IMAGES.BACKGROUND} style={styles.background}>
+        <ImageBackground source={backgroundImage} style={styles.background}>
             {children}
         </ImageBackground>
     );
