@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppStack from "./routes/appStack";
 import store from "./store";
 import { Provider } from "react-redux";
