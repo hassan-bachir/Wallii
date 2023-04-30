@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
-import HomeStack from "./routes/homeStack";
-import AuthStack from "./routes/authStack";
+import AppStack from "./routes/appStack";
 import store from "./store";
 import { Provider } from "react-redux";
 import { loadFonts } from "./constants";
@@ -32,7 +31,7 @@ export default function App() {
     return (
         <Provider store={store}>
             <NavigationContainer>
-                <AuthStack />
+                <AppStack />
             </NavigationContainer>
         </Provider>
     );
