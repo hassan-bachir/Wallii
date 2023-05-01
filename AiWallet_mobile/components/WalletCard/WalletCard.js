@@ -33,7 +33,7 @@ const WalletCard = ({ name, totalIncome, totalExpenses, onPress }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: COLORS.white,
+        backgroundColor: COLORS.lightGray,
         borderRadius: SIZES.radius,
         paddingHorizontal: SIZES.padding,
         paddingVertical: SIZES.base,
