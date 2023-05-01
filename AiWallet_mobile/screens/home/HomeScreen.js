@@ -1,6 +1,11 @@
 import React from "react";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
-import { Button, Background, FinanceSummaryBanner } from "../../components";
+import {
+    Button,
+    Background,
+    FinanceSummaryBanner,
+    AddWalletButton,
+} from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 import { Colors } from "react-native/Libraries/NewAppScreen";
@@ -10,6 +15,7 @@ export default function Home({ navigation }) {
         navigation.navigate(ROUTES.HOME_SETTINGS);
     };
 
+    const handleAddWalletPress = () => {};
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
             <SafeAreaView style={styles.Safe}>
@@ -23,6 +29,7 @@ export default function Home({ navigation }) {
                     />
                 </View>
                 <FinanceSummaryBanner />
+                <AddWalletButton onPress={handleAddWalletPress} />
             </SafeAreaView>
         </Background>
     );

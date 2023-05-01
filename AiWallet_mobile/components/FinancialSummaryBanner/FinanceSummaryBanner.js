@@ -68,16 +68,16 @@ const styles = StyleSheet.create({
         width: "33%",
     },
     labelText: {
-        ...FONTS.body3,
+        ...FONTS.h4,
         fontWeight: "bold",
     },
     labelTextIncome: {
-        ...FONTS.body3,
+        ...FONTS.h4,
         fontWeight: "bold",
         color: COLORS.primary,
     },
     labelTextExpense: {
-        ...FONTS.body3,
+        ...FONTS.h4,
         fontWeight: "bold",
         color: COLORS.secondary,
     },

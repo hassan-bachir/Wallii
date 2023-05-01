@@ -12,7 +12,8 @@ const AddWalletButton = ({ onPress }) => {
 
 const styles = StyleSheet.create({
     button: {
-        marginTop: SIZES.base,
+        marginHorizontal: SIZES.padding,
+        marginTop: SIZES.padding,
         width: "40%",
         backgroundColor: COLORS.secondary,
         borderRadius: SIZES.radius,
