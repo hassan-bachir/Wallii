@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { getFinancialSummary } from "../../api/api";
+import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 
 const FinanceSummaryBanner = () => {
     const [financialSummary, setFinancialSummary] = useState(null);
@@ -24,7 +25,7 @@ const FinanceSummaryBanner = () => {
     return (
         <View style={styles.container}>
             <View style={styles.labelContainer}>
-                <Text style={styles.labelText}>Income</Text>
+                <Text style={styles.labelTextIncome}>Income</Text>
                 <Text style={styles.numberText}>
                     ${financialSummary.totalIncome}
                 </Text>
@@ -38,7 +39,7 @@ const FinanceSummaryBanner = () => {
             </View>
             <View style={styles.separator} />
             <View style={styles.labelContainer}>
-                <Text style={styles.labelText}>Expenses</Text>
+                <Text style={styles.labelTextExpense}>Expenses</Text>
                 <Text style={styles.numberText}>
                     ${financialSummary.totalExpenses}
                 </Text>
@@ -47,33 +48,71 @@ const FinanceSummaryBanner = () => {
     );
 };
 
+// const styles = StyleSheet.create({
+//     container: {
+//         marginTop:10,
+//         flexDirection: "row",
+//         alignItems: "center",
+//         justifyContent: "space-evenly",
+//         paddingHorizontal: 10,
+//         marginHorizontal: 10,
+//         borderWidth: 1,
+//         borderRadius: 8,
+//         borderColor: "white",
+//         backgroundColor: "white",
+//     },
+//     labelContainer: {
+//         alignItems: "center",
+//         paddingVertical: 10,
+//     },
+//     labelTextIncome: {
+//         fontSize: 16,
+//         fontWeight: "bold",
+//     },
+//     labelTextExpense: {
+//         fontSize: 16,
+//         fontWeight: "bold",
+//     },
+//     numberText: {
+//         fontSize: 20,
+//     },
+//     separator: {
+//         width: 1,
+//         height: "70%",
+//         backgroundColor: "black",
+//         justifyContent: "center",
+//         alignItems: "center",
+//     },
+// });
+
 const styles = StyleSheet.create({
     container: {
+        marginTop: SIZES.base,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingHorizontal: 10,
-        marginHorizontal: 10,
+        paddingHorizontal: SIZES.padding,
+        marginHorizontal: SIZES.padding,
         borderWidth: 1,
-        borderRadius: 8,
-        borderColor: "white",
-        backgroundColor: "white",
+        borderRadius: SIZES.radius,
+        borderColor: COLORS.white,
+        backgroundColor: COLORS.white,
     },
     labelContainer: {
         alignItems: "center",
-        paddingVertical: 10,
+        paddingVertical: SIZES.base,
     },
     labelText: {
-        fontSize: 16,
+        ...FONTS.body3,
         fontWeight: "bold",
     },
     numberText: {
-        fontSize: 20,
+        ...FONTS.body2,
     },
     separator: {
         width: 1,
         height: "70%",
-        backgroundColor: "white",
+        backgroundColor: COLORS.black,
     },
 });
 export default FinanceSummaryBanner;
