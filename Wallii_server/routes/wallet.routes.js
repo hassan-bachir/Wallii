@@ -10,6 +10,11 @@ const {
 // (/wallet/) POST
 router.post("/", checkToken, walletController.addWallet);
 
+//delete wallet
+
+// (wallet/:walletId)
+router.delete("/:walletId", checkToken, walletController.deleteWallet);
+
 //get all wallets
 
 // (/wallet/) GET
