@@ -4,6 +4,7 @@ import HomeStack from "./homeStack";
 import AuthStack from "./authStack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ROUTES } from "../constants";
+import { setAuthToken } from "../api/api";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ function AppStack() {
             try {
                 const storedToken = await AsyncStorage.getItem("token");
                 setUserToken(storedToken);
+                await setAuthToken();
             } catch (e) {
                 // Handle error
             } finally {
