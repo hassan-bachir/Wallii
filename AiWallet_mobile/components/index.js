@@ -4,7 +4,7 @@ import Logo from "./Logo/Logo";
 import Container from "./Container/Container";
 import AdvisorCard from "./AdvisorCard/AdvisorCard";
 import CustomTextInput from "./TextInput/CustomTextInput";
-import FinanceSummaryBanner from "./banner/FinanceSummaryBanner";
+import FinanceSummaryBanner from "./FinancialSummaryBanner/FinanceSummaryBanner";
 export {
     Background,
     Button,
