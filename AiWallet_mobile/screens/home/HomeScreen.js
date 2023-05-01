@@ -86,4 +86,12 @@ const styles = StyleSheet.create({
         ...FONTS.h1,
         color: COLORS.white,
     },
+    headerText: {
+        ...FONTS.h1,
+        color: COLORS.white,
+    },
+    walletList: {
+        paddingHorizontal: SIZES.padding,
+        paddingTop: SIZES.base,
+    },
 });
