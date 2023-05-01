@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const Transaction = require("../models/transactionModel");
 
 const getFinancialSummary = async (req, res) => {
     try {
