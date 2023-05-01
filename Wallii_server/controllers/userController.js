@@ -2,6 +2,45 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 
+const getFinancialSummary = async (req, res) => {
+    try {
+        const userId = req.userId; // Get the user ID from the request object
+
+        // Find the user
+        const user = await User.findById(userId).populate("wallets");
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Get all wallet IDs
+        const walletIds = user.wallets.map((wallet) => wallet._id);
+
+        // Get all transactions for the wallets
+        const transactions = await Transaction.find({
+            walletId: { $in: walletIds },
+        });
+
+        // Calculate income, expenses and difference
+        let totalIncome = 0;
+        let totalExpenses = 0;
+
+        transactions.forEach((transaction) => {
+            if (transaction.type === "income") {
+                totalIncome += transaction.amount;
+            } else {
+                totalExpenses += transaction.amount;
+            }
+        });
+
+        const difference = totalIncome - totalExpenses;
+
+        res.json({ totalIncome, totalExpenses, difference });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
 const updateUser = async (req, res) => {
     try {
         const { userId } = req;
@@ -84,4 +123,5 @@ module.exports = {
     readUserInfo,
     addGoal,
     deleteGoal,
+    getFinancialSummary,
 };
