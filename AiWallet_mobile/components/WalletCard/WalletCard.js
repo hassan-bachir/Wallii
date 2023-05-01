@@ -59,17 +59,17 @@ const styles = StyleSheet.create({
         marginBottom: SIZES.base,
     },
     totalDifference: {
-        ...FONTS.body4,
+        ...FONTS.body3,
         color: COLORS.black,
         marginBottom: SIZES.base,
     },
     totalIncome: {
-        ...FONTS.body4,
+        ...FONTS.body3,
         color: COLORS.primary,
         marginBottom: SIZES.base / 2,
     },
     totalExpenses: {
-        ...FONTS.body4,
+        ...FONTS.body3,
         color: COLORS.secondary,
         marginBottom: SIZES.base / 2,
     },
