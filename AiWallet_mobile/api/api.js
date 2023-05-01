@@ -38,11 +38,19 @@ const makeRequest = async (method, endpoint, data) => {
         throw error;
     }
 };
-
+//AUTH
 export const registerUser = (userData) =>
     makeRequest("post", "/auth/register", userData);
-
 export const loginUser = (credentials) =>
     makeRequest("post", "/auth/login", credentials);
+
+//USER
+export const getUserInfo = () => makeRequest("get", "/user");
+export const updateUserInfo = (data) => makeRequest("put", "/user", data);
+export const addGoal = (data) => makeRequest("post", "/user/goals", data);
+export const getFinancialSummary = () =>
+    makeRequest("get", "/user/financial-summary");
+export const deleteGoal = (goalId) =>
+    makeRequest("delete", `/user/goals/${goalId}`);
 
 export default apiClient;
