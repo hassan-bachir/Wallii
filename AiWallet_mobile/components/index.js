@@ -6,6 +6,7 @@ import AdvisorCard from "./AdvisorCard/AdvisorCard";
 import CustomTextInput from "./TextInput/CustomTextInput";
 import FinanceSummaryBanner from "./FinancialSummaryBanner/FinanceSummaryBanner";
 import AddWalletButton from "./AddwalletButton/AddWalletButton";
+import WalletCard from "./WalletCard/WalletCard";
 export {
     Background,
     Button,
@@ -15,4 +16,5 @@ export {
     CustomTextInput,
     FinanceSummaryBanner,
     AddWalletButton,
+    WalletCard,
 };
