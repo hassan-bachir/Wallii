@@ -57,20 +57,16 @@ const deleteWallet = async (req, res) => {
         const { walletId } = req.params;
         const userId = req.userId;
 
-        // Find the wallet and check if it belongs to the user
         const wallet = await Wallet.findOne({ _id: walletId, userId });
 
         if (!wallet) {
             return res.status(404).json({ message: "Wallet not found" });
         }
 
-        // Delete all related transactions
         await Transaction.deleteMany({ walletId });
 
-        // Remove wallet reference from user
         await User.updateOne({ _id: userId }, { $pull: { wallets: walletId } });
 
-        // Delete the wallet
         await wallet.remove();
 
         res.json({ message: "Wallet deleted successfully" });
