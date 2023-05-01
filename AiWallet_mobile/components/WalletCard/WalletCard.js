@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        bottom: -37.5,
+        bottom: -25,
         right: SIZES.padding,
     },
     addButtonText: {
