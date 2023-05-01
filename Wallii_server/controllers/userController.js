@@ -5,24 +5,20 @@ const Transaction = require("../models/transactionModel");
 
 const getFinancialSummary = async (req, res) => {
     try {
-        const userId = req.userId; // Get the user ID from the request object
+        const userId = req.userId;
 
-        // Find the user
         const user = await User.findById(userId).populate("wallets");
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        // Get all wallet IDs
         const walletIds = user.wallets.map((wallet) => wallet._id);
 
-        // Get all transactions for the wallets
         const transactions = await Transaction.find({
             walletId: { $in: walletIds },
         });
 
-        // Calculate income, expenses and difference
         let totalIncome = 0;
         let totalExpenses = 0;
 
