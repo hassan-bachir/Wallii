@@ -21,4 +21,12 @@ router.post("/goals", checkToken, userController.addGoal);
 // (/user/goals/:goalId) DELETE
 router.delete("/goals/:goalId", checkToken, userController.deleteGoal);
 
+//all wallet summary
+// (/user/financia-summary) GET
+router.get(
+    "/financial-summary",
+    checkToken,
+    userController.getFinancialSummary
+);
+
 module.exports = router;
