@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import { loginUser } from "../../api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setAuthToken } from "../../api/api";
 
 import {
     View,
@@ -54,6 +55,7 @@ export default function Login({ navigation }) {
                 const { token } = response;
                 await AsyncStorage.setItem("token", token);
                 console.log("New token:", token); // debugg
+                await setAuthToken();
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
                 console.error("Error logging in user:", error);

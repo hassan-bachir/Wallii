@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import { registerUser } from "../../../api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setAuthToken } from "../../../api/api";
 
 import { registerValidationSchema } from "../../../validations/validationSchema";
 import {
@@ -64,7 +65,7 @@ export default function Register({ navigation }) {
                 const response = await registerUser(userData);
                 const { token } = response;
                 await AsyncStorage.setItem("token", token);
-
+                await setAuthToken();
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
                 console.error("Error registering user:", error);
