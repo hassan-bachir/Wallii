@@ -71,6 +71,17 @@ const styles = StyleSheet.create({
         ...FONTS.body3,
         fontWeight: "bold",
     },
+    labelTextIncome: {
+        ...FONTS.body3,
+        fontWeight: "bold",
+        color: COLORS.primary,
+    },
+    labelTextExpense: {
+        ...FONTS.body3,
+        fontWeight: "bold",
+        color: COLORS.secondary,
+    },
+
     numberText: {
         ...FONTS.body2,
     },
