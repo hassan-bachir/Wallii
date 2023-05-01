@@ -1,5 +1,6 @@
 const Wallet = require("../models/walletModel");
 const User = require("../models/userModel");
+const Transaction = require("../models/transactionModel");
 
 const getUserWallets = async (req, res) => {
     try {
@@ -67,7 +68,7 @@ const deleteWallet = async (req, res) => {
 
         await User.updateOne({ _id: userId }, { $pull: { wallets: walletId } });
 
-        await wallet.remove();
+        await Wallet.deleteOne({ _id: walletId });
 
         res.json({ message: "Wallet deleted successfully" });
     } catch (error) {

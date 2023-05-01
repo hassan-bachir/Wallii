@@ -16,7 +16,7 @@ function AppStack() {
                 const storedToken = await AsyncStorage.getItem("token");
                 setUserToken(storedToken);
             } catch (e) {
-                // Handle error, e.g., show a message to the user
+                // Handle error
             } finally {
                 setIsLoading(false);
             }
@@ -25,7 +25,7 @@ function AppStack() {
         bootstrapAsync();
     }, []);
     if (isLoading) {
-        return null; // You can return a loading component here if you want
+        return null;
     }
 
     return (
