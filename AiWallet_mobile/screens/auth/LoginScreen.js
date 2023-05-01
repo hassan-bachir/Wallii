@@ -57,7 +57,7 @@ export default function Login({ navigation }) {
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
                 console.error("Error logging in user:", error);
-                // Handle error, e.g., show a message to the user
+                // Handle error,
             }
         } catch (err) {
             console.log("Error caught:", err);
