@@ -48,43 +48,6 @@ const FinanceSummaryBanner = () => {
     );
 };
 
-// const styles = StyleSheet.create({
-//     container: {
-//         marginTop:10,
-//         flexDirection: "row",
-//         alignItems: "center",
-//         justifyContent: "space-evenly",
-//         paddingHorizontal: 10,
-//         marginHorizontal: 10,
-//         borderWidth: 1,
-//         borderRadius: 8,
-//         borderColor: "white",
-//         backgroundColor: "white",
-//     },
-//     labelContainer: {
-//         alignItems: "center",
-//         paddingVertical: 10,
-//     },
-//     labelTextIncome: {
-//         fontSize: 16,
-//         fontWeight: "bold",
-//     },
-//     labelTextExpense: {
-//         fontSize: 16,
-//         fontWeight: "bold",
-//     },
-//     numberText: {
-//         fontSize: 20,
-//     },
-//     separator: {
-//         width: 1,
-//         height: "70%",
-//         backgroundColor: "black",
-//         justifyContent: "center",
-//         alignItems: "center",
-//     },
-// });
-
 const styles = StyleSheet.create({
     container: {
         marginTop: SIZES.base,
@@ -100,7 +63,9 @@ const styles = StyleSheet.create({
     },
     labelContainer: {
         alignItems: "center",
+        justifyContent: "center",
         paddingVertical: SIZES.base,
+        width: "33%",
     },
     labelText: {
         ...FONTS.body3,
@@ -110,6 +75,8 @@ const styles = StyleSheet.create({
         ...FONTS.body2,
     },
     separator: {
+        justifyContent: "center",
+        alignItems: "center",
         width: 1,
         height: "70%",
         backgroundColor: COLORS.black,
