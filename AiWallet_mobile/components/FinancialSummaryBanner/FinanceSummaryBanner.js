@@ -1,22 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { getFinancialSummary } from "../../api/api";
 
 const FinanceSummaryBanner = () => {
+    const [financialSummary, setFinancialSummary] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getFinancialSummary();
+                setFinancialSummary(data);
+            } catch (error) {
+                console.error("Error fetching financial summary:", error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    if (!financialSummary) {
+        return null;
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.labelContainer}>
                 <Text style={styles.labelText}>Income</Text>
-                <Text style={styles.numberText}>$1000</Text>
+                <Text style={styles.numberText}>
+                    ${financialSummary.totalIncome}
+                </Text>
             </View>
             <View style={styles.separator} />
             <View style={styles.labelContainer}>
                 <Text style={styles.labelText}>Total</Text>
-                <Text style={styles.numberText}>$5000</Text>
+                <Text style={styles.numberText}>
+                    ${financialSummary.difference}
+                </Text>
             </View>
             <View style={styles.separator} />
             <View style={styles.labelContainer}>
                 <Text style={styles.labelText}>Expenses</Text>
-                <Text style={styles.numberText}>$4000</Text>
+                <Text style={styles.numberText}>
+                    ${financialSummary.totalExpenses}
+                </Text>
             </View>
         </View>
     );
@@ -51,5 +76,4 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
     },
 });
-
 export default FinanceSummaryBanner;

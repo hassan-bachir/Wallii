@@ -10,7 +10,7 @@ const {
 router.get("/", checkToken, userController.readUserInfo);
 
 //get financial summary
-// (/user/financia-summary) GET
+// (/user/financial-summary) GET
 router.get(
     "/financial-summary",
     checkToken,
