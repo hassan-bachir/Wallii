@@ -18,7 +18,6 @@ const getFinancialSummary = async (req, res) => {
         const transactions = await Transaction.find({
             walletId: { $in: walletIds },
         });
-
         let totalIncome = 0;
         let totalExpenses = 0;
 
