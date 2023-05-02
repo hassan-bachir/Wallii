@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { getFinancialSummary } from "../../api/api";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
+import { useFocusEffect, useCallback } from "@react-navigation/native";
 
 const FinanceSummaryBanner = () => {
     const [financialSummary, setFinancialSummary] = useState(null);
