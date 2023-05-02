@@ -51,6 +51,16 @@ export default function Home({ navigation }) {
     const navigateToHomeSettings = () => {
         navigation.navigate(ROUTES.HOME_SETTINGS);
     };
+    const handleSaveWallet = async () => {
+        try {
+            await addWallet({ name: newWalletName });
+            fetchData();
+            setNewWalletName("");
+            setModalVisible(false);
+        } catch (error) {
+            console.error("Error adding wallet:", error);
+        }
+    };
 
     const handleAddWalletPress = () => {};
     return (
