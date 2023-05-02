@@ -93,4 +93,30 @@ export const deleteBudget = (walletId) =>
 export const getWalletSummary = (walletId) =>
     makeRequest("get", `/wallet/${walletId}/summary`);
 
+//transactions
+
+// Add transaction
+export const addTransaction = (walletId, transactionData) =>
+    makeRequest("post", `/transaction/${walletId}`, transactionData);
+
+// Get all transactions
+export const getAllTransactions = (walletId) =>
+    makeRequest("get", `/transaction/${walletId}`);
+
+// Get transaction by ID
+export const getTransactionById = (transactionId) =>
+    makeRequest("get", `/transaction/byid/${transactionId}`);
+
+// Update transaction
+export const updateTransaction = (transactionId, transactionData) =>
+    makeRequest("put", `/transaction/${transactionId}`, transactionData);
+
+// Delete transaction
+export const deleteTransaction = (transactionId) =>
+    makeRequest("delete", `/transaction/${transactionId}`);
+
+// Get transactions grouped by date
+export const getTransactionsByDate = (walletId) =>
+    makeRequest("get", `/transaction/${walletId}/by-date`);
+
 export default apiClient;
