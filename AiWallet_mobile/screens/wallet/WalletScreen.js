@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Background, WalletCard, AddWalletButton } from "../../components";
 import { IMAGES } from "../../constants";
 
@@ -24,17 +24,24 @@ const WalletScreen = ({ route }) => {
 
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
-            {wallet && (
-                <WalletCard
-                    walletId={wallet._id}
-                    name={wallet.name}
-                    totalIncome={wallet.totalIncome}
-                    totalExpenses={wallet.totalExpenses}
-                />
-            )}
+            <View style={styles.walletCard}>
+                {wallet && (
+                    <WalletCard
+                        walletId={wallet._id}
+                        name={wallet.name}
+                        totalIncome={wallet.totalIncome}
+                        totalExpenses={wallet.totalExpenses}
+                    />
+                )}
+            </View>
             <AddWalletButton buttonText="Add Transaction" />
         </Background>
     );
 };
+const styles = StyleSheet.create({
+    walletCard: {
+        marginHorizontal: 10,
+    },
+});
 
 export default WalletScreen;
