@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     },
     image: {
         width: 100,
-        height: 150,
+        height: 100,
         borderRadius: SIZES.radius,
     },
     imagePlaceholder: {
         width: 100,
-        height: 150,
+        height: 100,
         borderRadius: SIZES.radius,
         backgroundColor: COLORS.gray,
     },
@@ -70,8 +70,12 @@ const styles = StyleSheet.create({
     },
     categoryContainer: {
         padding: SIZES.base,
+
         borderRadius: SIZES.radius,
         marginBottom: SIZES.base,
+        width: 150,
+        overflow: "hidden",
+        alignItems: "center",
     },
     category: {
         ...FONTS.body3,
