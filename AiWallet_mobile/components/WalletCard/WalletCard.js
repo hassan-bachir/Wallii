@@ -26,12 +26,14 @@ const WalletCard = ({
                         {totalDifference >= 0 ? "Net Profit: " : "Net Loss: "}$
                         {Math.abs(totalDifference)}
                     </Text>
-                    <Text style={styles.totalIncome}>
-                        Income: ${totalIncome}
-                    </Text>
-                    <Text style={styles.totalExpenses}>
-                        Expenses: ${totalExpenses}
-                    </Text>
+                    <View style={styles.amountsContainer}>
+                        <Text style={styles.totalIncome}>
+                            Income: ${totalIncome}
+                        </Text>
+                        <Text style={styles.totalExpenses}>
+                            Expenses: ${totalExpenses}
+                        </Text>
+                    </View>
                 </View>
                 <View style={styles.rightSection}>
                     <View style={styles.addButton}>
@@ -75,19 +77,23 @@ const styles = StyleSheet.create({
         color: COLORS.black,
         marginBottom: SIZES.base,
     },
+    amountsContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
     totalIncome: {
         ...FONTS.body3,
         color: COLORS.primary,
-        marginBottom: SIZES.base / 2,
+        marginRight: 15,
     },
     totalExpenses: {
         ...FONTS.body3,
         color: COLORS.secondary,
-        marginBottom: SIZES.base / 2,
     },
     rightSection: {
         alignItems: "flex-end",
     },
+
     addButton: {
         backgroundColor: COLORS.secondary,
         borderRadius: 50,
