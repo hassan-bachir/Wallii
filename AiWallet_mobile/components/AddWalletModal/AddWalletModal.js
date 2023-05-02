@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     StyleSheet,
     Modal,
+    Text,
 } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants";
 
