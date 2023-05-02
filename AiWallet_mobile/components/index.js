@@ -7,6 +7,7 @@ import CustomTextInput from "./TextInput/CustomTextInput";
 import FinanceSummaryBanner from "./FinancialSummaryBanner/FinanceSummaryBanner";
 import AddWalletButton from "./AddwalletButton/AddWalletButton";
 import WalletCard from "./WalletCard/WalletCard";
+import AddWalletModal from "./AddWalletModal/AddWalletModal";
 export {
     Background,
     Button,
@@ -17,4 +18,5 @@ export {
     FinanceSummaryBanner,
     AddWalletButton,
     WalletCard,
+    AddWalletModal,
 };

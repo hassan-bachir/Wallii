@@ -61,8 +61,10 @@ export default function Home({ navigation }) {
             console.error("Error adding wallet:", error);
         }
     };
+    const handleAddWalletPress = () => {
+        setModalVisible(true);
+    };
 
-    const handleAddWalletPress = () => {};
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
             <SafeAreaView style={styles.Safe}>
@@ -89,6 +91,31 @@ export default function Home({ navigation }) {
                     )}
                     contentContainerStyle={styles.walletList}
                 />
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={isModalVisible}
+                    onRequestClose={() => {
+                        setModalVisible(!isModalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <TextInput
+                                placeholder="Enter wallet name"
+                                value={newWalletName}
+                                onChangeText={setNewWalletName}
+                                style={styles.input}
+                            />
+                            <TouchableOpacity
+                                onPress={handleSaveWallet}
+                                style={styles.saveButton}
+                            >
+                                <Text style={styles.saveButtonText}>Save</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
             </SafeAreaView>
         </Background>
     );
@@ -115,5 +142,45 @@ const styles = StyleSheet.create({
     walletList: {
         paddingHorizontal: SIZES.padding,
         paddingTop: SIZES.base,
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    input: {
+        height: 40,
+        borderColor: "gray",
+        borderWidth: 1,
+        width: "100%",
+        borderRadius: SIZES.radius,
+        marginBottom: SIZES.padding,
+        paddingHorizontal: SIZES.padding,
+    },
+    saveButton: {
+        backgroundColor: COLORS.secondary,
+        paddingHorizontal: SIZES.padding,
+        paddingVertical: SIZES.base,
+        borderRadius: SIZES.radius,
+    },
+    saveButtonText: {
+        ...FONTS.h3,
+        color: COLORS.white,
     },
 });
