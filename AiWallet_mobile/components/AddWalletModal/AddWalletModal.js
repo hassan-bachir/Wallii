@@ -9,6 +9,10 @@ import {
 } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants";
 
+const handleCancel = () => {
+    setModalVisible(false);
+};
+
 const AddWalletModal = ({
     isModalVisible,
     setModalVisible,
@@ -16,6 +20,10 @@ const AddWalletModal = ({
     setNewWalletName,
     handleSaveWallet,
 }) => {
+    const handleCancel = () => {
+        setModalVisible(false);
+    };
+
     return (
         <Modal
             animationType="slide"
@@ -39,11 +47,18 @@ const AddWalletModal = ({
                     >
                         <Text style={styles.saveButtonText}>Save</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={handleCancel}
+                        style={styles.cancelButton}
+                    >
+                        <Text style={styles.cancelButtonText}>Cancel</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </Modal>
     );
 };
+
 const styles = StyleSheet.create({
     centeredView: {
         flex: 1,
@@ -76,12 +91,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: SIZES.padding,
     },
     saveButton: {
-        backgroundColor: COLORS.secondary,
+        backgroundColor: COLORS.primary,
         paddingHorizontal: SIZES.padding,
         paddingVertical: SIZES.base,
         borderRadius: SIZES.radius,
     },
     saveButtonText: {
+        ...FONTS.h3,
+        color: COLORS.white,
+    },
+    cancelButton: {
+        backgroundColor: COLORS.red,
+        paddingHorizontal: SIZES.padding,
+        paddingVertical: SIZES.base,
+        borderRadius: SIZES.radius,
+        marginTop: SIZES.base,
+    },
+    cancelButtonText: {
         ...FONTS.h3,
         color: COLORS.white,
     },

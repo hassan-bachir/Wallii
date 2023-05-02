@@ -83,7 +83,13 @@ export default function Home({ navigation }) {
                     )}
                     contentContainerStyle={styles.walletList}
                 />
-                <AddWalletModal />
+                <AddWalletModal
+                    isModalVisible={isModalVisible}
+                    setModalVisible={setModalVisible}
+                    newWalletName={newWalletName}
+                    setNewWalletName={setNewWalletName}
+                    handleSaveWallet={handleSaveWallet}
+                />
             </SafeAreaView>
         </Background>
     );
