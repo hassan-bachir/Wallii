@@ -8,6 +8,7 @@ import FinanceSummaryBanner from "./FinancialSummaryBanner/FinanceSummaryBanner"
 import AddWalletButton from "./AddwalletButton/AddWalletButton";
 import WalletCard from "./WalletCard/WalletCard";
 import AddWalletModal from "./AddWalletModal/AddWalletModal";
+import TransactionCard from "./TransactionCard/TransactionCard";
 export {
     Background,
     Button,
@@ -19,4 +20,5 @@ export {
     AddWalletButton,
     WalletCard,
     AddWalletModal,
+    TransactionCard,
 };
