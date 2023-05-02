@@ -52,6 +52,7 @@ const WalletScreen = ({ route }) => {
             </View>
             <AddWalletButton buttonText="Add Transaction" />
             <FlatList
+                style={styles.flatList}
                 data={transactions}
                 renderItem={({ item }) => (
                     <TransactionCard transaction={item} />
@@ -64,6 +65,9 @@ const WalletScreen = ({ route }) => {
 const styles = StyleSheet.create({
     walletCard: {
         marginHorizontal: 10,
+    },
+    flatList: {
+        paddingHorizontal: 10,
     },
 });
 

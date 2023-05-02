@@ -37,14 +37,14 @@ const TransactionCard = ({ transaction }) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 10,
         flexDirection: "row",
         alignItems: "center",
         backgroundColor: COLORS.lightGray,
         borderRadius: SIZES.radius,
-        paddingHorizontal: SIZES.padding,
-        paddingVertical: SIZES.base,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
         marginBottom: SIZES.base,
+        marginTop: 10,
     },
     imageContainer: {
         marginRight: SIZES.padding,
