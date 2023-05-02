@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
-import { Background, WalletCard } from "../../components";
+import { Background, WalletCard, AddWalletButton } from "../../components";
 import { IMAGES } from "../../constants";
 
 import { getWallet, getWalletSummary } from "../../api/api";
@@ -32,6 +32,7 @@ const WalletScreen = ({ route }) => {
                     totalExpenses={wallet.totalExpenses}
                 />
             )}
+            <AddWalletButton buttonText="Add Transaction" />
         </Background>
     );
 };

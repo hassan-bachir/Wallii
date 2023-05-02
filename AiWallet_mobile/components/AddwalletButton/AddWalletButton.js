@@ -2,10 +2,10 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants";
 
-const AddWalletButton = ({ onPress }) => {
+const AddWalletButton = ({ onPress, buttonText = "+ Add Wallet" }) => {
     return (
         <TouchableOpacity style={styles.button} onPress={onPress}>
-            <Text style={styles.buttonText}>+ Add Wallet</Text>
+            <Text style={styles.buttonText}>{buttonText}</Text>
         </TouchableOpacity>
     );
 };
