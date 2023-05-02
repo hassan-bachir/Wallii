@@ -1,17 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants";
 
 const TransactionCard = ({ transaction }) => {
     const { date, category, amount, type, image } = transaction;
-
-    const formattedDate = new Date(date).toISOString().split("T")[0]; // Extract yyyy-mm-dd
+    // Extract yyyy-mm-dd
+    const formattedDate = new Date(date).toISOString().split("T")[0];
 
     const categoryBackgroundColor =
         type === "income" ? COLORS.primary : COLORS.secondary;
 
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container}>
             <View style={styles.imageContainer}>
                 {image ? (
                     <Image source={{ uri: image }} style={styles.image} />
@@ -31,7 +31,7 @@ const TransactionCard = ({ transaction }) => {
                 </View>
                 <Text style={styles.amount}>${amount}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

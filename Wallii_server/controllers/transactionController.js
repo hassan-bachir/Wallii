@@ -62,7 +62,6 @@ const updateTransaction = async (req, res) => {
             }
         );
         if (
-            //check y ?
             req.body.walletId &&
             oldTransaction.walletId.toString() !== req.body.walletId.toString()
         ) {
