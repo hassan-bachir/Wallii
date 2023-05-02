@@ -1,33 +1,34 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-import { COLORS, FONTS } from "../../constants";
+import { View, Text, StyleSheet, Image } from "react-native";
+import { COLORS, FONTS, SIZES } from "../../constants";
 
 const TransactionCard = ({ transaction }) => {
     const { date, category, amount, type, image } = transaction;
 
+    const formattedDate = new Date(date).toISOString().split("T")[0]; // Extract yyyy-mm-dd
+
+    const categoryBackgroundColor =
+        type === "income" ? COLORS.primary : COLORS.secondary;
+
     return (
         <View style={styles.container}>
-            {image && (
-                <Image
-                    source={{ uri: image }}
-                    style={styles.transactionImage}
-                />
-            )}
-            <View style={styles.transactionInfo}>
-                <Text style={styles.date}>{date}</Text>
-                <Text
+            <View style={styles.imageContainer}>
+                {image ? (
+                    <Image source={{ uri: image }} style={styles.image} />
+                ) : (
+                    <View style={styles.imagePlaceholder} />
+                )}
+            </View>
+            <View style={styles.detailsContainer}>
+                <Text style={styles.date}>{formattedDate}</Text>
+                <View
                     style={[
-                        styles.category,
-                        {
-                            color:
-                                type === "income"
-                                    ? COLORS.primary
-                                    : COLORS.secondary,
-                        },
+                        styles.categoryContainer,
+                        { backgroundColor: categoryBackgroundColor },
                     ]}
                 >
-                    {category}
-                </Text>
+                    <Text style={styles.category}>{category}</Text>
+                </View>
                 <Text style={styles.amount}>${amount}</Text>
             </View>
         </View>
@@ -36,27 +37,49 @@ const TransactionCard = ({ transaction }) => {
 
 const styles = StyleSheet.create({
     container: {
+        paddingHorizontal: 10,
         flexDirection: "row",
         alignItems: "center",
-        marginHorizontal: 10,
-        marginTop: 10,
+        backgroundColor: COLORS.lightGray,
+        borderRadius: SIZES.radius,
+        paddingHorizontal: SIZES.padding,
+        paddingVertical: SIZES.base,
+        marginBottom: SIZES.base,
     },
-    transactionImage: {
-        height: 150,
+    imageContainer: {
+        marginRight: SIZES.padding,
+    },
+    image: {
         width: 100,
-        marginRight: 10,
+        height: 150,
+        borderRadius: SIZES.radius,
     },
-    transactionInfo: {
-        flexDirection: "column",
+    imagePlaceholder: {
+        width: 100,
+        height: 150,
+        borderRadius: SIZES.radius,
+        backgroundColor: COLORS.gray,
+    },
+    detailsContainer: {
+        flex: 1,
     },
     date: {
         ...FONTS.body3,
+        color: COLORS.black,
+        marginBottom: SIZES.base,
+    },
+    categoryContainer: {
+        padding: SIZES.base,
+        borderRadius: SIZES.radius,
+        marginBottom: SIZES.base,
     },
     category: {
         ...FONTS.body3,
+        color: COLORS.white,
     },
     amount: {
-        ...FONTS.body3,
+        ...FONTS.h2,
+        color: COLORS.black,
     },
 });
 

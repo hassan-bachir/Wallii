@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Background, WalletCard, AddWalletButton } from "../../components";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import {
+    Background,
+    WalletCard,
+    AddWalletButton,
+    TransactionCard,
+} from "../../components";
 import { IMAGES } from "../../constants";
 
-import { getWallet, getWalletSummary } from "../../api/api";
+import { getWalletSummary, getAllTransactions } from "../../api/api";
 
 const WalletScreen = ({ route }) => {
     const { walletId } = route.params;
     const [wallet, setWallet] = useState(null);
+    const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
         const fetchWallet = async () => {
@@ -19,7 +25,17 @@ const WalletScreen = ({ route }) => {
             }
         };
 
+        const fetchTransactions = async () => {
+            try {
+                const fetchedTransactions = await getAllTransactions(walletId);
+                setTransactions(fetchedTransactions);
+            } catch (error) {
+                console.error("Error fetching transactions:", error);
+            }
+        };
+
         fetchWallet();
+        fetchTransactions();
     }, [walletId]);
 
     return (
@@ -35,6 +51,13 @@ const WalletScreen = ({ route }) => {
                 )}
             </View>
             <AddWalletButton buttonText="Add Transaction" />
+            <FlatList
+                data={transactions}
+                renderItem={({ item }) => (
+                    <TransactionCard transaction={item} />
+                )}
+                keyExtractor={(item) => item._id}
+            />
         </Background>
     );
 };
