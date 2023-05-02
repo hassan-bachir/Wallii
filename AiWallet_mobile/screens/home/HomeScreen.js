@@ -1,5 +1,14 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { StyleSheet, View, Text, SafeAreaView, FlatList } from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    SafeAreaView,
+    FlatList,
+    Modal,
+    TextInput,
+    TouchableOpacity,
+} from "react-native";
 import {
     Button,
     Background,
