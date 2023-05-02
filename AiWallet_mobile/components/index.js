@@ -9,6 +9,7 @@ import AddWalletButton from "./AddwalletButton/AddWalletButton";
 import WalletCard from "./WalletCard/WalletCard";
 import AddWalletModal from "./AddWalletModal/AddWalletModal";
 import TransactionCard from "./TransactionCard/TransactionCard";
+import TransactionModal from "./TransactionModal/TransactionModal";
 export {
     Background,
     Button,
@@ -21,4 +22,5 @@ export {
     WalletCard,
     AddWalletModal,
     TransactionCard,
+    TransactionModal,
 };
