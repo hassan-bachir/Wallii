@@ -18,11 +18,14 @@ import {
 } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
-import { getUserWallets, getWalletSummary } from "../../api/api";
+import { getUserWallets, getWalletSummary, addWallet } from "../../api/api";
 import { useFocusEffect } from "@react-navigation/native";
 
 export default function Home({ navigation }) {
     const [wallets, setWallets] = useState([]);
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [newWalletName, setNewWalletName] = useState("");
+
     const fetchData = useCallback(async () => {
         try {
             const fetchedWallets = await getUserWallets();
