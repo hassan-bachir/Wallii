@@ -1,7 +1,7 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_BASE_URL = "http://192.168.1.3:3000";
+const API_BASE_URL = "http://192.168.1.4:3000";
 
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
@@ -9,6 +9,17 @@ const apiClient = axios.create({
         "Content-Type": "application/json",
     },
 });
+apiClient.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (error) => {
+        if (error.message === "Network Error") {
+            console.error("Network error:", error);
+        }
+        return Promise.reject(error);
+    }
+);
 
 export const setAuthToken = async () => {
     try {
