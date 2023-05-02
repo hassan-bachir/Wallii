@@ -2,11 +2,23 @@ import React from "react";
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants";
 
-const WalletCard = ({ name, totalIncome, totalExpenses, onPress }) => {
+const WalletCard = ({
+    walletId,
+    name,
+    totalIncome,
+    totalExpenses,
+    onPress,
+}) => {
     const totalDifference = totalIncome - totalExpenses;
 
+    const handleOnPress = () => {
+        if (onPress) {
+            onPress(walletId);
+        }
+    };
+
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity style={styles.container} onPress={handleOnPress}>
             <View style={styles.topSection}>
                 <View style={styles.leftSection}>
                     <Text style={styles.walletName}>{name}</Text>

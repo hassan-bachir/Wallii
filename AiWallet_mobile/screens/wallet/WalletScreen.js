@@ -1,10 +1,15 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { View, Text } from "react-native";
 
-export default function Wallet() {
+const WalletScreen = ({ route }) => {
+    const { walletId } = route.params;
+
     return (
         <View>
-            <Text>Wallet screen</Text>
+            <Text>Wallet ID: {walletId}</Text>
+            {/* Rest of the WalletScreen component */}
         </View>
     );
-}
+};
+
+export default WalletScreen;

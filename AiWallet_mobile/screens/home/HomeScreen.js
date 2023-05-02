@@ -76,9 +76,15 @@ export default function Home({ navigation }) {
                     keyExtractor={(item) => item._id}
                     renderItem={({ item }) => (
                         <WalletCard
+                            walletId={item._id}
                             name={item.name}
                             totalIncome={item.totalIncome}
                             totalExpenses={item.totalExpenses}
+                            onPress={(id) =>
+                                navigation.navigate("WalletDetails", {
+                                    walletId: id,
+                                })
+                            }
                         />
                     )}
                     contentContainerStyle={styles.walletList}
