@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Home, HomeSettings } from "../screens";
 import WalletScreen from "../screens/wallet/WalletScreen";
-
+import { COLORS } from "../constants";
 import { ROUTES } from "../constants";
 
 const Stack = createStackNavigator();
@@ -20,7 +20,16 @@ function HomeStack() {
                 name={ROUTES.HOME_SETTINGS}
                 component={HomeSettings}
             />
-            <Stack.Screen name="WalletDetails" component={WalletScreen} />
+            <Stack.Screen
+                name="Wallet"
+                component={WalletScreen}
+                options={{
+                    headerTintColor: COLORS.white,
+                    headerStyle: {
+                        backgroundColor: COLORS.primary,
+                    },
+                }}
+            />
         </Stack.Navigator>
     );
 }

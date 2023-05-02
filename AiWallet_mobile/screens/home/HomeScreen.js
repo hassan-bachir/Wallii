@@ -81,7 +81,7 @@ export default function Home({ navigation }) {
                             totalIncome={item.totalIncome}
                             totalExpenses={item.totalExpenses}
                             onPress={(id) =>
-                                navigation.navigate("WalletDetails", {
+                                navigation.navigate("Wallet", {
                                     walletId: id,
                                 })
                             }

@@ -164,6 +164,7 @@ const getWalletSummary = async (req, res) => {
             const totalDifference = totalIncome - totalExpenses;
 
             res.status(200).json({
+                name: wallet.name,
                 totalIncome,
                 totalExpenses,
                 totalDifference,
