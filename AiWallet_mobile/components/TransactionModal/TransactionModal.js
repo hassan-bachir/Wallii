@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import Modal from "react-native-modal";
 import { Ionicons } from "@expo/vector-icons";
-// import { ButtonGroup } from "react-native-elements";
+import { ButtonGroup } from "react-native-elements";
 
 const TransactionModal = ({ isVisible, onClose }) => {
     const [transactionTypeIndex, setTransactionTypeIndex] = useState(0);
