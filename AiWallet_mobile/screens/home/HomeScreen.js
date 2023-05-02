@@ -69,7 +69,7 @@ export default function Home({ navigation }) {
                         onPress={navigateToHomeSettings}
                     />
                 </View>
-                <FinanceSummaryBanner />
+                <FinanceSummaryBanner onUpdateData={fetchData} />
                 <AddWalletButton onPress={handleAddWalletPress} />
                 <FlatList
                     data={wallets}
