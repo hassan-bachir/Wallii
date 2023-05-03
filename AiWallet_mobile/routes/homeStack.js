@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, HomeSettings } from "../screens";
+import { Home, HomeSettings, TransactionScreen } from "../screens";
 import WalletScreen from "../screens/wallet/WalletScreen";
 import { COLORS } from "../constants";
 import { ROUTES } from "../constants";
@@ -28,6 +28,13 @@ function HomeStack() {
                     headerStyle: {
                         backgroundColor: COLORS.primary,
                     },
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.TRANSACTION_SCREEN}
+                component={TransactionScreen}
+                options={{
+                    headerShown: false,
                 }}
             />
         </Stack.Navigator>

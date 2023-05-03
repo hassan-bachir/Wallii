@@ -11,8 +11,11 @@ export default {
 
     WALLET: "Wallet",
     WALLET_SETTINGS: "Wallet Settings",
-    WALLET_ADD_RECORD: "Add Record",
-    WALLET_UPDATE_RECORD: "Update Record",
+
+    TRANSACTION_SCREEN: "transaction screen",
+
+    // WALLET_ADD_RECORD: "Add Record",
+    // WALLET_UPDATE_RECORD: "Update Record",
     WALLET_STATS: "Wallet Stats",
     WALLET_BUDGET: "Wallet Budget",
 
