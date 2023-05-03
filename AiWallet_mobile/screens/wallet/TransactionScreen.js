@@ -47,7 +47,7 @@ const TransactionScreen = ({ route, navigation }) => {
             <SafeAreaView style={styles.container}>
                 <Ionicons
                     name="arrow-back"
-                    size={24}
+                    size={32}
                     onPress={() => navigation.goBack()}
                     style={styles.backIcon}
                 />
