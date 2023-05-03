@@ -8,7 +8,9 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { ButtonGroup } from "react-native-elements";
+import { IMAGES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
+import { Background } from "../../components";
 
 const TransactionScreen = ({ route, navigation }) => {
     const { mode, transactionId } = route.params;
@@ -41,32 +43,34 @@ const TransactionScreen = ({ route, navigation }) => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
-            <Ionicons
-                name="arrow-back"
-                size={24}
-                onPress={() => navigation.goBack()}
-                style={styles.backIcon}
-            />
-            <ButtonGroup
-                onPress={updateTransactionType}
-                selectedIndex={transactionTypeIndex}
-                buttons={transactionTypes}
-            />
-            <TextInput
-                style={styles.amountInput}
-                keyboardType="numeric"
-                onChangeText={setAmount}
-                value={amount}
-                placeholder="Amount"
-            />
-            <TouchableOpacity
-                onPress={handleSubmit}
-                style={styles.submitButton}
-            >
-                <Text style={styles.submitButtonText}>Submit</Text>
-            </TouchableOpacity>
-        </SafeAreaView>
+        <Background image={IMAGES.INCOME_BACKGROUND}>
+            <SafeAreaView style={styles.container}>
+                <Ionicons
+                    name="arrow-back"
+                    size={24}
+                    onPress={() => navigation.goBack()}
+                    style={styles.backIcon}
+                />
+                <ButtonGroup
+                    onPress={updateTransactionType}
+                    selectedIndex={transactionTypeIndex}
+                    buttons={transactionTypes}
+                />
+                <TextInput
+                    style={styles.amountInput}
+                    keyboardType="numeric"
+                    onChangeText={setAmount}
+                    value={amount}
+                    placeholder="Amount"
+                />
+                <TouchableOpacity
+                    onPress={handleSubmit}
+                    style={styles.submitButton}
+                >
+                    <Text style={styles.submitButtonText}>Submit</Text>
+                </TouchableOpacity>
+            </SafeAreaView>
+        </Background>
     );
 };
 

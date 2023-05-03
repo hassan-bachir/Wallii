@@ -1,8 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Home, HomeSettings, TransactionScreen } from "../screens";
 import WalletScreen from "../screens/wallet/WalletScreen";
-import { COLORS } from "../constants";
-import { ROUTES } from "../constants";
+import { COLORS, ROUTES } from "../constants";
 
 const Stack = createStackNavigator();
 
