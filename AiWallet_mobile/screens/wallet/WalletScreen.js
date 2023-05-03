@@ -6,11 +6,11 @@ import {
     AddWalletButton,
     TransactionCard,
 } from "../../components";
-import { IMAGES } from "../../constants";
+import { IMAGES, ROUTES } from "../../constants";
 
 import { getWalletSummary, getAllTransactions } from "../../api/api";
 
-const WalletScreen = ({ route }) => {
+const WalletScreen = ({ route, navigation }) => {
     const { walletId } = route.params;
     const [wallet, setWallet] = useState(null);
     const [transactions, setTransactions] = useState([]);
@@ -50,7 +50,14 @@ const WalletScreen = ({ route }) => {
                     />
                 )}
             </View>
-            <AddWalletButton buttonText="Add Transaction" />
+            <AddWalletButton
+                buttonText="Add Transaction"
+                onPress={() =>
+                    navigation.navigate(ROUTES.TRANSACTION_SCREEN, {
+                        mode: "create",
+                    })
+                }
+            />
 
             <FlatList
                 style={styles.flatList}
