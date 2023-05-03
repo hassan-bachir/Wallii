@@ -5,7 +5,6 @@ import {
     WalletCard,
     AddWalletButton,
     TransactionCard,
-    TransactionModal,
 } from "../../components";
 import { IMAGES } from "../../constants";
 
@@ -15,8 +14,6 @@ const WalletScreen = ({ route }) => {
     const { walletId } = route.params;
     const [wallet, setWallet] = useState(null);
     const [transactions, setTransactions] = useState([]);
-    const [isAddTransactionModalVisible, setIsAddTransactionModalVisible] =
-        useState(false);
 
     useEffect(() => {
         const fetchWallet = async () => {
@@ -53,14 +50,8 @@ const WalletScreen = ({ route }) => {
                     />
                 )}
             </View>
-            <AddWalletButton
-                buttonText="Add Transaction"
-                onPress={() => setIsAddTransactionModalVisible(true)}
-            />
-            <TransactionModal
-                isVisible={isAddTransactionModalVisible}
-                onClose={() => setIsAddTransactionModalVisible(false)}
-            />
+            <AddWalletButton buttonText="Add Transaction" />
+
             <FlatList
                 style={styles.flatList}
                 data={transactions}

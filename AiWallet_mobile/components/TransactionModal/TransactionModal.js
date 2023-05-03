@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import Modal from "react-native-modal";
 import { Ionicons } from "@expo/vector-icons";
 import { ButtonGroup } from "react-native-elements";
@@ -16,7 +16,7 @@ const TransactionModal = ({ isVisible, onClose }) => {
 
     return (
         <Modal isVisible={isVisible}>
-            <View style={styles.modalContainer}>
+            <SafeAreaView style={styles.modalContainer}>
                 <Ionicons
                     name="close"
                     size={24}
@@ -35,11 +35,29 @@ const TransactionModal = ({ isVisible, onClose }) => {
                     value={amount}
                     placeholder="Amount"
                 />
-            </View>
+            </SafeAreaView>
         </Modal>
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    modalContainer: {
+        flex: 1,
+        backgroundColor: "white",
+    },
+    closeIcon: {
+        alignSelf: "flex-end",
+        marginRight: 10,
+        marginTop: 10,
+    },
+    amountInput: {
+        borderWidth: 1,
+        borderColor: "gray",
+        borderRadius: 5,
+        paddingLeft: 10,
+        margin: 20,
+        height: 40,
+    },
+});
 
 export default TransactionModal;
