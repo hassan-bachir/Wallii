@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         marginBottom: SIZES.base,
         marginTop: 10,
+        borderWidth: 1,
+        borderColor: COLORS.gray,
     },
     imageContainer: {
         marginRight: SIZES.padding,
@@ -69,17 +71,19 @@ const styles = StyleSheet.create({
         marginBottom: SIZES.base,
     },
     categoryContainer: {
-        padding: SIZES.base,
-
+        paddingVertical: SIZES.base / 2, // Reduce vertical padding
+        paddingHorizontal: SIZES.base / 2, // Reduce horizontal padding
         borderRadius: SIZES.radius,
         marginBottom: SIZES.base,
-        width: 150,
         overflow: "hidden",
         alignItems: "center",
+        width: 105,
     },
     category: {
-        ...FONTS.body3,
+        ...FONTS.body5, // Change the font size to FONTS.body5
         color: COLORS.white,
+        flexWrap: "nowrap", // Prevent the text from wrapping
+        overflow: "hidden", // Hide the overflow
     },
     amount: {
         ...FONTS.h2,
