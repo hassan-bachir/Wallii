@@ -21,7 +21,7 @@ function HomeStack() {
                 component={HomeSettings}
             />
             <Stack.Screen
-                name="Wallet"
+                name={ROUTES.WALLET}
                 component={WalletScreen}
                 options={{
                     headerTintColor: COLORS.white,
