@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
         marginBottom: SIZES.base,
     },
     categoryContainer: {
-        paddingVertical: SIZES.base / 2, // Reduce vertical padding
-        paddingHorizontal: SIZES.base / 2, // Reduce horizontal padding
+        paddingVertical: SIZES.base / 2,
+        paddingHorizontal: SIZES.base / 2,
         borderRadius: SIZES.radius,
         marginBottom: SIZES.base,
         overflow: "hidden",
@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
         width: 105,
     },
     category: {
-        ...FONTS.body5, // Change the font size to FONTS.body5
+        ...FONTS.body5,
         color: COLORS.white,
-        flexWrap: "nowrap", // Prevent the text from wrapping
-        overflow: "hidden", // Hide the overflow
+        flexWrap: "nowrap",
+        overflow: "hidden",
     },
     amount: {
         ...FONTS.h2,
