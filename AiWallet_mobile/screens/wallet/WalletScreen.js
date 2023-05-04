@@ -5,8 +5,9 @@ import {
     WalletCard,
     AddWalletButton,
     TransactionCard,
+    Container,
 } from "../../components";
-import { IMAGES, ROUTES } from "../../constants";
+import { COLORS, IMAGES, ROUTES } from "../../constants";
 
 import { getWalletSummary, getAllTransactions } from "../../api/api";
 
@@ -50,15 +51,26 @@ const WalletScreen = ({ route, navigation }) => {
                     />
                 )}
             </View>
-            <AddWalletButton
-                buttonText="Add Transaction"
-                onPress={() =>
-                    navigation.navigate(ROUTES.TRANSACTION_SCREEN, {
-                        mode: "create",
-                    })
-                }
-            />
-
+            <View style={styles.ButtonsContainer}>
+                <AddWalletButton
+                    backgroundColor={COLORS.darkgreen}
+                    buttonText="Add Income"
+                    onPress={() =>
+                        navigation.navigate(ROUTES.TRANSACTION_SCREEN, {
+                            mode: "create",
+                        })
+                    }
+                />
+                <AddWalletButton
+                    backgroundColor={COLORS.red}
+                    buttonText="Add Expense"
+                    onPress={() =>
+                        navigation.navigate(ROUTES.TRANSACTION_SCREEN, {
+                            mode: "create",
+                        })
+                    }
+                />
+            </View>
             <FlatList
                 style={styles.flatList}
                 data={transactions}
@@ -76,6 +88,10 @@ const styles = StyleSheet.create({
     },
     flatList: {
         paddingHorizontal: 10,
+    },
+    ButtonsContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
     },
 });
 

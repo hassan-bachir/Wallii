@@ -6,12 +6,14 @@ export const COLORS = {
     primary: "#35BBB3", // income
     secondary: "#FF4F8E", // expense
 
+    darkgreen: "#00E36A",
     green: "#66D59A",
     lightGreen: "#E6FEF0",
 
     lime: "#00BA63",
     emerald: "#2BC978",
 
+    darkred: "#D0342A",
     red: "#FF4134",
     lightRed: "#FFF1F0",
 
