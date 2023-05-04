@@ -32,6 +32,9 @@ const AddIncome = ({ route, navigation }) => {
         setDate(currentDate.toISOString().split("T")[0]);
     };
 
+    const handleDatePress = () => {
+        setShowDatePicker(true);
+    };
     const handleSubmit = async () => {
         try {
             const transactionData = {
@@ -112,21 +115,21 @@ const AddIncome = ({ route, navigation }) => {
                             </Picker>
 
                             <Text style={styles.labelBlack}>Date:</Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={handleDatePress}>
                                 <TextInput
                                     style={styles.inputBlack}
                                     value={date}
                                     editable={false} // Disables manual editing
                                 />
                             </TouchableOpacity>
-                            {
+                            {showDatePicker && (
                                 <DateTimePicker
                                     value={new Date(date)}
                                     mode="date"
                                     display="default"
                                     onChange={handleDateChange}
                                 />
-                            }
+                            )}
 
                             <Text style={styles.labelBlack}>Description:</Text>
                             <TextInput
@@ -206,6 +209,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderColor: COLORS.gray,
         borderWidth: 1,
+        height: 40,
     },
     descriptionInput: {
         backgroundColor: COLORS.lightGray,
