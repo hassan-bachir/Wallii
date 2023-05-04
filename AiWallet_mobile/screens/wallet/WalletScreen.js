@@ -8,36 +8,32 @@ import {
     Container,
 } from "../../components";
 import { COLORS, IMAGES, ROUTES } from "../../constants";
-
+import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, getAllTransactions } from "../../api/api";
 
+// MAIN
 const WalletScreen = ({ route, navigation }) => {
     const { walletId } = route.params;
     const [wallet, setWallet] = useState(null);
     const [transactions, setTransactions] = useState([]);
 
-    useEffect(() => {
-        const fetchWallet = async () => {
-            try {
-                const fetchedWallet = await getWalletSummary(walletId);
-                setWallet(fetchedWallet);
-            } catch (error) {
-                console.error("Error fetching wallet:", error);
-            }
-        };
+    const loadData = async () => {
+        try {
+            const fetchedWallet = await getWalletSummary(walletId);
+            setWallet(fetchedWallet);
 
-        const fetchTransactions = async () => {
-            try {
-                const fetchedTransactions = await getAllTransactions(walletId);
-                setTransactions(fetchedTransactions);
-            } catch (error) {
-                console.error("Error fetching transactions:", error);
-            }
-        };
-
-        fetchWallet();
-        fetchTransactions();
-    }, [walletId]);
+            const fetchedTransactions = await getAllTransactions(walletId);
+            setTransactions(fetchedTransactions);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+    useFocusEffect(
+        React.useCallback(() => {
+            loadData();
+            return () => {}; // cleaning function (krmel el error)
+        }, [walletId])
+    );
 
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
