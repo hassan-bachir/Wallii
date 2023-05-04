@@ -104,7 +104,6 @@ const AddExpense = ({ route, navigation }) => {
                                     setCategory(itemValue)
                                 }
                             >
-                                {/* Update the Picker items with relevant expense categories */}
                                 <Picker.Item
                                     label="Select a category"
                                     value="other"
