@@ -57,7 +57,7 @@ const AddExpense = ({ route, navigation }) => {
             const transactionData = {
                 type: "expense", // Changed type to "expense"
                 category,
-                amount: parseFloat(amount),
+                amount: parseFloat(amount.replace(/,/g, "")),
                 date,
                 description,
             };

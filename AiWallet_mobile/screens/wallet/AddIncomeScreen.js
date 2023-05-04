@@ -57,7 +57,7 @@ const AddIncome = ({ route, navigation }) => {
             const transactionData = {
                 type: "income",
                 category,
-                amount: parseFloat(amount),
+                amount: parseFloat(amount.replace(/,/g, "")),
                 date,
                 description,
             };
