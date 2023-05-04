@@ -8,10 +8,15 @@ import {
     SafeAreaView,
     TouchableWithoutFeedback,
     Keyboard,
+    Alert,
 } from "react-native";
 import { Background, Container } from "../../components";
 import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
-import { getTransactionById, updateTransaction } from "../../api/api";
+import {
+    getTransactionById,
+    updateTransaction,
+    deleteTransaction,
+} from "../../api/api";
 
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -92,6 +97,31 @@ const UpdateIncome = ({ route, navigation }) => {
         } catch (error) {
             console.error("Error updating income:", error);
         }
+    };
+    const handleDelete = () => {
+        Alert.alert(
+            "Delete Income",
+            "Are you sure you want to delete this income?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel",
+                },
+                {
+                    text: "OK",
+                    onPress: async () => {
+                        try {
+                            await deleteTransaction(transactionId);
+                            navigation.goBack();
+                        } catch (error) {
+                            console.error("Error deleting transaction:", error);
+                        }
+                    },
+                },
+            ],
+            { cancelable: false }
+        );
     };
 
     return (
@@ -190,7 +220,15 @@ const UpdateIncome = ({ route, navigation }) => {
                                 disabled={!isValidAmount}
                             >
                                 <Text style={styles.submitButtonText}>
-                                    Update Income
+                                    Update Transaction
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[styles.deleteButton]}
+                                onPress={handleDelete}
+                            >
+                                <Text style={styles.deleteButtonText}>
+                                    Delete Transaction
                                 </Text>
                             </TouchableOpacity>
                         </Container>
@@ -275,6 +313,18 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     submitButtonText: {
+        ...FONTS.body3,
+        color: COLORS.white,
+    },
+    deleteButton: {
+        marginTop: 10,
+        backgroundColor: COLORS.red,
+        borderRadius: 5,
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    deleteButtonText: {
         ...FONTS.body3,
         color: COLORS.white,
     },
