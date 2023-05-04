@@ -34,7 +34,6 @@ const AddExpense = ({ route, navigation }) => {
         setDate(currentDate.toISOString().split("T")[0]);
     };
     useEffect(() => {
-        // Check if the amount is not empty and a valid number
         const amountIsValid = amount && !isNaN(parseFloat(amount));
         setIsValidAmount(amountIsValid);
     }, [amount]);
@@ -43,7 +42,7 @@ const AddExpense = ({ route, navigation }) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
     const handleAmountChange = (text) => {
-        const unformattedAmount = text.replace(/,/g, ""); // Remove any existing commas
+        const unformattedAmount = text.replace(/,/g, "");
         if (!isNaN(parseFloat(unformattedAmount)) || unformattedAmount === "") {
             const formattedAmount = formatNumberWithCommas(unformattedAmount);
             setAmount(formattedAmount);
@@ -55,7 +54,7 @@ const AddExpense = ({ route, navigation }) => {
     const handleSubmit = async () => {
         try {
             const transactionData = {
-                type: "expense", // Changed type to "expense"
+                type: "expense",
                 category,
                 amount: parseFloat(amount.replace(/,/g, "")),
                 date,
@@ -85,7 +84,6 @@ const AddExpense = ({ route, navigation }) => {
                                 />
                             </TouchableOpacity>
                             <Text style={styles.title}>Add Expense</Text>
-                            {/* Changed title */}
                         </View>
                         <Text style={styles.Amountlabel}>Amount:</Text>
                         <TextInput
@@ -142,7 +140,7 @@ const AddExpense = ({ route, navigation }) => {
                                 <TextInput
                                     style={styles.inputBlack}
                                     value={date}
-                                    editable={false} // Disables manual editing
+                                    editable={false}
                                 />
                             </TouchableOpacity>
                             {showDatePicker && (
@@ -183,7 +181,6 @@ const AddExpense = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    // Updated the styles to match the new colors and design
     Container: {
         flex: 1,
     },
