@@ -9,7 +9,10 @@ export { default as HomeSettings } from "./home/HomeSettingsScreen";
 
 export { default as Wallet } from "./wallet/WalletScreen";
 export { default as WalletSettings } from "./wallet/WalletSettingsScreen";
+
 export { default as AddIncome } from "./wallet/AddIncomeScreen";
+export { default as AddExpense } from "./wallet/AddExpenseScreen";
+
 export { default as UpdateRecord } from "./wallet/UpdateRecordScreen";
 export { default as WalletBudget } from "./wallet/WalletBudgetScreen";
 export { default as WalletStats } from "./wallet/WalletStatsScreen";

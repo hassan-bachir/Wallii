@@ -13,9 +13,8 @@ export default {
     WALLET_SETTINGS: "Wallet Settings",
 
     ADD_INCOME: "add income",
+    ADD_EXPENSE: "add expense",
 
-    // WALLET_ADD_RECORD: "Add Record",
-    // WALLET_UPDATE_RECORD: "Update Record",
     WALLET_STATS: "Wallet Stats",
     WALLET_BUDGET: "Wallet Budget",
 
