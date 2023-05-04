@@ -71,7 +71,14 @@ const WalletScreen = ({ route, navigation }) => {
                 style={styles.flatList}
                 data={transactions.slice().reverse()}
                 renderItem={({ item }) => (
-                    <TransactionCard transaction={item} />
+                    <TransactionCard
+                        transaction={item}
+                        onPress={() =>
+                            navigation.navigate(ROUTES.UPDATE_RECORD, {
+                                transactionId: item._id,
+                            })
+                        }
+                    />
                 )}
                 keyExtractor={(item) => item._id}
             />
