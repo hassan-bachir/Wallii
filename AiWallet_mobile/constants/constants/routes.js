@@ -21,6 +21,7 @@ export default {
     WALLET_STATS: "Wallet Stats",
     WALLET_BUDGET: "Wallet Budget",
 
+    BOTTOM_TAB: "bottom tab",
     AUTH: "Auth stack",
     HOME_STACK: "Home Stack",
 };
