@@ -81,6 +81,7 @@ const WalletScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
     walletCard: {
         marginHorizontal: 10,
+        marginTop: 5,
     },
     flatList: {
         paddingHorizontal: 10,
