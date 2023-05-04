@@ -6,6 +6,8 @@ import {
     TouchableOpacity,
     StyleSheet,
     SafeAreaView,
+    TouchableWithoutFeedback,
+    Keyboard,
 } from "react-native";
 import { Background, Container } from "../../components";
 import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
@@ -38,51 +40,53 @@ const AddIncome = ({ route, navigation }) => {
 
     return (
         <Background image={IMAGES.INCOME_BACKGROUND}>
-            <SafeAreaView style={styles.Container}>
-                <View style={styles.greenSection}>
-                    <Text style={styles.title}>Add Income</Text>
-                    <Text style={styles.label}>Amount:</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setAmount}
-                        value={amount}
-                        keyboardType="numeric"
-                    />
-                </View>
-                <View style={styles.whiteSection}>
-                    <Container>
-                        <Text style={styles.labelBlack}>Category:</Text>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <SafeAreaView style={styles.Container}>
+                    <View style={styles.greenSection}>
+                        <Text style={styles.title}>Add Income</Text>
+                        <Text style={styles.label}>Amount:</Text>
                         <TextInput
-                            style={styles.inputBlack}
-                            onChangeText={setCategory}
-                            value={category}
+                            style={styles.input}
+                            onChangeText={setAmount}
+                            value={amount}
+                            keyboardType="numeric"
                         />
+                    </View>
+                    <View style={styles.whiteSection}>
+                        <Container>
+                            <Text style={styles.labelBlack}>Category:</Text>
+                            <TextInput
+                                style={styles.inputBlack}
+                                onChangeText={setCategory}
+                                value={category}
+                            />
 
-                        <Text style={styles.labelBlack}>Date:</Text>
-                        <TextInput
-                            style={styles.inputBlack}
-                            onChangeText={setDate}
-                            value={date}
-                        />
+                            <Text style={styles.labelBlack}>Date:</Text>
+                            <TextInput
+                                style={styles.inputBlack}
+                                onChangeText={setDate}
+                                value={date}
+                            />
 
-                        <Text style={styles.labelBlack}>Description:</Text>
-                        <TextInput
-                            style={styles.inputBlack}
-                            onChangeText={setDescription}
-                            value={description}
-                        />
+                            <Text style={styles.labelBlack}>Description:</Text>
+                            <TextInput
+                                style={styles.inputBlack}
+                                onChangeText={setDescription}
+                                value={description}
+                            />
 
-                        <TouchableOpacity
-                            style={styles.submitButton}
-                            onPress={handleSubmit}
-                        >
-                            <Text style={styles.submitButtonText}>
-                                Add Income
-                            </Text>
-                        </TouchableOpacity>
-                    </Container>
-                </View>
-            </SafeAreaView>
+                            <TouchableOpacity
+                                style={styles.submitButton}
+                                onPress={handleSubmit}
+                            >
+                                <Text style={styles.submitButtonText}>
+                                    Add Income
+                                </Text>
+                            </TouchableOpacity>
+                        </Container>
+                    </View>
+                </SafeAreaView>
+            </TouchableWithoutFeedback>
         </Background>
     );
 };

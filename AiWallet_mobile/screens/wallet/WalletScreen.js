@@ -57,7 +57,7 @@ const WalletScreen = ({ route, navigation }) => {
                     buttonText="Add Income"
                     onPress={() =>
                         navigation.navigate(ROUTES.ADD_INCOME, {
-                            walletId: walletId, // Make sure walletId is defined and passed correctly
+                            walletId: walletId,
                         })
                     }
                 />
