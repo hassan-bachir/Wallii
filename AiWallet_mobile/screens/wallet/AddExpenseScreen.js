@@ -18,7 +18,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 
 //MAIN
-const AddIncome = ({ route, navigation }) => {
+const AddExpense = ({ route, navigation }) => {
     const { walletId } = route.params;
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);
@@ -55,7 +55,7 @@ const AddIncome = ({ route, navigation }) => {
     const handleSubmit = async () => {
         try {
             const transactionData = {
-                type: "income",
+                type: "expense", // Changed type to "expense"
                 category,
                 amount: parseFloat(amount),
                 date,
@@ -65,15 +65,15 @@ const AddIncome = ({ route, navigation }) => {
             await addTransaction(walletId, transactionData);
             navigation.goBack();
         } catch (error) {
-            console.error("Error adding income:", error);
+            console.error("Error adding expense:", error);
         }
     };
 
     return (
-        <Background image={IMAGES.INCOME_BACKGROUND}>
+        <Background image={IMAGES.EXPENSE_BACKGROUND}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <SafeAreaView style={styles.Container}>
-                    <View style={styles.greenSection}>
+                    <View style={styles.redSection}>
                         <View style={styles.header}>
                             <TouchableOpacity
                                 onPress={() => navigation.goBack()}
@@ -84,7 +84,8 @@ const AddIncome = ({ route, navigation }) => {
                                     color={COLORS.white}
                                 />
                             </TouchableOpacity>
-                            <Text style={styles.title}>Add Income</Text>
+                            <Text style={styles.title}>Add Expense</Text>
+                            {/* Changed title */}
                         </View>
                         <Text style={styles.Amountlabel}>Amount:</Text>
                         <TextInput
@@ -103,31 +104,37 @@ const AddIncome = ({ route, navigation }) => {
                                     setCategory(itemValue)
                                 }
                             >
+                                {/* Update the Picker items with relevant expense categories */}
                                 <Picker.Item
                                     label="Select a category"
                                     value="other"
                                 />
-                                <Picker.Item label="Salary" value="Salary" />
                                 <Picker.Item
-                                    label="Investments"
-                                    value="Investments"
+                                    label="Food & Dining"
+                                    value="Food & Dining"
                                 />
                                 <Picker.Item
-                                    label="Freelance"
-                                    value="Freelance"
-                                />
-                                <Picker.Item label="Gifts" value="Gifts" />
-                                <Picker.Item label="Refunds" value="Refunds" />
-                                <Picker.Item label="Rent" value="Rent" />
-                                <Picker.Item label="Savings" value="Savings" />
-                                <Picker.Item
-                                    label="Side Hustle"
-                                    value="Side Hustle"
+                                    label="Transportation"
+                                    value="Transportation"
                                 />
                                 <Picker.Item
-                                    label="Business"
-                                    value="Business"
+                                    label="Shopping"
+                                    value="Shopping"
                                 />
+                                <Picker.Item
+                                    label="Utilities"
+                                    value="Utilities"
+                                />
+                                <Picker.Item
+                                    label="Entertainment"
+                                    value="Entertainment"
+                                />
+                                <Picker.Item
+                                    label="Healthcare"
+                                    value="Healthcare"
+                                />
+                                <Picker.Item label="Travel" value="Travel" />
+                                <Picker.Item label="Housing" value="Housing" />
                                 <Picker.Item label="Other" value="Other" />
                             </Picker>
 
@@ -165,7 +172,7 @@ const AddIncome = ({ route, navigation }) => {
                                 disabled={!isValidAmount}
                             >
                                 <Text style={styles.submitButtonText}>
-                                    Add Income
+                                    Add Expense
                                 </Text>
                             </TouchableOpacity>
                         </Container>
@@ -177,31 +184,26 @@ const AddIncome = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
+    // Updated the styles to match the new colors and design
     Container: {
         flex: 1,
     },
-    greenSection: {
+    redSection: {
         height: 200,
         paddingHorizontal: 20,
         paddingTop: 20,
-        backgroundColor: COLORS.primary,
+        backgroundColor: COLORS.secondary,
         justifyContent: "space-between",
     },
     whiteSection: {
         flex: 1,
         backgroundColor: COLORS.white,
-
         paddingHorizontal: 20,
     },
     title: {
         ...FONTS.h1,
         color: COLORS.white,
         marginBottom: 20,
-    },
-    label: {
-        ...FONTS.body3,
-        color: COLORS.white,
-        marginBottom: 5,
     },
     Amountlabel: {
         ...FONTS.h3,
@@ -213,7 +215,6 @@ const styles = StyleSheet.create({
         color: COLORS.black,
         marginBottom: 5,
     },
-
     amountinput: {
         backgroundColor: COLORS.lightGray,
         borderRadius: 5,
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
         height: 80,
     },
     submitButton: {
-        backgroundColor: COLORS.darkgreen,
+        backgroundColor: COLORS.red,
         borderRadius: 5,
         padding: 10,
         justifyContent: "center",
@@ -257,7 +258,6 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.lightGray,
         borderRadius: 5,
         paddingHorizontal: 10,
-
         marginBottom: 20,
         borderColor: COLORS.gray,
         borderWidth: 1,
@@ -271,4 +271,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AddIncome;
+export default AddExpense;

@@ -60,7 +60,11 @@ const WalletScreen = ({ route, navigation }) => {
                 <AddWalletButton
                     backgroundColor={COLORS.red}
                     buttonText="Add Expense"
-                    onPress={() => navigation.navigate(ROUTES.ADD_EXPENSE)}
+                    onPress={() =>
+                        navigation.navigate(ROUTES.ADD_EXPENSE, {
+                            walletId: walletId,
+                        })
+                    }
                 />
             </View>
             <FlatList
