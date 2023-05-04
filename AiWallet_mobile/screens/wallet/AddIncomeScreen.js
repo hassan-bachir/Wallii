@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -17,11 +17,13 @@ import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 
+//MAIN
 const AddIncome = ({ route, navigation }) => {
     const { walletId } = route.params;
     const [showDatePicker, setShowDatePicker] = useState(false);
+    const [isValidAmount, setIsValidAmount] = useState(false);
 
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("other");
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
     const [description, setDescription] = useState("");
@@ -31,7 +33,22 @@ const AddIncome = ({ route, navigation }) => {
         setShowDatePicker(false);
         setDate(currentDate.toISOString().split("T")[0]);
     };
+    useEffect(() => {
+        // Check if the amount is not empty and a valid number
+        const amountIsValid = amount && !isNaN(parseFloat(amount));
+        setIsValidAmount(amountIsValid);
+    }, [amount]);
 
+    const formatNumberWithCommas = (number) => {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+    const handleAmountChange = (text) => {
+        const unformattedAmount = text.replace(/,/g, ""); // Remove any existing commas
+        if (!isNaN(parseFloat(unformattedAmount)) || unformattedAmount === "") {
+            const formattedAmount = formatNumberWithCommas(unformattedAmount);
+            setAmount(formattedAmount);
+        }
+    };
     const handleDatePress = () => {
         setShowDatePicker(true);
     };
@@ -72,7 +89,7 @@ const AddIncome = ({ route, navigation }) => {
                         <Text style={styles.Amountlabel}>Amount:</Text>
                         <TextInput
                             style={styles.amountinput}
-                            onChangeText={setAmount}
+                            onChangeText={handleAmountChange}
                             value={amount}
                             keyboardType="numeric"
                         />
@@ -88,7 +105,7 @@ const AddIncome = ({ route, navigation }) => {
                             >
                                 <Picker.Item
                                     label="Select a category"
-                                    value=""
+                                    value="other"
                                 />
                                 <Picker.Item label="Salary" value="Salary" />
                                 <Picker.Item
@@ -140,8 +157,12 @@ const AddIncome = ({ route, navigation }) => {
                             />
 
                             <TouchableOpacity
-                                style={styles.submitButton}
+                                style={[
+                                    styles.submitButton,
+                                    !isValidAmount && styles.disabledButton,
+                                ]}
                                 onPress={handleSubmit}
+                                disabled={!isValidAmount} // Disable the button if the amount is not valid
                             >
                                 <Text style={styles.submitButtonText}>
                                     Add Income
@@ -240,6 +261,13 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderColor: COLORS.gray,
         borderWidth: 1,
+    },
+    disabledButton: {
+        backgroundColor: COLORS.gray,
+        borderRadius: 5,
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
     },
 });
 
