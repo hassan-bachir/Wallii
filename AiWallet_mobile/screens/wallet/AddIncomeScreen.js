@@ -1,95 +1,120 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
     View,
     Text,
-    StyleSheet,
     TextInput,
-    SafeAreaView,
     TouchableOpacity,
+    StyleSheet,
+    SafeAreaView,
 } from "react-native";
-import { ButtonGroup } from "react-native-elements";
-import { IMAGES } from "../../constants";
-import { Ionicons } from "@expo/vector-icons";
-import { Background } from "../../components";
+import { Background, Container } from "../../components";
+import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
+import { addTransaction } from "../../api/api";
 
 const AddIncome = ({ route, navigation }) => {
-    const { mode, transactionId } = route.params;
-    const [transactionTypeIndex, setTransactionTypeIndex] = useState(0);
+    const { walletId } = route.params;
+
+    const [category, setCategory] = useState("");
     const [amount, setAmount] = useState("");
+    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+    const [description, setDescription] = useState("");
 
-    const transactionTypes = ["Expense", "Income"];
+    const handleSubmit = async () => {
+        try {
+            const transactionData = {
+                type: "income",
+                category,
+                amount: parseFloat(amount),
+                date,
+                description,
+            };
 
-    useEffect(() => {
-        if (mode === "update") {
-            // Fetch transaction details using an API and update the state
-            // For example:
-            // fetchTransactionDetails(transactionId).then((transaction) => {
-            //   setTransactionTypeIndex(transaction.type === 'Expense' ? 0 : 1);
-            //   setAmount(transaction.amount);
-            // });
-        }
-    }, [mode, transactionId]);
-
-    const updateTransactionType = (selectedIndex) => {
-        setTransactionTypeIndex(selectedIndex);
-    };
-
-    const handleSubmit = () => {
-        if (mode === "create") {
-            // Call API to create a new transaction
-        } else if (mode === "update") {
-            // Call API to update the existing transaction
+            await addTransaction(walletId, transactionData);
+            navigation.goBack();
+        } catch (error) {
+            console.error("Error adding income:", error);
         }
     };
 
     return (
         <Background image={IMAGES.INCOME_BACKGROUND}>
-            <SafeAreaView style={styles.container}>
-                <Ionicons
-                    name="arrow-back"
-                    size={32}
-                    onPress={() => navigation.goBack()}
-                    style={styles.backIcon}
-                />
-                <ButtonGroup
-                    onPress={updateTransactionType}
-                    selectedIndex={transactionTypeIndex}
-                    buttons={transactionTypes}
-                />
-                <TextInput
-                    style={styles.amountInput}
-                    keyboardType="numeric"
-                    onChangeText={setAmount}
-                    value={amount}
-                    placeholder="Amount"
-                />
-                <TouchableOpacity
-                    onPress={handleSubmit}
-                    style={styles.submitButton}
-                >
-                    <Text style={styles.submitButtonText}>Submit</Text>
-                </TouchableOpacity>
+            <SafeAreaView style={styles.Container}>
+                <Container>
+                    <Text style={styles.title}>Add Income</Text>
+
+                    <Text style={styles.label}>Category:</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setCategory}
+                        value={category}
+                    />
+
+                    <Text style={styles.label}>Amount:</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setAmount}
+                        value={amount}
+                        keyboardType="numeric"
+                    />
+
+                    <Text style={styles.label}>Date:</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setDate}
+                        value={date}
+                    />
+
+                    <Text style={styles.label}>Description:</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setDescription}
+                        value={description}
+                    />
+
+                    <TouchableOpacity
+                        style={styles.submitButton}
+                        onPress={handleSubmit}
+                    >
+                        <Text style={styles.submitButtonText}>Add Income</Text>
+                    </TouchableOpacity>
+                </Container>
             </SafeAreaView>
         </Background>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    Container: {
         flex: 1,
-        marginTop: 10,
+        paddingTop: 20,
     },
-    backIcon: {
-        margin: 10,
+    title: {
+        ...FONTS.h1,
+        color: COLORS.white,
+        marginBottom: 20,
     },
-    amountInput: {
-        // Add styles for the amount input field
+    label: {
+        ...FONTS.body3,
+        color: COLORS.white,
+        marginBottom: 5,
+    },
+    input: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 20,
     },
     submitButton: {
-        // Add styles for the submit button
+        backgroundColor: COLORS.darkgreen,
+        borderRadius: 5,
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
     },
     submitButtonText: {
-        // Add styles for the submit button text
+        ...FONTS.body3,
+        color: COLORS.white,
     },
 });
 

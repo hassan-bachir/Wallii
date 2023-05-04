@@ -55,20 +55,12 @@ const WalletScreen = ({ route, navigation }) => {
                 <AddWalletButton
                     backgroundColor={COLORS.darkgreen}
                     buttonText="Add Income"
-                    onPress={() =>
-                        navigation.navigate(ROUTES.ADD_INCOME, {
-                            mode: "create",
-                        })
-                    }
+                    onPress={() => navigation.navigate(ROUTES.ADD_INCOME)}
                 />
                 <AddWalletButton
                     backgroundColor={COLORS.red}
                     buttonText="Add Expense"
-                    onPress={() =>
-                        navigation.navigate(ROUTES.ADD_EXPENSE, {
-                            mode: "create",
-                        })
-                    }
+                    onPress={() => navigation.navigate(ROUTES.ADD_EXPENSE)}
                 />
             </View>
             <FlatList
