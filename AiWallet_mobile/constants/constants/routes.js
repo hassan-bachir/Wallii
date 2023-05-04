@@ -14,7 +14,9 @@ export default {
 
     ADD_INCOME: "add income",
     ADD_EXPENSE: "add expense",
-    UPDATE_RECORD: "update record",
+
+    UPDATE_INCOME: "update income",
+    UPDATE_EXPENSE: "update expense",
 
     WALLET_STATS: "Wallet Stats",
     WALLET_BUDGET: "Wallet Budget",
