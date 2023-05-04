@@ -34,7 +34,6 @@ const AddIncome = ({ route, navigation }) => {
         setDate(currentDate.toISOString().split("T")[0]);
     };
     useEffect(() => {
-        // Check if the amount is not empty and a valid number
         const amountIsValid = amount && !isNaN(parseFloat(amount));
         setIsValidAmount(amountIsValid);
     }, [amount]);
@@ -43,7 +42,7 @@ const AddIncome = ({ route, navigation }) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
     const handleAmountChange = (text) => {
-        const unformattedAmount = text.replace(/,/g, ""); // Remove any existing commas
+        const unformattedAmount = text.replace(/,/g, "");
         if (!isNaN(parseFloat(unformattedAmount)) || unformattedAmount === "") {
             const formattedAmount = formatNumberWithCommas(unformattedAmount);
             setAmount(formattedAmount);
@@ -136,7 +135,7 @@ const AddIncome = ({ route, navigation }) => {
                                 <TextInput
                                     style={styles.inputBlack}
                                     value={date}
-                                    editable={false} // Disables manual editing
+                                    editable={false}
                                 />
                             </TouchableOpacity>
                             {showDatePicker && (
