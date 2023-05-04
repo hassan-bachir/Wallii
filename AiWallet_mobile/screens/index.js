@@ -14,7 +14,7 @@ export { default as AddIncome } from "./wallet/AddIncomeScreen";
 export { default as AddExpense } from "./wallet/AddExpenseScreen";
 
 export { default as UpdateIncome } from "./wallet/UpdateIncomeScreen";
-export { default as UpdateExpense } from "./wallet/AddExpenseScreen";
+export { default as UpdateExpense } from "./wallet/UpdateExpenseScreen";
 
 export { default as WalletBudget } from "./wallet/WalletBudgetScreen";
 export { default as WalletStats } from "./wallet/WalletStatsScreen";

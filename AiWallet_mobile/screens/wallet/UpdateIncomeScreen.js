@@ -18,6 +18,8 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 
 //MAIN
-const UpdateIncome = ({ route, navigation }) => {};
+const UpdateIncome = ({ route, navigation }) => {
+    return <Text>INCOME</Text>;
+};
 
 export default UpdateIncome;

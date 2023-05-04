@@ -18,6 +18,8 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 
 //MAIN
-const UpdateExpense = ({ route, navigation }) => {};
+const UpdateExpense = ({ route, navigation }) => {
+    return <Text>Expense</Text>;
+};
 
 export default UpdateExpense;

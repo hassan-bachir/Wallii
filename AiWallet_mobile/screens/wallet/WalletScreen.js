@@ -74,9 +74,14 @@ const WalletScreen = ({ route, navigation }) => {
                     <TransactionCard
                         transaction={item}
                         onPress={() =>
-                            navigation.navigate(ROUTES.UPDATE_RECORD, {
-                                transactionId: item._id,
-                            })
+                            navigation.navigate(
+                                item.type === "income"
+                                    ? ROUTES.UPDATE_INCOME
+                                    : ROUTES.UPDATE_EXPENSE,
+                                {
+                                    transactionId: item._id,
+                                }
+                            )
                         }
                     />
                 )}
