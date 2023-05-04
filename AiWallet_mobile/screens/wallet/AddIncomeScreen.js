@@ -39,16 +39,8 @@ const AddIncome = ({ route, navigation }) => {
     return (
         <Background image={IMAGES.INCOME_BACKGROUND}>
             <SafeAreaView style={styles.Container}>
-                <Container>
+                <View style={styles.greenSection}>
                     <Text style={styles.title}>Add Income</Text>
-
-                    <Text style={styles.label}>Category:</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setCategory}
-                        value={category}
-                    />
-
                     <Text style={styles.label}>Amount:</Text>
                     <TextInput
                         style={styles.input}
@@ -56,28 +48,40 @@ const AddIncome = ({ route, navigation }) => {
                         value={amount}
                         keyboardType="numeric"
                     />
+                </View>
+                <View style={styles.whiteSection}>
+                    <Container>
+                        <Text style={styles.labelBlack}>Category:</Text>
+                        <TextInput
+                            style={styles.inputBlack}
+                            onChangeText={setCategory}
+                            value={category}
+                        />
 
-                    <Text style={styles.label}>Date:</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setDate}
-                        value={date}
-                    />
+                        <Text style={styles.labelBlack}>Date:</Text>
+                        <TextInput
+                            style={styles.inputBlack}
+                            onChangeText={setDate}
+                            value={date}
+                        />
 
-                    <Text style={styles.label}>Description:</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setDescription}
-                        value={description}
-                    />
+                        <Text style={styles.labelBlack}>Description:</Text>
+                        <TextInput
+                            style={styles.inputBlack}
+                            onChangeText={setDescription}
+                            value={description}
+                        />
 
-                    <TouchableOpacity
-                        style={styles.submitButton}
-                        onPress={handleSubmit}
-                    >
-                        <Text style={styles.submitButtonText}>Add Income</Text>
-                    </TouchableOpacity>
-                </Container>
+                        <TouchableOpacity
+                            style={styles.submitButton}
+                            onPress={handleSubmit}
+                        >
+                            <Text style={styles.submitButtonText}>
+                                Add Income
+                            </Text>
+                        </TouchableOpacity>
+                    </Container>
+                </View>
             </SafeAreaView>
         </Background>
     );
@@ -86,7 +90,19 @@ const AddIncome = ({ route, navigation }) => {
 const styles = StyleSheet.create({
     Container: {
         flex: 1,
+    },
+    greenSection: {
+        height: 215,
+        paddingHorizontal: 20,
         paddingTop: 20,
+    },
+    whiteSection: {
+        flex: 1,
+        backgroundColor: COLORS.white,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        paddingTop: 20,
+        paddingHorizontal: 20,
     },
     title: {
         ...FONTS.h1,
@@ -98,7 +114,19 @@ const styles = StyleSheet.create({
         color: COLORS.white,
         marginBottom: 5,
     },
+    labelBlack: {
+        ...FONTS.body3,
+        color: COLORS.black,
+        marginBottom: 5,
+    },
     input: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 20,
+    },
+    inputBlack: {
         backgroundColor: COLORS.lightGray,
         borderRadius: 5,
         paddingHorizontal: 10,
