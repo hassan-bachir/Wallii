@@ -162,7 +162,7 @@ const AddIncome = ({ route, navigation }) => {
                                     !isValidAmount && styles.disabledButton,
                                 ]}
                                 onPress={handleSubmit}
-                                disabled={!isValidAmount} // Disable the button if the amount is not valid
+                                disabled={!isValidAmount}
                             >
                                 <Text style={styles.submitButtonText}>
                                     Add Income
