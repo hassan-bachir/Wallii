@@ -13,14 +13,26 @@ import { Background, Container } from "../../components";
 import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
 import { addTransaction } from "../../api/api";
 
+import Icon from "react-native-vector-icons/Ionicons";
+import DateTimePicker from "@react-native-community/datetimepicker";
+
 const AddIncome = ({ route, navigation }) => {
     const { walletId } = route.params;
+    const [showDatePicker, setShowDatePicker] = useState(false);
 
     const [category, setCategory] = useState("");
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
     const [description, setDescription] = useState("");
 
+    const handleDateChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShowDatePicker(false);
+        setDate(currentDate.toISOString().split("T")[0]);
+    };
+    const showDatePickerInput = () => {
+        setShowDatePicker(true);
+    };
     const handleSubmit = async () => {
         try {
             const transactionData = {
@@ -43,7 +55,18 @@ const AddIncome = ({ route, navigation }) => {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <SafeAreaView style={styles.Container}>
                     <View style={styles.greenSection}>
-                        <Text style={styles.title}>Add Income</Text>
+                        <View style={styles.header}>
+                            <TouchableOpacity
+                                onPress={() => navigation.goBack()}
+                            >
+                                <Icon
+                                    name="chevron-back"
+                                    size={30}
+                                    color={COLORS.white}
+                                />
+                            </TouchableOpacity>
+                            <Text style={styles.title}>Add Income</Text>
+                        </View>
                         <Text style={styles.Amountlabel}>Amount:</Text>
                         <TextInput
                             style={styles.amountinput}
@@ -62,11 +85,21 @@ const AddIncome = ({ route, navigation }) => {
                             />
 
                             <Text style={styles.labelBlack}>Date:</Text>
-                            <TextInput
-                                style={styles.inputBlack}
-                                onChangeText={setDate}
-                                value={date}
-                            />
+                            <TouchableOpacity onPress={showDatePickerInput}>
+                                <TextInput
+                                    style={styles.inputBlack}
+                                    value={date}
+                                    editable={false} // Disables manual editing
+                                />
+                            </TouchableOpacity>
+                            {showDatePicker && (
+                                <DateTimePicker
+                                    value={new Date(date)}
+                                    mode="date"
+                                    display="default"
+                                    onChange={handleDateChange}
+                                />
+                            )}
 
                             <Text style={styles.labelBlack}>Description:</Text>
                             <TextInput
