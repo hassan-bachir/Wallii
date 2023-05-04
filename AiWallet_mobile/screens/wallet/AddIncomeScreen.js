@@ -15,6 +15,7 @@ import { addTransaction } from "../../api/api";
 
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { Picker } from "@react-native-picker/picker";
 
 const AddIncome = ({ route, navigation }) => {
     const { walletId } = route.params;
@@ -75,12 +76,40 @@ const AddIncome = ({ route, navigation }) => {
                     </View>
                     <View style={styles.whiteSection}>
                         <Container>
-                            <Text style={styles.labelBlack}>Category:</Text>
-                            <TextInput
-                                style={styles.inputBlack}
-                                onChangeText={setCategory}
-                                value={category}
-                            />
+                            <Picker
+                                style={styles.picker}
+                                selectedValue={category}
+                                onValueChange={(itemValue) =>
+                                    setCategory(itemValue)
+                                }
+                            >
+                                <Picker.Item
+                                    label="Select a category"
+                                    value=""
+                                />
+                                <Picker.Item label="Salary" value="Salary" />
+                                <Picker.Item
+                                    label="Investments"
+                                    value="Investments"
+                                />
+                                <Picker.Item
+                                    label="Freelance"
+                                    value="Freelance"
+                                />
+                                <Picker.Item label="Gifts" value="Gifts" />
+                                <Picker.Item label="Refunds" value="Refunds" />
+                                <Picker.Item label="Rent" value="Rent" />
+                                <Picker.Item label="Savings" value="Savings" />
+                                <Picker.Item
+                                    label="Side Hustle"
+                                    value="Side Hustle"
+                                />
+                                <Picker.Item
+                                    label="Business"
+                                    value="Business"
+                                />
+                                <Picker.Item label="Other" value="Other" />
+                            </Picker>
 
                             <Text style={styles.labelBlack}>Date:</Text>
                             <TouchableOpacity>
@@ -138,7 +167,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.white,
 
-        paddingTop: 20,
         paddingHorizontal: 20,
     },
     title: {
@@ -199,6 +227,15 @@ const styles = StyleSheet.create({
     submitButtonText: {
         ...FONTS.body3,
         color: COLORS.white,
+    },
+    picker: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+
+        marginBottom: 20,
+        borderColor: COLORS.gray,
+        borderWidth: 1,
     },
 });
 
