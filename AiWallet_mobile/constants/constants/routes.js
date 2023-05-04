@@ -12,7 +12,7 @@ export default {
     WALLET: "Wallet",
     WALLET_SETTINGS: "Wallet Settings",
 
-    TRANSACTION_SCREEN: "transaction screen",
+    ADD_INCOME: "add income",
 
     // WALLET_ADD_RECORD: "Add Record",
     // WALLET_UPDATE_RECORD: "Update Record",

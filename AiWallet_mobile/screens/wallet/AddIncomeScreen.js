@@ -12,7 +12,7 @@ import { IMAGES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
 import { Background } from "../../components";
 
-const TransactionScreen = ({ route, navigation }) => {
+const AddIncome = ({ route, navigation }) => {
     const { mode, transactionId } = route.params;
     const [transactionTypeIndex, setTransactionTypeIndex] = useState(0);
     const [amount, setAmount] = useState("");
@@ -93,4 +93,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TransactionScreen;
+export default AddIncome;
