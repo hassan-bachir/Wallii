@@ -9,7 +9,7 @@ const BottomTab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
     return (
-        <BottomTab.Navigator>
+        <BottomTab.Navigator initialRouteName={ROUTES.WALLET}>
             <BottomTab.Screen
                 name={ROUTES.WALLET}
                 component={WalletScreen}
@@ -18,8 +18,22 @@ const BottomTabNavigator = () => {
                 }}
             />
             <BottomTab.Screen
-                name="Other"
-                component={OtherScreen}
+                name={ROUTES.WALLET_STATS}
+                component={WalletStats}
+                options={{
+                    tabBarLabel: "Other",
+                }}
+            />
+            <BottomTab.Screen
+                name={ROUTES.WALLET_BUDGET}
+                component={WalletBudget}
+                options={{
+                    tabBarLabel: "Other",
+                }}
+            />
+            <BottomTab.Screen
+                name={ROUTES.WALLET_SETTINGS}
+                component={WalletSettings}
                 options={{
                     tabBarLabel: "Other",
                 }}
