@@ -30,9 +30,7 @@ const AddIncome = ({ route, navigation }) => {
         setShowDatePicker(false);
         setDate(currentDate.toISOString().split("T")[0]);
     };
-    const showDatePickerInput = () => {
-        setShowDatePicker(true);
-    };
+
     const handleSubmit = async () => {
         try {
             const transactionData = {
@@ -85,7 +83,7 @@ const AddIncome = ({ route, navigation }) => {
                             />
 
                             <Text style={styles.labelBlack}>Date:</Text>
-                            <TouchableOpacity onPress={showDatePickerInput}>
+                            <TouchableOpacity>
                                 <TextInput
                                     style={styles.inputBlack}
                                     value={date}
