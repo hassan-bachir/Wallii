@@ -1,5 +1,11 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, HomeSettings, AddIncome, AddExpense } from "../screens";
+import {
+    Home,
+    HomeSettings,
+    AddIncome,
+    AddExpense,
+    UpdateRecord,
+} from "../screens";
 import WalletScreen from "../screens/wallet/WalletScreen";
 import { COLORS, ROUTES } from "../constants";
 
@@ -39,6 +45,13 @@ function HomeStack() {
             <Stack.Screen
                 name={ROUTES.ADD_EXPENSE}
                 component={AddExpense}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.UPDATE_RECORD}
+                component={UpdateRecord}
                 options={{
                     headerShown: false,
                 }}
