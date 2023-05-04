@@ -92,20 +92,21 @@ const AddIncome = ({ route, navigation }) => {
                                     editable={false} // Disables manual editing
                                 />
                             </TouchableOpacity>
-                            {showDatePicker && (
+                            {
                                 <DateTimePicker
                                     value={new Date(date)}
                                     mode="date"
                                     display="default"
                                     onChange={handleDateChange}
                                 />
-                            )}
+                            }
 
                             <Text style={styles.labelBlack}>Description:</Text>
                             <TextInput
-                                style={styles.inputBlack}
+                                style={styles.descriptionInput} // Change this line
                                 onChangeText={setDescription}
                                 value={description}
+                                multiline={true} // Add this line to allow multiline input
                             />
 
                             <TouchableOpacity
@@ -162,13 +163,7 @@ const styles = StyleSheet.create({
         color: COLORS.black,
         marginBottom: 5,
     },
-    input: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-    },
+
     amountinput: {
         backgroundColor: COLORS.lightGray,
         borderRadius: 5,
@@ -183,6 +178,18 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5,
         marginBottom: 20,
+        borderColor: COLORS.gray,
+        borderWidth: 1,
+    },
+    descriptionInput: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 20,
+        borderColor: "black",
+        borderWidth: 1,
+        height: 80,
     },
     submitButton: {
         backgroundColor: COLORS.darkgreen,
