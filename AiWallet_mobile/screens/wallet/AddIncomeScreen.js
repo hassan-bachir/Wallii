@@ -103,10 +103,10 @@ const AddIncome = ({ route, navigation }) => {
 
                             <Text style={styles.labelBlack}>Description:</Text>
                             <TextInput
-                                style={styles.descriptionInput} // Change this line
+                                style={styles.descriptionInput}
                                 onChangeText={setDescription}
                                 value={description}
-                                multiline={true} // Add this line to allow multiline input
+                                multiline={true}
                             />
 
                             <TouchableOpacity
