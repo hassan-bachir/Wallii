@@ -69,7 +69,7 @@ const WalletScreen = ({ route, navigation }) => {
             </View>
             <FlatList
                 style={styles.flatList}
-                data={transactions}
+                data={transactions.slice().reverse()}
                 renderItem={({ item }) => (
                     <TransactionCard transaction={item} />
                 )}
