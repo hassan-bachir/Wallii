@@ -56,7 +56,7 @@ const WalletScreen = ({ route, navigation }) => {
                     backgroundColor={COLORS.darkgreen}
                     buttonText="Add Income"
                     onPress={() =>
-                        navigation.navigate(ROUTES.TRANSACTION_SCREEN, {
+                        navigation.navigate(ROUTES.ADD_INCOME, {
                             mode: "create",
                         })
                     }
@@ -65,7 +65,7 @@ const WalletScreen = ({ route, navigation }) => {
                     backgroundColor={COLORS.red}
                     buttonText="Add Expense"
                     onPress={() =>
-                        navigation.navigate(ROUTES.TRANSACTION_SCREEN, {
+                        navigation.navigate(ROUTES.ADD_EXPENSE, {
                             mode: "create",
                         })
                     }
