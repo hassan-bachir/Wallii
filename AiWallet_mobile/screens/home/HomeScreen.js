@@ -10,13 +10,28 @@ import {
 } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
-import { getUserWallets, getWalletSummary, addWallet } from "../../api/api";
+import {
+    getUserWallets,
+    getWalletSummary,
+    addWallet,
+    getFinancialSummary,
+} from "../../api/api";
 import { useFocusEffect } from "@react-navigation/native";
 
 export default function Home({ navigation }) {
     const [wallets, setWallets] = useState([]);
     const [isModalVisible, setModalVisible] = useState(false);
     const [newWalletName, setNewWalletName] = useState("");
+    const [financialSummary, setFinancialSummary] = useState(null);
+
+    const fetchFinancialSummaryData = useCallback(async () => {
+        try {
+            const data = await getFinancialSummary();
+            setFinancialSummary(data);
+        } catch (error) {
+            console.error("Error fetching financial summary:", error);
+        }
+    }, []);
 
     const fetchData = useCallback(async () => {
         try {
@@ -36,8 +51,9 @@ export default function Home({ navigation }) {
     useFocusEffect(
         useCallback(() => {
             fetchData();
+            fetchFinancialSummaryData();
             return () => {};
-        }, [fetchData])
+        }, [fetchData, fetchFinancialSummaryData])
     );
 
     const navigateToHomeSettings = () => {
@@ -69,7 +85,7 @@ export default function Home({ navigation }) {
                         onPress={navigateToHomeSettings}
                     />
                 </View>
-                <FinanceSummaryBanner onUpdateData={fetchData} />
+                <FinanceSummaryBanner financialSummary={financialSummary} />
                 <AddWalletButton onPress={handleAddWalletPress} />
                 <FlatList
                     data={wallets}

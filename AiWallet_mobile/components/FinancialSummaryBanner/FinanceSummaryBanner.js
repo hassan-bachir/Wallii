@@ -3,21 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { getFinancialSummary } from "../../api/api";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 
-const FinanceSummaryBanner = ({ onUpdateData }) => {
-    const [financialSummary, setFinancialSummary] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await getFinancialSummary();
-                setFinancialSummary(data);
-            } catch (error) {
-                console.error("Error fetching financial summary:", error);
-            }
-        };
-        fetchData();
-    }, []);
-
+const FinanceSummaryBanner = ({ financialSummary }) => {
     if (!financialSummary) {
         return null;
     }
