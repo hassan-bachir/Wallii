@@ -24,4 +24,6 @@ export default {
     BOTTOM_TAB: "bottom tab",
     AUTH: "Auth stack",
     HOME_STACK: "Home Stack",
+
+    WALLET_STACK: "WalletStack",
 };
