@@ -44,9 +44,9 @@ const AddIncome = ({ route, navigation }) => {
                 <SafeAreaView style={styles.Container}>
                     <View style={styles.greenSection}>
                         <Text style={styles.title}>Add Income</Text>
-                        <Text style={styles.label}>Amount:</Text>
+                        <Text style={styles.Amountlabel}>Amount:</Text>
                         <TextInput
-                            style={styles.input}
+                            style={styles.amountinput}
                             onChangeText={setAmount}
                             value={amount}
                             keyboardType="numeric"
@@ -96,15 +96,16 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     greenSection: {
-        height: 215,
+        height: 200,
         paddingHorizontal: 20,
         paddingTop: 20,
+        backgroundColor: COLORS.primary,
+        justifyContent: "space-between",
     },
     whiteSection: {
         flex: 1,
         backgroundColor: COLORS.white,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
+
         paddingTop: 20,
         paddingHorizontal: 20,
     },
@@ -115,6 +116,11 @@ const styles = StyleSheet.create({
     },
     label: {
         ...FONTS.body3,
+        color: COLORS.white,
+        marginBottom: 5,
+    },
+    Amountlabel: {
+        ...FONTS.h3,
         color: COLORS.white,
         marginBottom: 5,
     },
@@ -129,6 +135,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5,
         marginBottom: 20,
+    },
+    amountinput: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 20,
+        height: 40,
     },
     inputBlack: {
         backgroundColor: COLORS.lightGray,
