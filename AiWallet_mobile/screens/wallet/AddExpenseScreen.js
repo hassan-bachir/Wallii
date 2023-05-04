@@ -2,95 +2,273 @@ import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
-    StyleSheet,
     TextInput,
-    SafeAreaView,
     TouchableOpacity,
+    StyleSheet,
+    SafeAreaView,
+    TouchableWithoutFeedback,
+    Keyboard,
 } from "react-native";
-import { ButtonGroup } from "react-native-elements";
-import { IMAGES } from "../../constants";
-import { Ionicons } from "@expo/vector-icons";
-import { Background } from "../../components";
+import { Background, Container } from "../../components";
+import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
+import { addTransaction } from "../../api/api";
 
-const AddExpense = ({ route, navigation }) => {
-    const { mode, transactionId } = route.params;
-    const [transactionTypeIndex, setTransactionTypeIndex] = useState(0);
+import Icon from "react-native-vector-icons/Ionicons";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { Picker } from "@react-native-picker/picker";
+
+//MAIN
+const AddIncome = ({ route, navigation }) => {
+    const { walletId } = route.params;
+    const [showDatePicker, setShowDatePicker] = useState(false);
+    const [isValidAmount, setIsValidAmount] = useState(false);
+
+    const [category, setCategory] = useState("other");
     const [amount, setAmount] = useState("");
+    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+    const [description, setDescription] = useState("");
 
-    const transactionTypes = ["Expense", "Income"];
-
-    useEffect(() => {
-        if (mode === "update") {
-            // Fetch transaction details using an API and update the state
-            // For example:
-            // fetchTransactionDetails(transactionId).then((transaction) => {
-            //   setTransactionTypeIndex(transaction.type === 'Expense' ? 0 : 1);
-            //   setAmount(transaction.amount);
-            // });
-        }
-    }, [mode, transactionId]);
-
-    const updateTransactionType = (selectedIndex) => {
-        setTransactionTypeIndex(selectedIndex);
+    const handleDateChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShowDatePicker(false);
+        setDate(currentDate.toISOString().split("T")[0]);
     };
+    useEffect(() => {
+        // Check if the amount is not empty and a valid number
+        const amountIsValid = amount && !isNaN(parseFloat(amount));
+        setIsValidAmount(amountIsValid);
+    }, [amount]);
 
-    const handleSubmit = () => {
-        if (mode === "create") {
-            // Call API to create a new transaction
-        } else if (mode === "update") {
-            // Call API to update the existing transaction
+    const formatNumberWithCommas = (number) => {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+    const handleAmountChange = (text) => {
+        const unformattedAmount = text.replace(/,/g, ""); // Remove any existing commas
+        if (!isNaN(parseFloat(unformattedAmount)) || unformattedAmount === "") {
+            const formattedAmount = formatNumberWithCommas(unformattedAmount);
+            setAmount(formattedAmount);
+        }
+    };
+    const handleDatePress = () => {
+        setShowDatePicker(true);
+    };
+    const handleSubmit = async () => {
+        try {
+            const transactionData = {
+                type: "income",
+                category,
+                amount: parseFloat(amount),
+                date,
+                description,
+            };
+
+            await addTransaction(walletId, transactionData);
+            navigation.goBack();
+        } catch (error) {
+            console.error("Error adding income:", error);
         }
     };
 
     return (
         <Background image={IMAGES.INCOME_BACKGROUND}>
-            <SafeAreaView style={styles.container}>
-                <Ionicons
-                    name="arrow-back"
-                    size={32}
-                    onPress={() => navigation.goBack()}
-                    style={styles.backIcon}
-                />
-                <ButtonGroup
-                    onPress={updateTransactionType}
-                    selectedIndex={transactionTypeIndex}
-                    buttons={transactionTypes}
-                />
-                <TextInput
-                    style={styles.amountInput}
-                    keyboardType="numeric"
-                    onChangeText={setAmount}
-                    value={amount}
-                    placeholder="Amount"
-                />
-                <TouchableOpacity
-                    onPress={handleSubmit}
-                    style={styles.submitButton}
-                >
-                    <Text style={styles.submitButtonText}>Submit</Text>
-                </TouchableOpacity>
-            </SafeAreaView>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <SafeAreaView style={styles.Container}>
+                    <View style={styles.greenSection}>
+                        <View style={styles.header}>
+                            <TouchableOpacity
+                                onPress={() => navigation.goBack()}
+                            >
+                                <Icon
+                                    name="chevron-back"
+                                    size={30}
+                                    color={COLORS.white}
+                                />
+                            </TouchableOpacity>
+                            <Text style={styles.title}>Add Income</Text>
+                        </View>
+                        <Text style={styles.Amountlabel}>Amount:</Text>
+                        <TextInput
+                            style={styles.amountinput}
+                            onChangeText={handleAmountChange}
+                            value={amount}
+                            keyboardType="numeric"
+                        />
+                    </View>
+                    <View style={styles.whiteSection}>
+                        <Container>
+                            <Picker
+                                style={styles.picker}
+                                selectedValue={category}
+                                onValueChange={(itemValue) =>
+                                    setCategory(itemValue)
+                                }
+                            >
+                                <Picker.Item
+                                    label="Select a category"
+                                    value="other"
+                                />
+                                <Picker.Item label="Salary" value="Salary" />
+                                <Picker.Item
+                                    label="Investments"
+                                    value="Investments"
+                                />
+                                <Picker.Item
+                                    label="Freelance"
+                                    value="Freelance"
+                                />
+                                <Picker.Item label="Gifts" value="Gifts" />
+                                <Picker.Item label="Refunds" value="Refunds" />
+                                <Picker.Item label="Rent" value="Rent" />
+                                <Picker.Item label="Savings" value="Savings" />
+                                <Picker.Item
+                                    label="Side Hustle"
+                                    value="Side Hustle"
+                                />
+                                <Picker.Item
+                                    label="Business"
+                                    value="Business"
+                                />
+                                <Picker.Item label="Other" value="Other" />
+                            </Picker>
+
+                            <Text style={styles.labelBlack}>Date:</Text>
+                            <TouchableOpacity onPress={handleDatePress}>
+                                <TextInput
+                                    style={styles.inputBlack}
+                                    value={date}
+                                    editable={false} // Disables manual editing
+                                />
+                            </TouchableOpacity>
+                            {showDatePicker && (
+                                <DateTimePicker
+                                    value={new Date(date)}
+                                    mode="date"
+                                    display="default"
+                                    onChange={handleDateChange}
+                                />
+                            )}
+
+                            <Text style={styles.labelBlack}>Description:</Text>
+                            <TextInput
+                                style={styles.descriptionInput}
+                                onChangeText={setDescription}
+                                value={description}
+                                multiline={true}
+                            />
+
+                            <TouchableOpacity
+                                style={[
+                                    styles.submitButton,
+                                    !isValidAmount && styles.disabledButton,
+                                ]}
+                                onPress={handleSubmit}
+                                disabled={!isValidAmount}
+                            >
+                                <Text style={styles.submitButtonText}>
+                                    Add Income
+                                </Text>
+                            </TouchableOpacity>
+                        </Container>
+                    </View>
+                </SafeAreaView>
+            </TouchableWithoutFeedback>
         </Background>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    Container: {
         flex: 1,
-        marginTop: 10,
     },
-    backIcon: {
-        margin: 10,
+    greenSection: {
+        height: 200,
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        backgroundColor: COLORS.primary,
+        justifyContent: "space-between",
     },
-    amountInput: {
-        // Add styles for the amount input field
+    whiteSection: {
+        flex: 1,
+        backgroundColor: COLORS.white,
+
+        paddingHorizontal: 20,
+    },
+    title: {
+        ...FONTS.h1,
+        color: COLORS.white,
+        marginBottom: 20,
+    },
+    label: {
+        ...FONTS.body3,
+        color: COLORS.white,
+        marginBottom: 5,
+    },
+    Amountlabel: {
+        ...FONTS.h3,
+        color: COLORS.white,
+        marginBottom: 5,
+    },
+    labelBlack: {
+        ...FONTS.body3,
+        color: COLORS.black,
+        marginBottom: 5,
+    },
+
+    amountinput: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 20,
+        height: 40,
+    },
+    inputBlack: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 20,
+        borderColor: COLORS.gray,
+        borderWidth: 1,
+        height: 40,
+    },
+    descriptionInput: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginBottom: 20,
+        borderColor: "black",
+        borderWidth: 1,
+        height: 80,
     },
     submitButton: {
-        // Add styles for the submit button
+        backgroundColor: COLORS.darkgreen,
+        borderRadius: 5,
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
     },
     submitButtonText: {
-        // Add styles for the submit button text
+        ...FONTS.body3,
+        color: COLORS.white,
+    },
+    picker: {
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+
+        marginBottom: 20,
+        borderColor: COLORS.gray,
+        borderWidth: 1,
+    },
+    disabledButton: {
+        backgroundColor: COLORS.gray,
+        borderRadius: 5,
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
     },
 });
 
-export default AddExpense;
+export default AddIncome;
