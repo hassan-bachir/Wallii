@@ -16,10 +16,12 @@ import { addTransaction } from "../../api/api";
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
+import { useSelector } from "react-redux";
 
 //MAIN
 const AddIncome = ({ route, navigation }) => {
-    const { walletId } = route.params;
+    const walletId = useSelector((state) => state.wallet.currentWalletId);
+
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);
 
