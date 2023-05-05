@@ -35,12 +35,12 @@ const BottomTabNavigator = () => {
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons
-                            name="chart-bar"
+                            name="calendar"
                             color={color}
                             size={size}
                         />
                     ),
-                    tabBarLabel: "Stats",
+                    tabBarLabel: "Calender",
                 }}
             />
             <BottomTab.Screen
