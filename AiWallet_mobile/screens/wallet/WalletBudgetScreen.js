@@ -20,6 +20,12 @@ import {
 } from "../../api/api";
 import { useSelector } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import {
+    VictoryBar,
+    VictoryChart,
+    VictoryAxis,
+    VictoryTheme,
+} from "victory-native";
 
 const WalletBudget = () => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
@@ -161,6 +167,51 @@ const WalletBudget = () => {
                         <Text style={styles.buttonText}>Delete Budget</Text>
                     </TouchableOpacity>
                 </View>
+                {wallet &&
+                    !isNaN(wallet.totalExpenses) &&
+                    (budget ? !isNaN(budget.amount) : true) && (
+                        <VictoryChart
+                            theme={VictoryTheme.material}
+                            domainPadding={{ x: 50 }}
+                            style={{
+                                parent: { alignItems: "center", marginTop: 30 },
+                            }}
+                        >
+                            <VictoryAxis
+                                tickValues={[1, 2]}
+                                tickFormat={["Budget Amount", "Total Expenses"]}
+                            />
+                            <VictoryAxis
+                                dependentAxis
+                                tickFormat={(x) => `$${x}`}
+                            />
+                            <VictoryBar
+                                data={[
+                                    {
+                                        x: "Budget Amount",
+                                        y: budget ? budget.amount : 0,
+                                    },
+                                    {
+                                        x: "Total Expenses",
+                                        y: wallet.totalExpenses,
+                                    },
+                                ]}
+                                style={{
+                                    data: {
+                                        fill: ({ datum }) =>
+                                            datum.x === "Total Expenses"
+                                                ? COLORS.red
+                                                : COLORS.darkgreen,
+                                    },
+                                }}
+                                animate={{
+                                    duration: 2000,
+                                    onLoad: { duration: 1000 },
+                                }}
+                                barWidth={80}
+                            />
+                        </VictoryChart>
+                    )}
             </View>
 
             <Modal
