@@ -71,7 +71,11 @@ function HomeStack() {
                 name={ROUTES.GOALS}
                 component={Goals}
                 options={{
-                    headerShown: false,
+                    headerTitle: "Goals",
+                    headerTintColor: COLORS.white,
+                    headerStyle: {
+                        backgroundColor: COLORS.primary,
+                    },
                 }}
             />
         </Stack.Navigator>

@@ -1,19 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { Background } from "../../components";
+import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 
 const Goals = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>This is a test screen</Text>
-        </View>
+        <Background image={IMAGES.HOMEBACKGROUND}>
+            <SafeAreaView style={styles.container}>
+                <View>
+                    <Text style={styles.text}>This is a test screen</Text>
+                </View>
+            </SafeAreaView>
+        </Background>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
     },
     text: {
         fontSize: 20,

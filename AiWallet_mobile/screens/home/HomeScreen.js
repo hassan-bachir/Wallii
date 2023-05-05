@@ -70,6 +70,9 @@ export default function Home({ navigation }) {
     const navigateToHomeSettings = () => {
         navigation.navigate(ROUTES.HOME_SETTINGS);
     };
+    const navigateToGoals = () => {
+        navigation.navigate(ROUTES.GOALS);
+    };
     const handleSaveWallet = async () => {
         try {
             await addWallet({ name: newWalletName });
@@ -123,7 +126,10 @@ export default function Home({ navigation }) {
                     handleSaveWallet={handleSaveWallet}
                 />
             </SafeAreaView>
-            <TouchableOpacity style={styles.roundButton}>
+            <TouchableOpacity
+                style={styles.roundButton}
+                onPress={navigateToGoals}
+            >
                 <Text style={styles.goalButton}>Add Goal </Text>
                 <Ionicons name="football" size={32} color={COLORS.white} />
             </TouchableOpacity>
