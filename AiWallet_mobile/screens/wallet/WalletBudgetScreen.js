@@ -47,12 +47,6 @@ const WalletBudget = () => {
             console.error("Error fetching data:", error);
         }
     };
-    // useFocusEffect(
-    //     React.useCallback(() => {
-    //         loadData();
-    //         return () => {};
-    //     }, [])
-    // );
 
     const handleAddBudget = async () => {
         if (
@@ -116,7 +110,7 @@ const WalletBudget = () => {
     useFocusEffect(
         React.useCallback(() => {
             loadData();
-            return () => {}; // Returning an empty cleanup function
+            return () => {};
         }, [])
     );
 
