@@ -1,45 +1,31 @@
 import React, { useState, useEffect } from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    TextInput,
-    TouchableOpacity,
-    Alert,
-} from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import {
     Background,
     WalletCard,
-    AddWalletButton,
-    TransactionCard,
     Container,
+    Button,
+    CustomTextInput,
 } from "../../components";
 import { COLORS, IMAGES, ROUTES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
-import {
-    getWallet,
-    updateWallet,
-    deleteWallet,
-    getWalletSummary,
-} from "../../api/api";
+import { getWalletSummary, updateWallet, deleteWallet } from "../../api/api";
 import { useSelector } from "react-redux";
 
 const WalletSettings = () => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const [wallet, setWallet] = useState(null);
     const [walletName, setWalletName] = useState("");
-    const [saveDisabled, setSaveDisabled] = useState(true);
+    const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
 
     const loadData = async () => {
         try {
             const fetchedWallet = await getWalletSummary(walletId);
             setWallet(fetchedWallet);
-            setWalletName(fetchedWallet.name);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
-
     useFocusEffect(
         React.useCallback(() => {
             loadData();
@@ -47,17 +33,27 @@ const WalletSettings = () => {
         }, [walletId])
     );
 
-    const handleSave = async () => {
+    useEffect(() => {
+        if (wallet) {
+            setWalletName(wallet.name);
+        }
+    }, [wallet]);
+
+    const handleWalletNameChange = (text) => {
+        setWalletName(text);
+        setIsSaveButtonDisabled(wallet.name === text || text === "");
+    };
+
+    const handleSaveButtonPress = async () => {
         try {
             await updateWallet(walletId, { name: walletName });
             loadData();
-            setSaveDisabled(true);
         } catch (error) {
-            console.error("Error updating wallet:", error);
+            console.error("Error updating wallet name:", error);
         }
     };
 
-    const handleDelete = async () => {
+    const handleDeleteButtonPress = async () => {
         Alert.alert(
             "Delete Wallet",
             "Are you sure you want to delete this wallet?",
@@ -67,18 +63,19 @@ const WalletSettings = () => {
                     style: "cancel",
                 },
                 {
-                    text: "Yes",
+                    text: "Delete",
                     onPress: async () => {
                         try {
                             await deleteWallet(walletId);
-                            // Navigate to another screen if needed
+                            // Navigate back to previous screen or update app state to remove the deleted wallet
                         } catch (error) {
                             console.error("Error deleting wallet:", error);
                         }
                     },
+                    style: "destructive",
                 },
             ],
-            { cancelable: false }
+            { cancelable: true }
         );
     };
 
@@ -91,35 +88,27 @@ const WalletSettings = () => {
                         name={wallet.name}
                         totalIncome={wallet.totalIncome}
                         totalExpenses={wallet.totalExpenses}
-                        balance={wallet.balance} // Add this line
                     />
                 )}
             </View>
             <View style={styles.container}>
-                <Text style={styles.label}>Wallet Name</Text>
-                <TextInput
-                    style={styles.input}
+                <CustomTextInput
+                    label="Change Wallet Name"
+                    placeholder="Wallet Name"
+                    onChangeText={handleWalletNameChange}
                     value={walletName}
-                    onChangeText={(text) => {
-                        setWalletName(text);
-                        setSaveDisabled(wallet && wallet.name === text);
-                    }}
                 />
-                <View style={styles.buttonsContainer}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={handleSave}
-                        disabled={saveDisabled}
-                    >
-                        <Text style={styles.buttonText}>Save</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={[styles.button, styles.deleteButton]}
-                        onPress={handleDelete}
-                    >
-                        <Text style={styles.buttonText}>Delete Wallet</Text>
-                    </TouchableOpacity>
-                </View>
+                <Button
+                    onPress={handleSaveButtonPress}
+                    title="Save"
+                    style={styles.button}
+                    disabled={isSaveButtonDisabled}
+                />
+                <Button
+                    onPress={handleDeleteButtonPress}
+                    title="Delete Wallet"
+                    style={[styles.button, { backgroundColor: COLORS.red }]}
+                />
             </View>
         </Background>
     );
@@ -131,43 +120,17 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    label: {
-        fontSize: 18,
+    text: {
+        fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 5,
-    },
-    input: {
-        width: "80%",
-        backgroundColor: "white",
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 15,
-        borderWidth: 1,
-        borderColor: COLORS.gray,
-    },
-    buttonsContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "80%",
-    },
-    button: {
-        backgroundColor: COLORS.primary,
-        borderRadius: 5,
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-        marginHorizontal: 10,
-    },
-    buttonText: {
-        color: "white",
-        fontWeight: "bold",
-    },
-    deleteButton: {
-        backgroundColor: COLORS.red,
     },
     walletCard: {
         marginHorizontal: 10,
         marginTop: 5,
+    },
+    button: {
+        width: "80%",
+        marginTop: 15,
     },
 });
 
