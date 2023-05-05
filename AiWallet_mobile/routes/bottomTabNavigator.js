@@ -23,17 +23,8 @@ const BottomTabNavigator = () => {
                 component={WalletScreen}
                 options={{
                     tabBarLabel: "Wallet",
-                    tabBarIcon: () => (
-                        <View
-                            style={{
-                                width: 30,
-                                height: 30,
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
-                        >
-                            <Ionicons name="cash" color="black" size={30} />
-                        </View>
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon name="home" color={color} size={size} />
                     ),
                 }}
             />
@@ -44,21 +35,27 @@ const BottomTabNavigator = () => {
                     tabBarIcon: ({ color, size }) => (
                         <Icon name="home" color={color} size={size} />
                     ),
-                    tabBarLabel: "Other",
+                    tabBarLabel: "Stats",
                 }}
             />
             <BottomTab.Screen
                 name={ROUTES.WALLET_BUDGET}
                 component={WalletBudget}
                 options={{
-                    tabBarLabel: "Other",
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon name="home" color={color} size={size} />
+                    ),
+                    tabBarLabel: "Budget",
                 }}
             />
             <BottomTab.Screen
                 name={ROUTES.WALLET_SETTINGS}
                 component={WalletSettings}
                 options={{
-                    tabBarLabel: "Other",
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon name="home" color={color} size={size} />
+                    ),
+                    tabBarLabel: "Settings",
                 }}
             />
         </BottomTab.Navigator>
