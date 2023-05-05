@@ -1,8 +1,8 @@
-import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native";
 import { Background } from "../../components";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
-
+import { getGoals } from "../../api/api";
 const Goals = () => {
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
