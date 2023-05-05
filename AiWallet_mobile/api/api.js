@@ -68,6 +68,11 @@ export const getFinancialSummary = () =>
 export const deleteGoal = (goalId) =>
     makeRequest("delete", `/user/goals/${goalId}`);
 
+export const getAllGoals = () => makeRequest("get", "/user/goals");
+
+export const getGoalById = (goalId) =>
+    makeRequest("get", `/user/goals/${goalId}`);
+
 //WALLET
 export const addWallet = (walletData) =>
     makeRequest("post", "/wallet", walletData);

@@ -29,4 +29,12 @@ router.post("/goals", checkToken, userController.addGoal);
 // (/user/goals/:goalId) DELETE
 router.delete("/goals/:goalId", checkToken, userController.deleteGoal);
 
+// Get all goals
+// (/user/goals) GET
+router.get("/goals", checkToken, userController.getAllGoals);
+
+// Get goal by ID
+// (/user/goals/:goalId) GET
+router.get("/goals/:goalId", checkToken, userController.getGoalById);
+
 module.exports = router;
