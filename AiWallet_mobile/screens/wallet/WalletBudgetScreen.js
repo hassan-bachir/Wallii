@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Modal,
+    TextInput,
+    Alert,
+} from "react-native";
 import { Background, WalletCard } from "../../components";
 import { COLORS, IMAGES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
@@ -9,6 +17,11 @@ import { useSelector } from "react-redux";
 const WalletBudget = () => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const [wallet, setWallet] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [budgetName, setBudgetName] = useState("");
+    const [budgetAmount, setBudgetAmount] = useState("");
+    const [budgetStartDate, setBudgetStartDate] = useState("");
+    const [budgetEndDate, setBudgetEndDate] = useState("");
 
     const loadData = async () => {
         try {
@@ -20,17 +33,30 @@ const WalletBudget = () => {
     };
 
     const handleAddBudget = async () => {
-        // Add your budget data here
+        if (
+            budgetName === "" ||
+            budgetAmount === "" ||
+            budgetStartDate === "" ||
+            budgetEndDate === ""
+        ) {
+            Alert.alert(
+                "Incomplete Information",
+                "Please fill in all the fields."
+            );
+            return;
+        }
+
         const budgetData = {
-            name: "Your Budget Name",
-            amount: 1000,
-            startDate: "2023-05-01",
-            endDate: "2023-05-31",
+            name: budgetName,
+            amount: parseFloat(budgetAmount),
+            startDate: budgetStartDate,
+            endDate: budgetEndDate,
         };
 
         try {
             await addBudget(walletId, budgetData);
             loadData();
+            setModalVisible(false);
         } catch (error) {
             console.error("Error adding budget:", error);
         }
@@ -88,7 +114,7 @@ const WalletBudget = () => {
                 <View style={styles.buttonsContainer}>
                     <TouchableOpacity
                         style={styles.addButton}
-                        onPress={handleAddBudget}
+                        onPress={() => setModalVisible(true)}
                     >
                         <Text style={styles.buttonText}>Add Budget</Text>
                     </TouchableOpacity>
@@ -100,6 +126,61 @@ const WalletBudget = () => {
                     </TouchableOpacity>
                 </View>
             </View>
+
+            <Modal
+                visible={modalVisible}
+                animationType="slide"
+                transparent={true}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Budget Name"
+                            value={budgetName}
+                            onChangeText={setBudgetName}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Amount"
+                            keyboardType="numeric"
+                            value={budgetAmount}
+                            onChangeText={setBudgetAmount}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Start Date (YYYY-MM-DD)"
+                            value={budgetStartDate}
+                            onChangeText={setBudgetStartDate}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="End Date (YYYY-MM-DD)"
+                            value={budgetEndDate}
+                            onChangeText={setBudgetEndDate}
+                        />
+
+                        <View style={styles.modalButtons}>
+                            <TouchableOpacity
+                                style={[
+                                    styles.modalButton,
+                                    styles.cancelButton,
+                                ]}
+                                onPress={() => setModalVisible(false)}
+                            >
+                                <Text style={styles.buttonText}>Cancel</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[styles.modalButton, styles.saveButton]}
+                                onPress={handleAddBudget}
+                            >
+                                <Text style={styles.buttonText}>Save</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
         </Background>
     );
 };
@@ -137,6 +218,42 @@ const styles = StyleSheet.create({
         color: COLORS.white,
         fontWeight: "bold",
         textAlign: "center",
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+    },
+    modalContent: {
+        backgroundColor: COLORS.white,
+        paddingHorizontal: 20,
+        paddingVertical: 30,
+        borderRadius: 10,
+        width: "80%",
+    },
+    input: {
+        borderBottomWidth: 1,
+        borderBottomColor: COLORS.gray,
+        marginBottom: 20,
+    },
+    modalButtons: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 30,
+    },
+    modalButton: {
+        flex: 1,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 5,
+        marginHorizontal: 5,
+    },
+    cancelButton: {
+        backgroundColor: COLORS.gray,
+    },
+    saveButton: {
+        backgroundColor: COLORS.primary,
     },
 });
 
