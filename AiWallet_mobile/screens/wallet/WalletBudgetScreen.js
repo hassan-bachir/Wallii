@@ -71,13 +71,13 @@ const WalletBudget = () => {
             <View style={styles.container}>
                 <View style={styles.buttonsContainer}>
                     <TouchableOpacity
-                        style={styles.button}
+                        style={styles.addButton}
                         onPress={handleAddBudget}
                     >
                         <Text style={styles.buttonText}>Add Budget</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={styles.button}
+                        style={styles.deleteButton}
                         onPress={handleDeleteBudget}
                     >
                         <Text style={styles.buttonText}>Delete Budget</Text>
@@ -91,8 +91,6 @@ const WalletBudget = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
     },
     walletCard: {
         marginHorizontal: 10,
@@ -101,10 +99,19 @@ const styles = StyleSheet.create({
     buttonsContainer: {
         flexDirection: "row",
         marginTop: 10,
+        marginHorizontal: 10,
     },
-    button: {
+    addButton: {
         flex: 1,
-        backgroundColor: COLORS.primary,
+        backgroundColor: COLORS.darkgreen,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 5,
+        marginHorizontal: 5,
+    },
+    deleteButton: {
+        flex: 1,
+        backgroundColor: COLORS.red,
         paddingHorizontal: 20,
         paddingVertical: 10,
         borderRadius: 5,
