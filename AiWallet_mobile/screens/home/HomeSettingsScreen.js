@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput, Alert } from "react-native";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 import { Button, Background } from "../../components";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -35,15 +35,27 @@ export default function HomeSettings({ navigation }) {
     };
 
     const handleSignOut = async () => {
-        try {
-            await AsyncStorage.removeItem("token");
-            navigation.reset({
-                index: 0,
-                routes: [{ name: ROUTES.AUTH }],
-            });
-        } catch (error) {
-            console.error("Error during sign out:", error);
-        }
+        Alert.alert("Confirm Sign Out", "Are you sure you want to sign out?", [
+            {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel",
+            },
+            {
+                text: "Sign Out",
+                onPress: async () => {
+                    try {
+                        await AsyncStorage.removeItem("token");
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: ROUTES.AUTH }],
+                        });
+                    } catch (error) {
+                        console.error("Error during sign out:", error);
+                    }
+                },
+            },
+        ]);
     };
     return (
         <View style={styles.container}>
