@@ -6,7 +6,14 @@ import { getAllGoals } from "../../api/api";
 
 const Goals = () => {
     const [goals, setGoals] = useState([]);
+    const [isModalVisible, setModalVisible] = useState(false);
 
+    const handleAddGoalPress = () => {
+        setModalVisible(true);
+    };
+    const handleSaveGoal = (goalData) => {
+        console.log("Goal saved:", goalData);
+    };
     useEffect(() => {
         const fetchGoals = async () => {
             try {
@@ -26,7 +33,10 @@ const Goals = () => {
                 <Text style={styles.title}>
                     Goals to Help AI Advisor in Decisions!
                 </Text>
-                <AddWalletButton buttonText="Add Goal +" />
+                <AddWalletButton
+                    buttonText="Add Goal +"
+                    onPress={handleAddGoalPress}
+                />
                 <FlatList
                     data={goals}
                     renderItem={({ item }) => (
@@ -44,6 +54,11 @@ const Goals = () => {
                     )}
                     keyExtractor={(item) => item._id}
                     contentContainerStyle={styles.flatListContent}
+                />
+                <AddGoalModal
+                    visible={isModalVisible}
+                    setModalVisible={setModalVisible}
+                    handleSaveGoal={handleSaveGoal}
                 />
             </SafeAreaView>
         </Background>

@@ -10,7 +10,7 @@ import {
 import { COLORS, FONTS, SIZES } from "../../constants";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-const AddGoalModal = ({ isModalVisible, setModalVisible, handleSaveGoal }) => {
+const AddGoalModal = ({ visible, setModalVisible, handleSaveGoal }) => {
     const [goalDescription, setGoalDescription] = useState("");
     const [goalAmount, setGoalAmount] = useState("");
     const [goalDate, setGoalDate] = useState(new Date());
@@ -42,7 +42,7 @@ const AddGoalModal = ({ isModalVisible, setModalVisible, handleSaveGoal }) => {
         <Modal
             animationType="slide"
             transparent={true}
-            visible={isModalVisible}
+            visible={visible} // Make sure to use 'visible' prop
             onRequestClose={() => {
                 setModalVisible(false);
             }}
