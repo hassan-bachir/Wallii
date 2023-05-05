@@ -85,7 +85,34 @@ const addGoal = async (req, res) => {
         res.status(500).json({ message: "Error adding goal", error });
     }
 };
+const getAllGoals = async (req, res) => {
+    try {
+        const { userId } = req;
+        const user = await User.findById(userId).select("goals");
+        res.status(200).json(user.goals);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching goals", error });
+    }
+};
 
+const getGoalById = async (req, res) => {
+    try {
+        const { userId } = req;
+        const { goalId } = req.params;
+
+        const user = await User.findById(userId).select("goals");
+        const goal = user.goals.find((goal) => goal._id.toString() === goalId);
+
+        if (!goal) {
+            res.status(404).json({ message: "Goal not found" });
+            return;
+        }
+
+        res.status(200).json(goal);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching goal", error });
+    }
+};
 const deleteGoal = async (req, res) => {
     try {
         const { userId } = req.user;
@@ -120,4 +147,6 @@ module.exports = {
     addGoal,
     deleteGoal,
     getFinancialSummary,
+    getAllGoals,
+    getGoalById,
 };
