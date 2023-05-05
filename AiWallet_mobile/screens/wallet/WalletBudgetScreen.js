@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { Background, WalletCard } from "../../components";
 import { COLORS, IMAGES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
@@ -36,13 +36,29 @@ const WalletBudget = () => {
         }
     };
 
-    const handleDeleteBudget = async () => {
-        try {
-            await deleteBudget(walletId);
-            loadData();
-        } catch (error) {
-            console.error("Error deleting budget:", error);
-        }
+    const handleDeleteBudget = () => {
+        Alert.alert(
+            "Delete Budget",
+            "Are you sure you want to delete the budget?",
+            [
+                {
+                    text: "Cancel",
+                    style: "cancel",
+                },
+                {
+                    text: "Delete",
+                    style: "destructive",
+                    onPress: async () => {
+                        try {
+                            await deleteBudget(walletId);
+                            loadData();
+                        } catch (error) {
+                            console.error("Error deleting budget:", error);
+                        }
+                    },
+                },
+            ]
+        );
     };
 
     useEffect(() => {
