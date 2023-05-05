@@ -6,7 +6,11 @@ import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, getTransactionsByDate } from "../../api/api";
 import { useSelector } from "react-redux";
 import { Calendar, Agenda } from "react-native-calendars";
+import { LogBox } from "react-native";
 
+LogBox.ignoreLogs([
+    "VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc.",
+]);
 const WalletStats = () => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const [wallet, setWallet] = useState(null);
