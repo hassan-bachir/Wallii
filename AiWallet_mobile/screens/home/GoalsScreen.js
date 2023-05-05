@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native";
-import { Background, AddWalletButton } from "../../components";
+import { Background, AddWalletButton, AddGoalModal } from "../../components";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 import { getAllGoals } from "../../api/api";
 

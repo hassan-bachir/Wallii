@@ -24,6 +24,8 @@ const AddWalletModal = ({
         setModalVisible(false);
     };
 
+    const isSaveButtonDisabled = newWalletName.trim() === "";
+
     return (
         <Modal
             animationType="slide"
@@ -43,7 +45,13 @@ const AddWalletModal = ({
                     />
                     <TouchableOpacity
                         onPress={handleSaveWallet}
-                        style={styles.saveButton}
+                        style={[
+                            styles.saveButton,
+                            isSaveButtonDisabled && {
+                                backgroundColor: COLORS.gray,
+                            },
+                        ]}
+                        disabled={isSaveButtonDisabled}
                     >
                         <Text style={styles.saveButtonText}>Save</Text>
                     </TouchableOpacity>
@@ -91,7 +99,6 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         paddingHorizontal: SIZES.padding,
     },
-
     saveButton: {
         width: "90%",
         backgroundColor: COLORS.primary,
@@ -116,4 +123,5 @@ const styles = StyleSheet.create({
         color: COLORS.white,
     },
 });
+
 export default AddWalletModal;

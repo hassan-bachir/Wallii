@@ -11,6 +11,7 @@ import AddWalletModal from "./AddWalletModal/AddWalletModal";
 import TransactionCard from "./TransactionCard/TransactionCard";
 import TransactionModal from "./TransactionModal/TransactionModal";
 import CalenderItem from "./TransactionItemCal/CalenderItem";
+import AddGoalModal from "./AddGoalModal/AddGoalModal";
 export {
     Background,
     Button,
@@ -25,4 +26,5 @@ export {
     TransactionCard,
     TransactionModal,
     CalenderItem,
+    AddGoalModal,
 };
