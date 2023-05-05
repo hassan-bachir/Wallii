@@ -16,17 +16,25 @@ import {
     Button,
     CustomTextInput,
 } from "../../components";
-import { COLORS, FONTS, IMAGES, ROUTES, SIZES } from "../../constants";
-import { useFocusEffect } from "@react-navigation/native";
+import { COLORS, FONTS, IMAGES, SIZES, ROUTES } from "../../constants";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+
 import { getWalletSummary, updateWallet, deleteWallet } from "../../api/api";
 import { useSelector } from "react-redux";
 
-const WalletSettings = ({ navigation }) => {
+const WalletSettings = () => {
+    const navigation = useNavigation();
+
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const [wallet, setWallet] = useState(null);
     const [walletName, setWalletName] = useState("");
     const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
     const [isFocused, setIsFocused] = useState(false);
+
+    const navigateToHome = () => {
+        navigation.navigate(ROUTES.HOME);
+    };
+
     const handleFocus = () => {
         setIsFocused(true);
     };
@@ -83,7 +91,7 @@ const WalletSettings = ({ navigation }) => {
                     onPress: async () => {
                         try {
                             await deleteWallet(walletId);
-                            navigation.goBack();
+                            navigateToHome();
                         } catch (error) {
                             console.error("Error deleting wallet:", error);
                         }
