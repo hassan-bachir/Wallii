@@ -225,12 +225,14 @@ const WalletBudget = () => {
                         <TextInput
                             style={styles.input}
                             placeholder="Budget Name"
+                            placeholderTextColor={COLORS.black}
                             value={budgetName}
                             onChangeText={setBudgetName}
                         />
                         <TextInput
                             style={styles.input}
                             placeholder="Amount"
+                            placeholderTextColor={COLORS.black}
                             keyboardType="numeric"
                             value={budgetAmount}
                             onChangeText={setBudgetAmount}
@@ -345,6 +347,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: COLORS.gray,
         marginBottom: 20,
+        height: 40,
     },
     modalButtons: {
         flexDirection: "row",
