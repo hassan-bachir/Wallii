@@ -170,6 +170,40 @@ const getTransactionsByDate = async (req, res) => {
     }
 };
 
+const getTotalByDateRange = async (req, res) => {
+    try {
+        const { walletId } = req.params;
+        const { startDate, endDate } = req.query;
+
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+
+        const transactions = await Transaction.find({ walletId });
+
+        let totalExpenses = 0;
+        let totalIncome = 0;
+
+        transactions.forEach((transaction) => {
+            const transactionDate = transaction.date;
+
+            if (transactionDate >= start && transactionDate <= end) {
+                if (transaction.type === "expense") {
+                    totalExpenses += transaction.amount;
+                } else if (transaction.type === "income") {
+                    totalIncome += transaction.amount;
+                }
+            }
+        });
+
+        res.status(200).json({ totalExpenses, totalIncome });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching total expenses and income by date range",
+            error,
+        });
+    }
+};
+
 module.exports = {
     addTransaction,
     getAllTransactions,
@@ -178,4 +212,5 @@ module.exports = {
     deleteTransaction,
     getTotalAmountByCategory,
     getTransactionsByDate,
+    getTotalByDateRange,
 };

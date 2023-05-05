@@ -45,4 +45,12 @@ router.get(
     transactionController.getTransactionsByDate
 );
 
+// Add the new route for getTotalByDateRange
+// (/transaction/:walletId/total-by-date-range) GET
+router.get(
+    "/:walletId/total-by-date-range",
+    checkToken,
+    transactionController.getTotalByDateRange
+);
+
 module.exports = router;

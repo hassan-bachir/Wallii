@@ -113,4 +113,11 @@ export const deleteTransaction = (transactionId) =>
 export const getTransactionsByDate = (walletId) =>
     makeRequest("get", `/transaction/${walletId}/by-date`);
 
+// Total expenses and income by date range
+export const getTotalByDateRange = (walletId, startDate, endDate) =>
+    makeRequest(
+        "get",
+        `/transaction/${walletId}/total-by-date-range?startDate=${startDate}&endDate=${endDate}`
+    );
+
 export default apiClient;
