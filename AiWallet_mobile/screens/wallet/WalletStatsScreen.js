@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Background, WalletCard, Container } from "../../components";
+import { Background, WalletCard, CalenderItem } from "../../components";
 import { COLORS, IMAGES, ROUTES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, getTransactionsByDate } from "../../api/api";
 import { useSelector } from "react-redux";
-import { Calendar } from "react-native-calendars";
+import { Calendar, Agenda } from "react-native-calendars";
 
 const WalletStats = () => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const [wallet, setWallet] = useState(null);
     const [transactionsByDate, setTransactionsByDate] = useState({});
+    const [currentMonth, setCurrentMonth] = useState(new Date());
+    const handleMonthChange = (month) => {
+        setCurrentMonth(month.dateString);
+    };
 
     const loadData = async () => {
         try {
@@ -32,23 +36,13 @@ const WalletStats = () => {
         }, [walletId])
     );
 
-    const renderDayContent = ({ date, state }) => {
-        const dateString = `${date.year}-${date.month < 10 ? "0" : ""}${
-            date.month
-        }-${date.day < 10 ? "0" : ""}${date.day}`;
-        const transaction = transactionsByDate[dateString];
-
-        if (transaction) {
-            return (
-                <View>
-                    <Text>{`Income: ${transaction.income}`}</Text>
-                    <Text>{`Expense: ${transaction.expense}`}</Text>
-                </View>
-            );
-        }
-
-        return <Text />;
-    };
+    const agendaItems = Object.keys(transactionsByDate).reduce(
+        (items, date) => ({
+            ...items,
+            [date]: [transactionsByDate[date]],
+        }),
+        {}
+    );
 
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
@@ -63,17 +57,36 @@ const WalletStats = () => {
                 )}
             </View>
             <View style={styles.container}>
-                <Calendar
-                    markingType={"custom"}
-                    dayComponent={({ date, state }) =>
-                        renderDayContent({ date, state })
+                <Agenda
+                    items={agendaItems}
+                    renderItem={(item, firstItemInDay) => (
+                        <CalenderItem
+                            income={item.income}
+                            expense={item.expense}
+                        />
+                    )}
+                    rowHasChanged={(r1, r2) =>
+                        r1.income !== r2.income || r1.expense !== r2.expense
                     }
+                    selected={currentMonth}
+                    onDayPress={handleMonthChange}
+                    theme={{
+                        backgroundColor: COLORS.lightGray,
+                        calendarBackground: COLORS.lightGray,
+                        textSectionTitleColor: COLORS.primary,
+                        selectedDayBackgroundColor: COLORS.primary,
+                        selectedDayTextColor: COLORS.white,
+                        todayTextColor: COLORS.primary,
+                        dayTextColor: COLORS.black,
+                        textDisabledColor: COLORS.gray,
+                        monthTextColor: COLORS.primary,
+                        agendaKnobColor: COLORS.primary,
+                    }}
                 />
             </View>
         </Background>
     );
 };
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -81,6 +94,18 @@ const styles = StyleSheet.create({
     walletCard: {
         marginHorizontal: 10,
         marginTop: 5,
+    },
+    dayContent: {
+        alignItems: "center",
+        backgroundColor: COLORS.lightGray,
+        borderRadius: 5,
+        padding: 10,
+        marginTop: 10,
+        marginRight: 10,
+        marginLeft: 10,
+    },
+    calendarContainer: {
+        height: "100%",
     },
 });
 
