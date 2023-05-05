@@ -21,6 +21,8 @@ import { useDispatch } from "react-redux";
 import { setCurrentWalletId } from "../../store/slices/walletSlice";
 
 export default function Home({ navigation }) {
+    const dispatch = useDispatch();
+
     const [wallets, setWallets] = useState([]);
     const [isModalVisible, setModalVisible] = useState(false);
     const [newWalletName, setNewWalletName] = useState("");
@@ -98,11 +100,10 @@ export default function Home({ navigation }) {
                             name={item.name}
                             totalIncome={item.totalIncome}
                             totalExpenses={item.totalExpenses}
-                            onPress={(id) =>
-                                navigation.navigate(ROUTES.WALLET, {
-                                    walletId: id,
-                                })
-                            }
+                            onPress={(id) => {
+                                dispatch(setCurrentWalletId(id));
+                                navigation.navigate(ROUTES.WALLET);
+                            }}
                         />
                     )}
                     contentContainerStyle={styles.walletList}

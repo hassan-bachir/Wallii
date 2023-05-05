@@ -10,10 +10,13 @@ import {
 import { COLORS, IMAGES, ROUTES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, getAllTransactions } from "../../api/api";
+import { useSelector } from "react-redux";
 
 // MAIN
 const WalletScreen = ({ route, navigation }) => {
-    const { walletId } = route.params;
+    const walletId = useSelector((state) => state.wallet.currentWalletId);
+
+    // const { walletId } = route.params;
     const [wallet, setWallet] = useState(null);
     const [transactions, setTransactions] = useState([]);
 
