@@ -66,8 +66,12 @@ const readUserInfo = async (req, res) => {
 const addGoal = async (req, res) => {
     try {
         const { userId } = req;
-        const { description, targetAmount, targetDate } = req.body;
-        targetDate = new Date(targetDate);
+        const {
+            description,
+            targetAmount,
+            targetDate: targetDateString,
+        } = req.body;
+        const targetDate = new Date(targetDateString);
 
         const goal = { description, targetAmount, targetDate };
 
@@ -85,6 +89,7 @@ const addGoal = async (req, res) => {
         res.status(500).json({ message: "Error adding goal", error });
     }
 };
+
 const getAllGoals = async (req, res) => {
     try {
         const { userId } = req;
