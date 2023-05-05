@@ -48,7 +48,6 @@ const BottomTabNavigator = () => {
                 component={WalletBudget}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        // <Icon name="home" color={color} size={size} />
                         <MaterialCommunityIcons
                             name="wallet"
                             color={color}
