@@ -17,6 +17,8 @@ import {
     getFinancialSummary,
 } from "../../api/api";
 import { useFocusEffect } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { setCurrentWalletId } from "../../store/slices/walletSlice";
 
 export default function Home({ navigation }) {
     const [wallets, setWallets] = useState([]);

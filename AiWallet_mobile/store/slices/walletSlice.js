@@ -17,3 +17,8 @@ const walletSlice = createSlice({
         },
     },
 });
+
+export const { setCurrentWalletId, setCurrentTransactionId } =
+    walletSlice.actions;
+
+export default walletSlice.reducer;
