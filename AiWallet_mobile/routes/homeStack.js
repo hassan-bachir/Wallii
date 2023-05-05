@@ -46,13 +46,7 @@ function HomeStack() {
                     headerShown: false,
                 }}
             />
-            <Stack.Screen
-                name={ROUTES.ADD_EXPENSE}
-                component={AddExpense}
-                options={{
-                    headerShown: false,
-                }}
-            />
+
             <Stack.Screen
                 name={ROUTES.UPDATE_INCOME}
                 component={UpdateIncome}
