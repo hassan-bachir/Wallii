@@ -240,7 +240,7 @@ const WalletBudget = () => {
                             onPress={showStartDatePickerModal}
                         >
                             <Text>
-                                Start Date:{" "}
+                                Start Date:
                                 {budgetStartDate.toISOString().split("T")[0]}
                             </Text>
                         </TouchableOpacity>
@@ -257,7 +257,7 @@ const WalletBudget = () => {
                             onPress={showEndDatePickerModal}
                         >
                             <Text>
-                                End Date:{" "}
+                                End Date:
                                 {budgetEndDate.toISOString().split("T")[0]}
                             </Text>
                         </TouchableOpacity>
