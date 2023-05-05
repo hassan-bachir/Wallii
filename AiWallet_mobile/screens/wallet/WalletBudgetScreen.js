@@ -13,6 +13,7 @@ import { COLORS, IMAGES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, addBudget, deleteBudget } from "../../api/api";
 import { useSelector } from "react-redux";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 const WalletBudget = () => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
@@ -20,8 +21,10 @@ const WalletBudget = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [budgetName, setBudgetName] = useState("");
     const [budgetAmount, setBudgetAmount] = useState("");
-    const [budgetStartDate, setBudgetStartDate] = useState("");
-    const [budgetEndDate, setBudgetEndDate] = useState("");
+    const [budgetStartDate, setBudgetStartDate] = useState(new Date());
+    const [budgetEndDate, setBudgetEndDate] = useState(new Date());
+    const [showStartDatePicker, setShowStartDatePicker] = useState(false);
+    const [showEndDatePicker, setShowEndDatePicker] = useState(false);
 
     const loadData = async () => {
         try {
@@ -49,8 +52,8 @@ const WalletBudget = () => {
         const budgetData = {
             name: budgetName,
             amount: parseFloat(budgetAmount),
-            startDate: budgetStartDate,
-            endDate: budgetEndDate,
+            startDate: budgetStartDate.toISOString(),
+            endDate: budgetEndDate.toISOString(),
         };
 
         try {
@@ -97,6 +100,26 @@ const WalletBudget = () => {
             return () => {}; // Returning an empty cleanup function
         }, [])
     );
+
+    const showStartDatePickerModal = () => {
+        setShowStartDatePicker(true);
+    };
+
+    const showEndDatePickerModal = () => {
+        setShowEndDatePicker(true);
+    };
+
+    const handleStartDateChange = (event, selectedDate) => {
+        const currentDate = selectedDate || budgetStartDate;
+        setShowStartDatePicker(false);
+        setBudgetStartDate(currentDate);
+    };
+
+    const handleEndDateChange = (event, selectedDate) => {
+        const currentDate = selectedDate || budgetEndDate;
+        setShowEndDatePicker(false);
+        setBudgetEndDate(currentDate);
+    };
 
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
@@ -148,18 +171,40 @@ const WalletBudget = () => {
                             value={budgetAmount}
                             onChangeText={setBudgetAmount}
                         />
-                        <TextInput
+                        <TouchableOpacity
                             style={styles.input}
-                            placeholder="Start Date (YYYY-MM-DD)"
-                            value={budgetStartDate}
-                            onChangeText={setBudgetStartDate}
-                        />
-                        <TextInput
+                            onPress={showStartDatePickerModal}
+                        >
+                            <Text>
+                                Start Date:{" "}
+                                {budgetStartDate.toISOString().split("T")[0]}
+                            </Text>
+                        </TouchableOpacity>
+                        {showStartDatePicker && (
+                            <DateTimePicker
+                                value={budgetStartDate}
+                                mode="date"
+                                display="default"
+                                onChange={handleStartDateChange}
+                            />
+                        )}
+                        <TouchableOpacity
                             style={styles.input}
-                            placeholder="End Date (YYYY-MM-DD)"
-                            value={budgetEndDate}
-                            onChangeText={setBudgetEndDate}
-                        />
+                            onPress={showEndDatePickerModal}
+                        >
+                            <Text>
+                                End Date:{" "}
+                                {budgetEndDate.toISOString().split("T")[0]}
+                            </Text>
+                        </TouchableOpacity>
+                        {showEndDatePicker && (
+                            <DateTimePicker
+                                value={budgetEndDate}
+                                mode="date"
+                                display="default"
+                                onChange={handleEndDateChange}
+                            />
+                        )}
 
                         <View style={styles.modalButtons}>
                             <TouchableOpacity
