@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Alert,
+    TouchableWithoutFeedback,
+    Keyboard,
+    SafeAreaView,
+    TextInput,
+} from "react-native";
 import {
     Background,
     WalletCard,
@@ -7,16 +16,23 @@ import {
     Button,
     CustomTextInput,
 } from "../../components";
-import { COLORS, IMAGES, ROUTES } from "../../constants";
+import { COLORS, FONTS, IMAGES, ROUTES, SIZES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, updateWallet, deleteWallet } from "../../api/api";
 import { useSelector } from "react-redux";
 
-const WalletSettings = () => {
+const WalletSettings = ({ navigation }) => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const [wallet, setWallet] = useState(null);
     const [walletName, setWalletName] = useState("");
     const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
+    const [isFocused, setIsFocused] = useState(false);
+    const handleFocus = () => {
+        setIsFocused(true);
+    };
+    const handleBlur = () => {
+        setIsFocused(false);
+    };
 
     const loadData = async () => {
         try {
@@ -67,7 +83,7 @@ const WalletSettings = () => {
                     onPress: async () => {
                         try {
                             await deleteWallet(walletId);
-                            // Navigate back to previous screen or update app state to remove the deleted wallet
+                            navigation.goBack();
                         } catch (error) {
                             console.error("Error deleting wallet:", error);
                         }
@@ -81,35 +97,58 @@ const WalletSettings = () => {
 
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
-            <View style={styles.walletCard}>
-                {wallet && (
-                    <WalletCard
-                        walletId={wallet._id}
-                        name={wallet.name}
-                        totalIncome={wallet.totalIncome}
-                        totalExpenses={wallet.totalExpenses}
-                    />
-                )}
-            </View>
-            <View style={styles.container}>
-                <CustomTextInput
-                    label="Change Wallet Name"
-                    placeholder="Wallet Name"
-                    onChangeText={handleWalletNameChange}
-                    value={walletName}
-                />
-                <Button
-                    onPress={handleSaveButtonPress}
-                    title="Save"
-                    style={styles.button}
-                    disabled={isSaveButtonDisabled}
-                />
-                <Button
-                    onPress={handleDeleteButtonPress}
-                    title="Delete Wallet"
-                    style={[styles.button, { backgroundColor: COLORS.red }]}
-                />
-            </View>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <SafeAreaView style={styles.container}>
+                    <View style={styles.walletCard}>
+                        {wallet && (
+                            <WalletCard
+                                walletId={wallet._id}
+                                name={wallet.name}
+                                totalIncome={wallet.totalIncome}
+                                totalExpenses={wallet.totalExpenses}
+                            />
+                        )}
+                    </View>
+
+                    <View style={styles.formContainer}>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.labelBlack}>
+                                Change Wallet Name
+                            </Text>
+
+                            <TextInput
+                                style={[
+                                    styles.descriptionInput,
+                                    {
+                                        borderBottomColor: isFocused
+                                            ? COLORS.secondary
+                                            : COLORS.white,
+                                        borderBottomWidth: isFocused ? 2 : 1,
+                                    },
+                                ]}
+                                onChangeText={handleWalletNameChange}
+                                value={walletName}
+                                multiline={true}
+                                onFocus={handleFocus}
+                                onBlur={handleBlur}
+                            />
+                        </View>
+                        <View style={styles.buttonContainer}>
+                            <Button
+                                onPress={handleSaveButtonPress}
+                                title="Save"
+                                style={styles.saveButton}
+                                disabled={isSaveButtonDisabled}
+                            />
+                            <Button
+                                onPress={handleDeleteButtonPress}
+                                title="Delete Wallet"
+                                style={styles.deleteButton}
+                            />
+                        </View>
+                    </View>
+                </SafeAreaView>
+            </TouchableWithoutFeedback>
         </Background>
     );
 };
@@ -117,8 +156,15 @@ const WalletSettings = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        padding: 10,
+    },
+    formContainer: {
+        marginTop: 30,
+
+        margin: 10,
+
+        justifyContent: "space-between",
+        paddingTop: 20,
     },
     text: {
         fontSize: 24,
@@ -128,9 +174,27 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginTop: 5,
     },
-    button: {
-        width: "80%",
+    deleteButton: {
+        backgroundColor: COLORS.red,
         marginTop: 15,
+    },
+    labelBlack: {
+        ...FONTS.h3,
+    },
+    descriptionInput: {
+        marginVertical: SIZES.padding,
+        borderBottomColor: COLORS.white,
+        borderBottomWidth: 1,
+        height: 45,
+        color: COLORS.black,
+        ...FONTS.body1,
+        backgroundColor: "#FFF0FF",
+        borderRadius: 3,
+        width: "100%",
+    },
+    inputContainer: {
+        alignItems: "center",
+        padding: 10,
     },
 });
 
