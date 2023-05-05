@@ -113,5 +113,5 @@ const styles = StyleSheet.create({
 export default WalletStats;
 
 LogBox.ignoreLogs([
-    "VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc.",
+    `VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 36360, "dt": 75352, "prevDt": 3921}`,
 ]);

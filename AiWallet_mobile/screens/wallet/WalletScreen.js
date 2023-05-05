@@ -65,7 +65,7 @@ const WalletScreen = ({ route, navigation }) => {
                     }
                 />
                 <AddWalletButton
-                    backgroundColor={COLORS.red}
+                    backgroundColor={COLORS.secondary}
                     buttonText="Add Expense"
                     onPress={() =>
                         navigation.navigate(ROUTES.ADD_EXPENSE, {
