@@ -7,6 +7,7 @@ import WalletStats from "../screens/wallet/WalletStatsScreen";
 import WalletSettings from "../screens/wallet/WalletSettingsScreen";
 import { ROUTES } from "../constants";
 import { Ionicons } from "@expo/vector-icons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Icon from "react-native-vector-icons/FontAwesome"; // Example: using FontAwesome icons
 const BottomTab = createBottomTabNavigator();
 
@@ -33,7 +34,11 @@ const BottomTabNavigator = () => {
                 component={WalletStats}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name="home" color={color} size={size} />
+                        <MaterialCommunityIcons
+                            name="chart-bar"
+                            color={color}
+                            size={size}
+                        />
                     ),
                     tabBarLabel: "Stats",
                 }}
@@ -43,7 +48,12 @@ const BottomTabNavigator = () => {
                 component={WalletBudget}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name="home" color={color} size={size} />
+                        // <Icon name="home" color={color} size={size} />
+                        <MaterialCommunityIcons
+                            name="wallet"
+                            color={color}
+                            size={size}
+                        />
                     ),
                     tabBarLabel: "Budget",
                 }}
@@ -53,7 +63,11 @@ const BottomTabNavigator = () => {
                 component={WalletSettings}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name="home" color={color} size={size} />
+                        <MaterialCommunityIcons
+                            name="cog"
+                            color={color}
+                            size={size}
+                        />
                     ),
                     tabBarLabel: "Settings",
                 }}
