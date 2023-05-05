@@ -7,7 +7,7 @@ import WalletStats from "../screens/wallet/WalletStatsScreen";
 import WalletSettings from "../screens/wallet/WalletSettingsScreen";
 import { ROUTES } from "../constants";
 import { Ionicons } from "@expo/vector-icons";
-
+import Icon from "react-native-vector-icons/FontAwesome"; // Example: using FontAwesome icons
 const BottomTab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -41,6 +41,9 @@ const BottomTabNavigator = () => {
                 name={ROUTES.WALLET_STATS}
                 component={WalletStats}
                 options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon name="home" color={color} size={size} />
+                    ),
                     tabBarLabel: "Other",
                 }}
             />
