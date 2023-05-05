@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
         height: 45,
         color: COLORS.black,
         ...FONTS.body1,
-        backgroundColor: "#FFF0FF",
+        backgroundColor: "#B2FFFA",
         borderRadius: 3,
         width: "100%",
     },
