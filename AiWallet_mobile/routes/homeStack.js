@@ -9,6 +9,7 @@ import {
 } from "../screens";
 import WalletScreen from "../screens/wallet/WalletScreen";
 import { COLORS, ROUTES } from "../constants";
+import BottomTabNavigator from "./bottomTabNavigator";
 
 const Stack = createStackNavigator();
 
@@ -27,9 +28,10 @@ function HomeStack() {
                 component={HomeSettings}
             />
             <Stack.Screen
-                name={ROUTES.WALLET}
-                component={WalletScreen}
+                name={ROUTES.BOTTOM_TAB}
+                component={BottomTabNavigator}
                 options={{
+                    headerTitle: "Wallet",
                     headerTintColor: COLORS.white,
                     headerStyle: {
                         backgroundColor: COLORS.primary,

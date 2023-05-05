@@ -102,7 +102,7 @@ export default function Home({ navigation }) {
                             totalExpenses={item.totalExpenses}
                             onPress={(id) => {
                                 dispatch(setCurrentWalletId(id));
-                                navigation.navigate(ROUTES.WALLET);
+                                navigation.navigate(ROUTES.BOTTOM_TAB);
                             }}
                         />
                     )}
