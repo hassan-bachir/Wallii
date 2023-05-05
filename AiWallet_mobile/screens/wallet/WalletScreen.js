@@ -12,8 +12,13 @@ import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, getAllTransactions } from "../../api/api";
 import { useSelector } from "react-redux";
 
+import { useDispatch } from "react-redux";
+import { setCurrentTransactionId } from "../../store/slices/walletSlice";
+
 // MAIN
 const WalletScreen = ({ route, navigation }) => {
+    const dispatch = useDispatch();
+
     const walletId = useSelector((state) => state.wallet.currentWalletId);
 
     // const { walletId } = route.params;
@@ -76,16 +81,14 @@ const WalletScreen = ({ route, navigation }) => {
                 renderItem={({ item }) => (
                     <TransactionCard
                         transaction={item}
-                        onPress={() =>
+                        onPress={() => {
+                            dispatch(setCurrentTransactionId(item._id));
                             navigation.navigate(
                                 item.type === "income"
                                     ? ROUTES.UPDATE_INCOME
-                                    : ROUTES.UPDATE_EXPENSE,
-                                {
-                                    transactionId: item._id,
-                                }
-                            )
-                        }
+                                    : ROUTES.UPDATE_EXPENSE
+                            );
+                        }}
                     />
                 )}
                 keyExtractor={(item) => item._id}

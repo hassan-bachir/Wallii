@@ -21,10 +21,15 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
+import { useSelector } from "react-redux";
 
 //MAIN
 const UpdateIncome = ({ route, navigation }) => {
-    const { transactionId } = route.params;
+    const transactionId = useSelector(
+        (state) => state.wallet.currentTransactionId
+    );
+
+    // const { transactionId } = route.params;
     const [transaction, setTransaction] = useState(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);
@@ -138,7 +143,7 @@ const UpdateIncome = ({ route, navigation }) => {
                                     color={COLORS.white}
                                 />
                             </TouchableOpacity>
-                            <Text style={styles.title}>Update Income</Text>
+                            <Text style={styles.title}>Update Expense</Text>
                         </View>
                         <Text style={styles.Amountlabel}>Amount:</Text>
                         <TextInput
