@@ -28,7 +28,6 @@ const UpdateIncome = ({ route, navigation }) => {
     const transactionId = useSelector(
         (state) => state.wallet.currentTransactionId
     );
-    //const { transactionId } = route.params;
     const [transaction, setTransaction] = useState(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);

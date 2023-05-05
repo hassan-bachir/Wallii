@@ -21,7 +21,6 @@ const WalletScreen = ({ route, navigation }) => {
 
     const walletId = useSelector((state) => state.wallet.currentWalletId);
 
-    // const { walletId } = route.params;
     const [wallet, setWallet] = useState(null);
     const [transactions, setTransactions] = useState([]);
 
