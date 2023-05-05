@@ -6,6 +6,7 @@ import {
     AddExpense,
     UpdateIncome,
     UpdateExpense,
+    Goals,
 } from "../screens";
 import WalletScreen from "../screens/wallet/WalletScreen";
 import { COLORS, ROUTES } from "../constants";
@@ -62,6 +63,13 @@ function HomeStack() {
             <Stack.Screen
                 name={ROUTES.UPDATE_EXPENSE}
                 component={UpdateExpense}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.GOALS}
+                component={Goals}
                 options={{
                     headerShown: false,
                 }}

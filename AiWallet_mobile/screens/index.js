@@ -6,6 +6,7 @@ export { default as Register } from "./auth/Register/RegisterScreen";
 
 export { default as Home } from "./home/HomeScreen";
 export { default as HomeSettings } from "./home/HomeSettingsScreen";
+export { default as Goals } from "./home/GoalsScreen";
 
 export { default as Wallet } from "./wallet/WalletScreen";
 export { default as WalletSettings } from "./wallet/WalletSettingsScreen";

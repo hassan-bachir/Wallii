@@ -1,5 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { StyleSheet, View, Text, SafeAreaView, FlatList } from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    SafeAreaView,
+    FlatList,
+    TouchableOpacity,
+} from "react-native";
 import {
     Button,
     Background,
@@ -116,6 +123,10 @@ export default function Home({ navigation }) {
                     handleSaveWallet={handleSaveWallet}
                 />
             </SafeAreaView>
+            <TouchableOpacity style={styles.roundButton}>
+                <Text style={styles.goalButton}>Add Goal </Text>
+                <Ionicons name="football" size={32} color={COLORS.white} />
+            </TouchableOpacity>
         </Background>
     );
 }
@@ -141,5 +152,21 @@ const styles = StyleSheet.create({
     walletList: {
         paddingHorizontal: SIZES.padding,
         paddingTop: SIZES.base,
+    },
+    roundButton: {
+        flexDirection: "row",
+        position: "absolute",
+        bottom: 70,
+        left: 20,
+        borderRadius: 50,
+        backgroundColor: COLORS.primary,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 10,
+    },
+
+    goalButton: {
+        ...FONTS.h4,
+        color: COLORS.white,
     },
 });

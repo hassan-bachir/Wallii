@@ -8,6 +8,7 @@ export default {
 
     HOME: "Home",
     HOME_SETTINGS: "Home Settings",
+    GOALS: "goals screen",
 
     WALLET: "Wallet",
     WALLET_SETTINGS: "Wallet Settings",
