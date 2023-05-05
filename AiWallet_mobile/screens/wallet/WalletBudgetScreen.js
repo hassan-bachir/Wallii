@@ -11,7 +11,12 @@ import {
 import { Background, WalletCard } from "../../components";
 import { COLORS, IMAGES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
-import { getWalletSummary, addBudget, deleteBudget } from "../../api/api";
+import {
+    getWalletSummary,
+    addBudget,
+    deleteBudget,
+    getWallet,
+} from "../../api/api";
 import { useSelector } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
@@ -25,15 +30,29 @@ const WalletBudget = () => {
     const [budgetEndDate, setBudgetEndDate] = useState(new Date());
     const [showStartDatePicker, setShowStartDatePicker] = useState(false);
     const [showEndDatePicker, setShowEndDatePicker] = useState(false);
+    const [budget, setBudget] = useState(null);
 
     const loadData = async () => {
         try {
+            const Wallet = await getWallet(walletId);
+            setWallet(Wallet);
+
+            if (Wallet.budget) {
+                setBudget(Wallet.budget);
+            }
+
             const fetchedWallet = await getWalletSummary(walletId);
             setWallet(fetchedWallet);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         loadData();
+    //         return () => {};
+    //     }, [])
+    // );
 
     const handleAddBudget = async () => {
         if (
