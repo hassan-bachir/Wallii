@@ -77,7 +77,6 @@ export default function AiAdvisor() {
                 expenseData: newExpenseData,
             });
 
-            // Update the aiAdvice state with the response
             setAiAdvice({
                 decision: response.decision,
                 explanation: response.explanation,
