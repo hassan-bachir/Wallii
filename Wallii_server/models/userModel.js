@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
 
     googleId: String,
     aiAdvisorName: String,
-
+    basicSalary: Number,
     goals: [goalSchema],
     wallets: [
         {
