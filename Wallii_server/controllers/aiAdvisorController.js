@@ -4,19 +4,6 @@ const getAdvice = async (req, res) => {
     const { aiAdvisorName, goals, walletSummary, budget, expenseData } =
         req.body;
 
-    // const inputText = `
-    // Impersonate as: ${aiAdvisorName || "a financial advisor"}
-    // User Goals: ${JSON.stringify(goals)}
-    // Wallet Summary: ${JSON.stringify(walletSummary)}
-    // Budget: ${JSON.stringify(budget)}
-    // New Expense: ${JSON.stringify(expenseData)}
-
-    // Taking into consideration the user's goals, wallet summary, budget,
-    // and the new expense they want to make, should the user proceed with the transaction?
-    // If not, provide a brief explanation. Start your response with either "approve" or "disapprove"
-    // followed by "|||" and limit your explanation to a maximum of 90 words.
-
-    // `;
     const inputText = `
 Impersonate as: ${aiAdvisorName || "a financial advisor"}
 ---
