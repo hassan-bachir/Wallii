@@ -72,10 +72,7 @@ export default function HomeSettings({ navigation }) {
             },
         ]);
     };
-    const handleBasicSalaryChange = (text) => {
-        const floatValue = parseFloat(text);
-        setBasicSalary(floatValue);
-    };
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>

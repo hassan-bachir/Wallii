@@ -33,7 +33,7 @@ ${JSON.stringify(expenseData, null, 2)}
 Taking into consideration the user's monthly Salary, total income and total Expenses in the wallet summary,goals, budget, 
 and the new expense they want to make, should the user proceed with the new expense or no?
 If yes, give the user a financial advise or a qoute about living your life to the fullest,
-If not, provide a brief explanation.Always Start your response with either " approve " or " disapprove "
+If not, provide a brief explanation.Always Start your response with either " Approve " or " Disapprove "
 followed by "|||" and limit your explanation to a maximum of 60 words,and talk directly to the user.
 `;
 

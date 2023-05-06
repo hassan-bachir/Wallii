@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
-import { Background } from "../../components";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { Background, Button } from "../../components";
 import { COLORS, SIZES, IMAGES, FONTS } from "../../constants";
 import {
     getUserInfo,
@@ -90,21 +90,47 @@ export default function AiAdvisor() {
     };
 
     return (
-        <Background image={IMAGES.SECONDARY_BACKGROUND}>
+        <Background image={IMAGES.EXPENSE_BACKGROUND}>
             <View style={styles.container}>
-                <Text style={styles.title}>{aiAdvisorName}'s Advice:</Text>
-                <Text style={styles.subtitle}>
-                    This is a simple screen component
-                </Text>
-                <View style={styles.content}>
-                    <Button title="Get AI Advice" onPress={requestAiAdvice} />
+                <View>
+                    <Text style={styles.title}>{aiAdvisorName}'s Advice</Text>
+                    <Text style={styles.subtitle}>
+                        Take control of your financial life!
+                    </Text>
                 </View>
-                <Text style={styles.adviceDecision}>
-                    Decision: {aiAdvice.decision}
-                </Text>
-                <Text style={styles.adviceExplanation}>
-                    Explanation: {aiAdvice.explanation}
-                </Text>
+                <View>
+                    <View
+                        style={[
+                            styles.adviceCard,
+                            {
+                                backgroundColor:
+                                    aiAdvice.decision === "Disapprove"
+                                        ? COLORS.red
+                                        : COLORS.primary,
+                            },
+                        ]}
+                    >
+                        <Text style={styles.adviceCardText}>
+                            {aiAdvice.decision === "Disapprove"
+                                ? "Bad Idea!"
+                                : "Go Ahead!"}
+                        </Text>
+                    </View>
+
+                    <View style={styles.adviceExplanationContainer}>
+                        <Text style={styles.adviceExplanation}>
+                            {aiAdvice.explanation}
+                        </Text>
+                    </View>
+                </View>
+                <View style={styles.content}>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={requestAiAdvice}
+                    >
+                        <Text style={styles.buttonText}>Get AI Advice</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </Background>
     );
@@ -113,42 +139,58 @@ export default function AiAdvisor() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-
         padding: SIZES.padding,
+        textAlign: "center",
+        justifyContent: "space-between",
     },
     title: {
         ...FONTS.h1,
+        marginTop: 30,
+        marginBottom: SIZES.base,
+        textAlign: "center",
         color: COLORS.white,
     },
     subtitle: {
-        fontSize: SIZES.h3,
+        ...FONTS.h3,
+        textAlign: "center",
         color: COLORS.white,
-        marginBottom: SIZES.padding,
+    },
+    adviceCard: {
+        backgroundColor: COLORS.primary,
+        borderRadius: 10,
+        padding: SIZES.padding,
+        marginBottom: SIZES.base,
+    },
+    adviceCardText: {
+        ...FONTS.body2,
+        color: COLORS.white,
+        textAlign: "center",
+    },
+    adviceExplanationContainer: {
+        backgroundColor: COLORS.primary,
+        borderRadius: SIZES.radius,
+        padding: SIZES.padding,
+        marginBottom: SIZES.base,
+    },
+    adviceExplanation: {
+        ...FONTS.body2,
+        textAlign: "center",
+        color: COLORS.white,
     },
     content: {
         alignItems: "center",
-        justifyContent: "center",
-        borderWidth: 1,
-        borderColor: COLORS.gray,
+    },
+    button: {
+        backgroundColor: COLORS.primary,
+        paddingHorizontal: SIZES.padding,
+        paddingVertical: SIZES.base,
         borderRadius: SIZES.radius,
-        padding: SIZES.padding * 2,
+        width: "80%",
+        alignItems: "center",
+        marginBottom: 100,
     },
-    text: {
-        fontSize: SIZES.body3,
-        color: COLORS.black,
-        textAlign: "center",
-    },
-    adviceDecision: {
-        ...FONTS.h2,
-        color: COLORS.black,
-        marginTop: SIZES.padding,
-        textAlign: "center",
-    },
-    adviceExplanation: {
-        ...FONTS.body3,
-        color: COLORS.black,
-        marginTop: SIZES.padding,
-        textAlign: "center",
+    buttonText: {
+        ...FONTS.body2,
+        color: COLORS.white,
     },
 });
