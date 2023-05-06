@@ -16,6 +16,9 @@ app.use("/wallet", walletRoutes);
 const transactionRoutes = require("./routes/transaction.routes");
 app.use("/transaction", transactionRoutes);
 
+const aiRoutes = require("./routes/ai.routes");
+app.use("/ai", aiRoutes);
+
 app.listen(process.env.PORT, (err) => {
     if (err) console.error(err);
     console.log("sever is running on port", process.env.PORT);
