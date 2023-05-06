@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 import { Background } from "../../components";
 import { COLORS, SIZES, IMAGES, FONTS } from "../../constants";
 import {
@@ -7,10 +7,13 @@ import {
     getWalletSummary,
     getAllGoals,
     getWallet,
+    getAiAdvice,
 } from "../../api/api";
 import { useSelector } from "react-redux";
 
 export default function AiAdvisor() {
+    const [aiAdvice, setAiAdvice] = useState({ decision: "", explanation: "" });
+
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const newExpenseData = useSelector((state) => state.expense);
 
@@ -64,11 +67,25 @@ export default function AiAdvisor() {
         fetchWalletSummary();
     }, []);
 
-    console.log("aiAdvisorName:", aiAdvisorName);
-    console.log("goals:", goals);
-    console.log("wallet summary:", walletSummary);
-    console.log("Budget:", budget);
-    console.log("Expense Data:", newExpenseData);
+    const requestAiAdvice = async () => {
+        try {
+            const response = await getAiAdvice({
+                aiAdvisorName,
+                goals,
+                walletSummary,
+                budget,
+                expenseData: newExpenseData,
+            });
+
+            // Update the aiAdvice state with the response
+            setAiAdvice({
+                decision: response.decision,
+                explanation: response.explanation,
+            });
+        } catch (error) {
+            console.error("Error getting AI advice:", error);
+        }
+    };
 
     return (
         <Background image={IMAGES.SECONDARY_BACKGROUND}>
@@ -78,10 +95,14 @@ export default function AiAdvisor() {
                     This is a simple screen component
                 </Text>
                 <View style={styles.content}>
-                    <Text style={styles.text}>
-                        You can put any content you want here!
-                    </Text>
+                    <Button title="Get AI Advice" onPress={requestAiAdvice} />
                 </View>
+                <Text style={styles.adviceDecision}>
+                    Decision: {aiAdvice.decision}
+                </Text>
+                <Text style={styles.adviceExplanation}>
+                    Explanation: {aiAdvice.explanation}
+                </Text>
             </View>
         </Background>
     );
@@ -114,6 +135,18 @@ const styles = StyleSheet.create({
     text: {
         fontSize: SIZES.body3,
         color: COLORS.black,
+        textAlign: "center",
+    },
+    adviceDecision: {
+        ...FONTS.h2,
+        color: COLORS.black,
+        marginTop: SIZES.padding,
+        textAlign: "center",
+    },
+    adviceExplanation: {
+        ...FONTS.body3,
+        color: COLORS.black,
+        marginTop: SIZES.padding,
         textAlign: "center",
     },
 });
