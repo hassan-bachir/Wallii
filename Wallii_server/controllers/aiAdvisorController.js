@@ -36,7 +36,7 @@ ${JSON.stringify(expenseData, null, 2)}
 Taking into consideration the user's goals, wallet summary, budget, 
 and the new expense they want to make, should the user proceed with the transaction?
 If not, provide a brief explanation. Start your response with either " approve " or " disapprove "
-followed by "|||" and limit your explanation to a maximum of 80 words,and talk directly to the user.
+followed by "|||" and limit your explanation to a maximum of 60 words,and talk directly to the user.
 `;
 
     try {

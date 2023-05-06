@@ -26,11 +26,8 @@ const getAIAdvice = async (inputText) => {
                 return value;
             };
         };
-        const decision = JSON.stringify(
-            response.data.choices[0].text.trim(),
-            getCircularReplacer(),
-            2
-        );
+        const decision = response.data.choices[0].text.trim();
+
         console.log("API Response:", decision);
         return decision;
     } catch (error) {
