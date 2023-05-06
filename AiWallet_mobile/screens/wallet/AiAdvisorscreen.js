@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Background } from "../../components";
 import { COLORS, SIZES, IMAGES, FONTS } from "../../constants";
-
+import { getUserInfo } from "../../api/api";
 export default function AiAdvisor() {
+    const [aiAdvisorName, setAiAdvisorName] = useState("");
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const userInfo = await getUserInfo();
+                setAiAdvisorName(userInfo.aiAdvisorName || "Advisor");
+            } catch (error) {
+                console.error("Error fetching user info:", error);
+            }
+        };
+        fetchUserInfo();
+    }, []);
     return (
         <Background image={IMAGES.SECONDARY_BACKGROUND}>
             <View style={styles.container}>
-                <Text style={styles.title}>Hello, World!</Text>
+                <Text style={styles.title}>{aiAdvisorName}'s Advice:</Text>
                 <Text style={styles.subtitle}>
                     This is a simple screen component
                 </Text>
@@ -34,7 +46,7 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize: SIZES.h3,
-        color: COLORS.secondary,
+        color: COLORS.white,
         marginBottom: SIZES.padding,
     },
     content: {
