@@ -15,6 +15,7 @@ export default {
 
     ADD_INCOME: "add income",
     ADD_EXPENSE: "add expense",
+    AI_ADVISOR: "Ai Advisor",
 
     UPDATE_INCOME: "update income",
     UPDATE_EXPENSE: "update expense",

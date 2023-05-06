@@ -18,3 +18,5 @@ export { default as AddExpense } from "./wallet/AddExpenseScreen";
 
 export { default as UpdateIncome } from "./wallet/UpdateIncomeScreen";
 export { default as UpdateExpense } from "./wallet/UpdateExpenseScreen";
+
+export { default as AiAdvisor } from "./wallet/AiAdvisorscreen";

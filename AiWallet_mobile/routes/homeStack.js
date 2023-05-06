@@ -7,6 +7,7 @@ import {
     UpdateIncome,
     UpdateExpense,
     Goals,
+    AiAdvisor,
 } from "../screens";
 import WalletScreen from "../screens/wallet/WalletScreen";
 import { COLORS, ROUTES } from "../constants";
@@ -53,7 +54,13 @@ function HomeStack() {
                     headerShown: false,
                 }}
             />
-
+            <Stack.Screen
+                name={ROUTES.AI_ADVISOR}
+                component={AiAdvisor}
+                options={{
+                    headerShown: false,
+                }}
+            />
             <Stack.Screen
                 name={ROUTES.UPDATE_INCOME}
                 component={UpdateIncome}
