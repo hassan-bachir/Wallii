@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, TextInput, Alert } from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    TextInput,
+    Alert,
+    TouchableWithoutFeedback,
+    Keyboard,
+} from "react-native";
 import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
 import { Button, Background } from "../../components";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -32,7 +40,7 @@ export default function HomeSettings({ navigation }) {
                 name,
                 lastName,
                 aiAdvisorName,
-                basicSalary,
+                basicSalary: parseFloat(basicSalary),
             };
             await updateUserInfo(updatedUserData);
             navigation.goBack();
@@ -64,49 +72,56 @@ export default function HomeSettings({ navigation }) {
             },
         ]);
     };
+    const handleBasicSalaryChange = (text) => {
+        const floatValue = parseFloat(text);
+        setBasicSalary(floatValue);
+    };
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Update User Info</Text>
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Name</Text>
-                <TextInput
-                    style={styles.input}
-                    value={name}
-                    onChangeText={setName}
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Last Name</Text>
-                <TextInput
-                    style={styles.input}
-                    value={lastName}
-                    onChangeText={setLastName}
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Basic Salary</Text>
-                <TextInput
-                    style={styles.input}
-                    value={basicSalary}
-                    onChangeText={setBasicSalary}
-                />
-            </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+                <Text style={styles.title}>Update User Info</Text>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.label}>Name</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={name}
+                        onChangeText={setName}
+                    />
+                </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.label}>Last Name</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={lastName}
+                        onChangeText={setLastName}
+                    />
+                </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.label}>Basic Salary</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={basicSalary}
+                        onChangeText={setBasicSalary}
+                        keyboardType="numeric"
+                    />
+                </View>
 
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>AI Advisor Name</Text>
-                <TextInput
-                    style={styles.input}
-                    value={aiAdvisorName}
-                    onChangeText={setAiAdvisorName}
+                <View style={styles.inputContainer}>
+                    <Text style={styles.label}>AI Advisor Name</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={aiAdvisorName}
+                        onChangeText={setAiAdvisorName}
+                    />
+                </View>
+                <Button
+                    title="Update User"
+                    onPress={handleUpdateUser}
+                    backgroundColor={COLORS.primary}
                 />
+                <Button title="Sign Out" onPress={handleSignOut} />
             </View>
-            <Button
-                title="Update User"
-                onPress={handleUpdateUser}
-                backgroundColor={COLORS.primary}
-            />
-            <Button title="Sign Out" onPress={handleSignOut} />
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 

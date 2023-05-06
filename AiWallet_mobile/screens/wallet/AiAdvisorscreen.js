@@ -21,12 +21,14 @@ export default function AiAdvisor() {
     const [aiAdvisorName, setAiAdvisorName] = useState("");
     const [goals, setGoals] = useState([]);
     const [budget, setBudget] = useState(null);
+    const [basicSalary, setBasicSalary] = useState(0.0);
 
     useEffect(() => {
         const fetchAdvisorName = async () => {
             try {
                 const userInfo = await getUserInfo();
                 setAiAdvisorName(userInfo.aiAdvisorName || "Advisor");
+                setBasicSalary(userInfo.basicSalary || 1000);
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }
@@ -75,6 +77,7 @@ export default function AiAdvisor() {
                 walletSummary,
                 budget,
                 expenseData: newExpenseData,
+                basicSalary,
             });
 
             setAiAdvice({
