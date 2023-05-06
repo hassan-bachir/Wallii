@@ -9,6 +9,7 @@ export default function HomeSettings({ navigation }) {
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [aiAdvisorName, setAiAdvisorName] = useState("");
+    const [basicSalary, setBasicSalary] = useState("");
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -17,6 +18,7 @@ export default function HomeSettings({ navigation }) {
                 setName(userInfo.name || "");
                 setLastName(userInfo.lastName || "");
                 setAiAdvisorName(userInfo.aiAdvisorName || "");
+                setBasicSalary(userInfo.basicSalary || "");
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }
@@ -26,7 +28,12 @@ export default function HomeSettings({ navigation }) {
 
     const handleUpdateUser = async () => {
         try {
-            const updatedUserData = { name, lastName, aiAdvisorName };
+            const updatedUserData = {
+                name,
+                lastName,
+                aiAdvisorName,
+                basicSalary,
+            };
             await updateUserInfo(updatedUserData);
             navigation.goBack();
         } catch (error) {
@@ -76,6 +83,15 @@ export default function HomeSettings({ navigation }) {
                     onChangeText={setLastName}
                 />
             </View>
+            <View style={styles.inputContainer}>
+                <Text style={styles.label}>Basic Salary</Text>
+                <TextInput
+                    style={styles.input}
+                    value={basicSalary}
+                    onChangeText={setBasicSalary}
+                />
+            </View>
+
             <View style={styles.inputContainer}>
                 <Text style={styles.label}>AI Advisor Name</Text>
                 <TextInput
