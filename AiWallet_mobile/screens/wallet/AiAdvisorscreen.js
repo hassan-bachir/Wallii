@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 export default function AiAdvisor() {
     const [aiAdvice, setAiAdvice] = useState({ decision: "", explanation: "" });
+    const [adviceFetched, setAdviceFetched] = useState(false);
 
     const walletId = useSelector((state) => state.wallet.currentWalletId);
     const newExpenseData = useSelector((state) => state.expense);
@@ -22,6 +23,7 @@ export default function AiAdvisor() {
     const [goals, setGoals] = useState([]);
     const [budget, setBudget] = useState(null);
     const [basicSalary, setBasicSalary] = useState(0.0);
+    const [username, setUserName] = useState("");
 
     useEffect(() => {
         const fetchAdvisorName = async () => {
@@ -29,6 +31,7 @@ export default function AiAdvisor() {
                 const userInfo = await getUserInfo();
                 setAiAdvisorName(userInfo.aiAdvisorName || "Advisor");
                 setBasicSalary(userInfo.basicSalary || 1000);
+                setUserName(userInfo.name || "");
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }
@@ -78,12 +81,14 @@ export default function AiAdvisor() {
                 budget,
                 expenseData: newExpenseData,
                 basicSalary,
+                username,
             });
 
             setAiAdvice({
                 decision: response.decision,
                 explanation: response.explanation,
             });
+            setAdviceFetched(true);
         } catch (error) {
             console.error("Error getting AI advice:", error);
         }
@@ -111,7 +116,9 @@ export default function AiAdvisor() {
                         ]}
                     >
                         <Text style={styles.adviceCardText}>
-                            {aiAdvice.decision === "Disapprove"
+                            {!adviceFetched
+                                ? "ZZZ"
+                                : aiAdvice.decision === "Disapprove"
                                 ? "Bad Idea!"
                                 : "Go Ahead!"}
                         </Text>
