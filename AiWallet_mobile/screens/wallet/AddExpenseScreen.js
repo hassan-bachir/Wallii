@@ -16,10 +16,12 @@ import { addTransaction } from "../../api/api";
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setExpenseData } from "../../store/slices/expenseSlice";
 
 //MAIN
 const AddExpense = ({ route, navigation }) => {
+    const dispatch = useDispatch();
     const walletId = useSelector((state) => state.wallet.currentWalletId);
 
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -51,6 +53,14 @@ const AddExpense = ({ route, navigation }) => {
         }
     };
     const navigateToAiAdvisor = () => {
+        dispatch(
+            setExpenseData({
+                amount: parseFloat(amount.replace(/,/g, "")),
+                date,
+                category,
+                description,
+            })
+        );
         navigation.navigate(ROUTES.AI_ADVISOR);
     };
     const handleDatePress = () => {

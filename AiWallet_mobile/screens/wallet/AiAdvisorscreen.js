@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 
 export default function AiAdvisor() {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
+    const newExpenseData = useSelector((state) => state.expense);
+
     const [walletSummary, setWalletSummary] = useState(null);
     const [aiAdvisorName, setAiAdvisorName] = useState("");
     const [goals, setGoals] = useState([]);
@@ -66,6 +68,8 @@ export default function AiAdvisor() {
     console.log("goals:", goals);
     console.log("wallet summary:", walletSummary);
     console.log("Budget:", budget);
+    console.log("Expense Data:", newExpenseData);
+
     return (
         <Background image={IMAGES.SECONDARY_BACKGROUND}>
             <View style={styles.container}>

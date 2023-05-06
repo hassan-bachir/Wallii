@@ -4,7 +4,7 @@ const initialState = {
     expenseAmount: "",
     expenseDate: "",
     expenseCategory: "",
-    expenceDescription: "",
+    expenseDescription: "",
 };
 
 const expenseSlice = createSlice({
@@ -23,6 +23,13 @@ const expenseSlice = createSlice({
         setExpenceDescription: (state, action) => {
             state.expenceDescription = action.payload;
         },
+        setExpenseData: (state, action) => {
+            const { amount, date, category, description } = action.payload;
+            state.expenseAmount = amount;
+            state.expenseDate = date;
+            state.expenseCategory = category;
+            state.expenseDescription = description;
+        },
     },
 });
 
@@ -31,6 +38,7 @@ export const {
     setExpenseDate,
     setExpenseCategory,
     setExpenceDescription,
+    setExpenseData,
 } = expenseSlice.actions;
 
 export default expenseSlice.reducer;
