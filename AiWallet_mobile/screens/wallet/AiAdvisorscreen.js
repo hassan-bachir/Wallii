@@ -2,11 +2,23 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Background } from "../../components";
 import { COLORS, SIZES, IMAGES, FONTS } from "../../constants";
-import { getUserInfo } from "../../api/api";
+import {
+    getUserInfo,
+    getWalletSummary,
+    getAllGoals,
+    getWallet,
+} from "../../api/api";
+import { useSelector } from "react-redux";
+
 export default function AiAdvisor() {
+    const walletId = useSelector((state) => state.wallet.currentWalletId);
+    const [walletSummary, setWalletSummary] = useState(null);
     const [aiAdvisorName, setAiAdvisorName] = useState("");
+    const [goals, setGoals] = useState([]);
+    const [budget, setBudget] = useState(null);
+
     useEffect(() => {
-        const fetchUserInfo = async () => {
+        const fetchAdvisorName = async () => {
             try {
                 const userInfo = await getUserInfo();
                 setAiAdvisorName(userInfo.aiAdvisorName || "Advisor");
@@ -14,8 +26,46 @@ export default function AiAdvisor() {
                 console.error("Error fetching user info:", error);
             }
         };
-        fetchUserInfo();
+
+        const fetchGoals = async () => {
+            try {
+                const userGoals = await getAllGoals();
+                setGoals(userGoals);
+            } catch (error) {
+                console.error("Error fetching user goals:", error);
+            }
+        };
+
+        const fetchWalletSummary = async () => {
+            try {
+                const summary = await getWalletSummary(walletId);
+                setWalletSummary(summary);
+            } catch (error) {
+                console.error("Error fetching wallet summary:", error);
+            }
+        };
+
+        const fetchBudget = async () => {
+            try {
+                const Wallet = await getWallet(walletId);
+
+                if (Wallet.budget) {
+                    setBudget(Wallet.budget);
+                }
+            } catch (error) {
+                console.error("Error fetching budget:", error);
+            }
+        };
+        fetchBudget();
+        fetchAdvisorName();
+        fetchGoals();
+        fetchWalletSummary();
     }, []);
+
+    console.log("aiAdvisorName:", aiAdvisorName);
+    console.log("goals:", goals);
+    console.log("wallet summary:", walletSummary);
+    console.log("Budget:", budget);
     return (
         <Background image={IMAGES.SECONDARY_BACKGROUND}>
             <View style={styles.container}>
