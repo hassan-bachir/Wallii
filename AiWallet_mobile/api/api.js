@@ -48,6 +48,10 @@ const makeRequest = async (method, endpoint, data) => {
         throw error;
     }
 };
+//AI
+// AI
+export const getAiAdvice = (data) => makeRequest("post", "/ai", data);
+
 //AUTH
 export const registerUser = (userData) =>
     makeRequest("post", "/auth/register", userData);
