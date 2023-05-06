@@ -17,7 +17,6 @@ const getAIAdvice = async (inputText) => {
 
         const decision = response.data.choices[0].text.trim();
 
-        console.log("API Response:", decision);
         return decision;
     } catch (error) {
         console.error("Error getting AI advice:", error);
