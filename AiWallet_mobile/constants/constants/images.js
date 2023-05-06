@@ -9,6 +9,7 @@ const ROBERTKIYOSAKI = require("../../assets/images/kiyosaki.jpeg");
 const HOMEBACKGROUND = require("../../assets/images/homeBackground.png");
 const INCOME_BACKGROUND = require("../../assets/images/transaction_income.png");
 const EXPENSE_BACKGROUND = require("../../assets/images/transaction_expense.png");
+const SECONDARY_BACKGROUND = require("../../assets/images/secondaryBackground.png");
 export default {
     LOGO,
     BACKGROUND,
@@ -21,4 +22,5 @@ export default {
     HOMEBACKGROUND,
     INCOME_BACKGROUND,
     EXPENSE_BACKGROUND,
+    SECONDARY_BACKGROUND,
 };

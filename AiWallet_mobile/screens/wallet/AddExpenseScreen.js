@@ -22,7 +22,6 @@ import { useSelector } from "react-redux";
 const AddExpense = ({ route, navigation }) => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
 
-    //const { walletId } = route.params;
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);
 
@@ -50,6 +49,9 @@ const AddExpense = ({ route, navigation }) => {
             const formattedAmount = formatNumberWithCommas(unformattedAmount);
             setAmount(formattedAmount);
         }
+    };
+    const navigateToAiAdvisor = () => {
+        navigation.navigate(ROUTES.AI_ADVISOR);
     };
     const handleDatePress = () => {
         setShowDatePicker(true);
@@ -162,6 +164,18 @@ const AddExpense = ({ route, navigation }) => {
                                 value={description}
                                 multiline={true}
                             />
+                            <TouchableOpacity
+                                style={[
+                                    styles.advisorButton,
+                                    !isValidAmount && styles.disabledButton,
+                                ]}
+                                onPress={navigateToAiAdvisor}
+                                disabled={!isValidAmount}
+                            >
+                                <Text style={styles.advisorButtonText}>
+                                    Advisor's Decision!
+                                </Text>
+                            </TouchableOpacity>
 
                             <TouchableOpacity
                                 style={[
@@ -267,6 +281,18 @@ const styles = StyleSheet.create({
         padding: 10,
         justifyContent: "center",
         alignItems: "center",
+    },
+    advisorButton: {
+        backgroundColor: COLORS.primary,
+        borderRadius: 5,
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 10,
+    },
+    advisorButtonText: {
+        ...FONTS.body3,
+        color: COLORS.white,
     },
 });
 

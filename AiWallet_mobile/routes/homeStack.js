@@ -58,7 +58,11 @@ function HomeStack() {
                 name={ROUTES.AI_ADVISOR}
                 component={AiAdvisor}
                 options={{
-                    headerShown: false,
+                    headerTintColor: COLORS.white,
+                    headerStyle: {
+                        backgroundColor: COLORS.secondary,
+                    },
+                    headerTitle: "",
                 }}
             />
             <Stack.Screen
