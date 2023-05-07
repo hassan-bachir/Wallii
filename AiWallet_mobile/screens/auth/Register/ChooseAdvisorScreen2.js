@@ -23,7 +23,7 @@ const advisors = [
     { id: 3, name: "Warren Buffet", image: IMAGES.WARRENBUFFET },
     { id: 4, name: "Bill Gates", image: IMAGES.BILLGATES },
     { id: 5, name: "ChatGPT", image: IMAGES.CHATGPT },
-    { id: 6, name: "ChatGPT", image: IMAGES.ANIKA },
+    { id: 6, name: "other", image: IMAGES.ANIKA },
 ];
 
 export default function ChooseAdvisor({ navigation }) {

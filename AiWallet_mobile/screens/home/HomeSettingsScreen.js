@@ -26,7 +26,9 @@ export default function HomeSettings({ navigation }) {
                 setName(userInfo.name || "");
                 setLastName(userInfo.lastName || "");
                 setAiAdvisorName(userInfo.aiAdvisorName || "");
-                setBasicSalary(userInfo.basicSalary || "");
+                setBasicSalary(
+                    userInfo.basicSalary ? userInfo.basicSalary.toString() : ""
+                );
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }

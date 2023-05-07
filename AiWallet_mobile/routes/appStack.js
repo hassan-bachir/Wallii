@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeStack from "./homeStack";
 import AuthStack from "./authStack";
+import Admin from "../screens/admin/AdminScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ROUTES } from "../constants";
 import { setAuthToken, getUserInfo } from "../api/api";
@@ -49,6 +50,7 @@ function AppStack() {
         >
             <Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
             <Stack.Screen name={ROUTES.HOME_STACK} component={HomeStack} />
+            <Stack.Screen name={ROUTES.ADMIN_SCREEN} component={Admin} />
         </Stack.Navigator>
     );
 }
