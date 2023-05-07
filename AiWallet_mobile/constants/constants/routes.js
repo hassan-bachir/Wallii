@@ -30,6 +30,6 @@ export default {
     WALLET_STACK: "WalletStack",
     ADMIN_STACK: "admin stack",
 
-    ADMIN_SCREEN: "admin screen",
-    USER_SCREEN: "user screen",
+    ADMIN_SCREEN: "Admin Panel",
+    USER_SCREEN: "User info",
 };
