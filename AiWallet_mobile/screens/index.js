@@ -20,3 +20,5 @@ export { default as UpdateIncome } from "./wallet/UpdateIncomeScreen";
 export { default as UpdateExpense } from "./wallet/UpdateExpenseScreen";
 
 export { default as AiAdvisor } from "./wallet/AiAdvisorscreen";
+
+export { default as Admin } from "./admin/AdminScreen";
