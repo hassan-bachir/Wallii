@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeStack from "./homeStack";
 import AuthStack from "./authStack";
+import AdminStack from "./adminStack";
 import Admin from "../screens/admin/AdminScreen";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ROUTES } from "../constants";
 import { setAuthToken, getUserInfo } from "../api/api";
@@ -24,6 +26,7 @@ function AppStack() {
                 if (storedToken) {
                     const userInfo = await getUserInfo();
                     setUserRole(userInfo.role);
+                    console.log(userInfo);
                 }
             } catch (e) {
                 console.log("error:", e);
@@ -40,7 +43,7 @@ function AppStack() {
 
     const initialRoute = () => {
         if (!userToken) return ROUTES.AUTH;
-        if (userRole === "admin") return ROUTES.ADMIN_SCREEN;
+        if (userRole === "admin") return ROUTES.ADMIN_STACK;
         return ROUTES.HOME_STACK;
     };
     return (
@@ -50,7 +53,7 @@ function AppStack() {
         >
             <Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
             <Stack.Screen name={ROUTES.HOME_STACK} component={HomeStack} />
-            <Stack.Screen name={ROUTES.ADMIN_SCREEN} component={Admin} />
+            <Stack.Screen name={ROUTES.ADMIN_STACK} component={AdminStack} />
         </Stack.Navigator>
     );
 }

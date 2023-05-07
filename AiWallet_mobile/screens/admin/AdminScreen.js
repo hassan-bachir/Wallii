@@ -1,11 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { COLORS, ROUTES } from "../../constants";
 
-const Admin = () => {
+const Admin = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>ADMIN SCREEN</Text>
             <Text>This is a basic React Native screen.</Text>
+            <Button
+                title="user"
+                onPress={() => navigation.navigate(ROUTES.USER_SCREEN)}
+            >
+                user
+            </Button>
         </View>
     );
 };
