@@ -14,6 +14,9 @@ exports.authMiddleware = async (req, res, next) => {
 
         req.userId = user._id;
 
+        if (req.originalUrl.startsWith("/admin") && user.role !== "admin") {
+            return res.status(403).json({ message: "Forbidden" });
+        }
         next();
     } catch (e) {
         return res.status(500).json({ message: "Server Error" });

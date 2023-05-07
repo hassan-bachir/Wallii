@@ -54,7 +54,6 @@ export default function Login({ navigation }) {
                 const response = await loginUser(userData);
                 const { token } = response;
                 await AsyncStorage.setItem("token", token);
-                console.log("New token:", token); // debugg
                 await setAuthToken();
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {

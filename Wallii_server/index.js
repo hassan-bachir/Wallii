@@ -4,6 +4,10 @@ const cors = require("cors");
 require("dotenv").config();
 app.use(express.json());
 app.use(cors());
+
+const adminRoutes = require("./routes/admin.routes");
+app.use("/admin", adminRoutes);
+
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 
