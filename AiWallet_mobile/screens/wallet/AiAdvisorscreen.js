@@ -72,6 +72,13 @@ export default function AiAdvisor() {
         fetchWalletSummary();
     }, []);
 
+    // console.log("name:", username);
+    // console.log("salary:", basicSalary);
+    // console.log("GOALS:", goals);
+    // console.log("BUDGET:", budget);
+    // console.log("AIADVISOR:", aiAdvisorName);
+    // console.log("WALLET:", walletSummary);
+    // console.log("NEW EXPENSE:", newExpenseData);
     const requestAiAdvice = async () => {
         try {
             const response = await getAiAdvice({
