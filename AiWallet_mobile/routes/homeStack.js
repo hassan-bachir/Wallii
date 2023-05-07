@@ -9,7 +9,6 @@ import {
     Goals,
     AiAdvisor,
 } from "../screens";
-import WalletScreen from "../screens/wallet/WalletScreen";
 import { COLORS, ROUTES } from "../constants";
 import BottomTabNavigator from "./bottomTabNavigator";
 
