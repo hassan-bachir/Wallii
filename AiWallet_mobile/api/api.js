@@ -59,6 +59,15 @@ export const registerUser = (userData) =>
 export const loginUser = (credentials) =>
     makeRequest("post", "/auth/login", credentials);
 
+// ADMIN
+export const getAllUsers = () => makeRequest("get", "/admin/users");
+
+export const updateUserByAdmin = (userId, userData) =>
+    makeRequest("put", `/admin/users/${userId}`, userData);
+
+export const deleteUserByAdmin = (userId) =>
+    makeRequest("delete", `/admin/users/${userId}`);
+
 //USER
 export const getUserInfo = () => makeRequest("get", "/user");
 
