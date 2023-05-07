@@ -5,11 +5,13 @@ import {
     StyleSheet,
     TouchableOpacity,
     FlatList,
+    Alert,
 } from "react-native";
 import { Card, SearchBar } from "react-native-elements";
 import { getAllUsers } from "../../api/api";
 import { COLORS, ROUTES, SIZES } from "../../constants";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Button } from "../../components";
 const Admin = ({ navigation }) => {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("");
@@ -21,11 +23,36 @@ const Admin = ({ navigation }) => {
 
     const fetchData = async () => {
         const fetchedUsers = await getAllUsers();
-        console.log(fetchedUsers);
-        setUsers(fetchedUsers);
-        setFilteredUsers(fetchedUsers);
-    };
 
+        const nonAdminUsers = fetchedUsers.filter(
+            (user) => user.role !== "admin"
+        );
+        setUsers(nonAdminUsers);
+        setFilteredUsers(nonAdminUsers);
+    };
+    const handleSignOut = async () => {
+        Alert.alert("Confirm Sign Out", "Are you sure you want to sign out?", [
+            {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel",
+            },
+            {
+                text: "Sign Out",
+                onPress: async () => {
+                    try {
+                        await AsyncStorage.removeItem("token");
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: ROUTES.AUTH }],
+                        });
+                    } catch (error) {
+                        console.error("Error during sign out:", error);
+                    }
+                },
+            },
+        ]);
+    };
     const handleSearch = (text) => {
         setSearch(text);
         if (text === "") {
@@ -70,6 +97,7 @@ const Admin = ({ navigation }) => {
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
             />
+            <Button title="Sign Out" onPress={handleSignOut} />
         </View>
     );
 };
