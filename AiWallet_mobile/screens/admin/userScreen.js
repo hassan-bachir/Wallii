@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const Admin = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>ADMIN SCREEN</Text>
+            <Text style={styles.title}>USER SCREEN</Text>
             <Text>This is a basic React Native screen.</Text>
         </View>
     );
