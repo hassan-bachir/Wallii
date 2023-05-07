@@ -29,4 +29,5 @@ export default {
 
     WALLET_STACK: "WalletStack",
     ADMIN_SCREEN: "admin screen",
+    USER_SCREEN: "user screen",
 };

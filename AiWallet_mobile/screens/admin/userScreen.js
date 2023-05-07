@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Admin = () => {
+const User = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>USER SCREEN</Text>
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Admin;
+export default User;
