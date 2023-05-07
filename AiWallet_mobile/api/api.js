@@ -60,7 +60,7 @@ export const loginUser = (credentials) =>
     makeRequest("post", "/auth/login", credentials);
 
 // ADMIN
-export const getAllUsers = () => makeRequest("get", "/admin/users");
+export const getAllUsers = () => makeRequest("get", "/admin/all-users");
 
 export const updateUserByAdmin = (userId, userData) =>
     makeRequest("put", `/admin/users/${userId}`, userData);
