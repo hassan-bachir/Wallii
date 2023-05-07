@@ -28,4 +28,5 @@ export default {
     HOME_STACK: "Home Stack",
 
     WALLET_STACK: "WalletStack",
+    ADMIN_SCREEN: "admin screen",
 };

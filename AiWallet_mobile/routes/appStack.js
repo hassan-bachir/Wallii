@@ -4,21 +4,28 @@ import HomeStack from "./homeStack";
 import AuthStack from "./authStack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ROUTES } from "../constants";
-import { setAuthToken } from "../api/api";
+import { setAuthToken, getUserInfo } from "../api/api";
 
 const Stack = createStackNavigator();
 
 function AppStack() {
     const [userToken, setUserToken] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [userRole, setUserRole] = useState(null);
+
     useEffect(() => {
         const bootstrapAsync = async () => {
             try {
                 const storedToken = await AsyncStorage.getItem("token");
                 setUserToken(storedToken);
                 await setAuthToken();
+
+                if (storedToken) {
+                    const userInfo = await getUserInfo();
+                    setUserRole(userInfo.role);
+                }
             } catch (e) {
-                // Handle error
+                console.log("error:", e);
             } finally {
                 setIsLoading(false);
             }
@@ -30,9 +37,14 @@ function AppStack() {
         return null;
     }
 
+    const initialRoute = () => {
+        if (!userToken) return ROUTES.AUTH;
+        if (userRole === "admin") return ROUTES.ADMIN_SCREEN;
+        return ROUTES.HOME_STACK;
+    };
     return (
         <Stack.Navigator
-            initialRouteName={userToken ? ROUTES.HOME_STACK : ROUTES.AUTH}
+            initialRouteName={initialRoute()}
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
