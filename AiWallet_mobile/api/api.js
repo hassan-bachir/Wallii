@@ -62,8 +62,6 @@ export const loginUser = (credentials) =>
 // ADMIN
 export const getAllUsers = () => makeRequest("get", "/admin/all-users");
 
-export const getUserById = (userId) => makeRequest("get", `/admin/${userId}`);
-
 export const updateUserByAdmin = (userId, userData) =>
     makeRequest("put", `/admin/users/${userId}`, userData);
 
