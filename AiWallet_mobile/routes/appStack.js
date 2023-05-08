@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useSelector, useDispatch } from "react-redux";
+import { setRole } from "../store/slices/userSlice";
 import HomeStack from "./homeStack";
 import AuthStack from "./authStack";
 import AdminStack from "./adminStack";
-import Admin from "../screens/admin/AdminScreen";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ROUTES } from "../constants";
@@ -14,8 +15,8 @@ const Stack = createStackNavigator();
 function AppStack() {
     const [userToken, setUserToken] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [userRole, setUserRole] = useState(null);
-    const [initialRoute, setInitialRoute] = useState("");
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const bootstrapAsync = async () => {
@@ -23,12 +24,6 @@ function AppStack() {
                 const storedToken = await AsyncStorage.getItem("token");
                 setUserToken(storedToken);
                 await setAuthToken();
-
-                if (storedToken) {
-                    const userInfo = await getUserInfo();
-                    setUserRole(userInfo.role);
-                    console.log(userInfo);
-                }
             } catch (e) {
                 console.log("error:", e);
             } finally {
@@ -39,31 +34,17 @@ function AppStack() {
         bootstrapAsync();
     }, []);
 
-    useEffect(() => {
-        const updateInitialRoute = () => {
-            if (!userToken) {
-                setInitialRoute(ROUTES.AUTH);
-            } else if (userRole === "admin") {
-                setInitialRoute(ROUTES.ADMIN_STACK);
-            } else if (userRole) {
-                setInitialRoute(ROUTES.HOME_STACK);
-            }
-        };
-        updateInitialRoute();
-    }, [userToken, userRole]);
-
-    if (isLoading || !initialRoute) {
+    if (isLoading) {
         return null;
     }
 
     return (
         <Stack.Navigator
-            initialRouteName={initialRoute}
+            initialRouteName={userToken ? ROUTES.HOME_STACK : ROUTES.AUTH}
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
             <Stack.Screen name={ROUTES.HOME_STACK} component={HomeStack} />
-            <Stack.Screen name={ROUTES.ADMIN_STACK} component={AdminStack} />
         </Stack.Navigator>
     );
 }
