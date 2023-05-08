@@ -12,15 +12,12 @@ import { getAllUsers } from "../../api/api";
 import { COLORS, ROUTES, SIZES } from "../../constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Button } from "../../components";
+import { useFocusEffect } from "@react-navigation/native";
 
 const Admin = ({ navigation }) => {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("");
     const [filteredUsers, setFilteredUsers] = useState([]);
-
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     const fetchData = async () => {
         const fetchedUsers = await getAllUsers();
@@ -31,6 +28,12 @@ const Admin = ({ navigation }) => {
         setUsers(nonAdminUsers);
         setFilteredUsers(nonAdminUsers);
     };
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchData();
+            return () => {};
+        }, [])
+    );
     const handleSignOut = async () => {
         Alert.alert("Confirm Sign Out", "Are you sure you want to sign out?", [
             {
@@ -72,7 +75,9 @@ const Admin = ({ navigation }) => {
         return (
             <TouchableOpacity
                 onPress={() =>
-                    navigation.navigate(ROUTES.USER_SCREEN, { userId: item.id })
+                    navigation.navigate(ROUTES.USER_SCREEN, {
+                        userId: item._id,
+                    })
                 }
             >
                 <Card>
@@ -97,7 +102,7 @@ const Admin = ({ navigation }) => {
                 data={filteredUsers}
                 renderItem={renderItem}
                 keyExtractor={(item) =>
-                    item.id ? item.id : Math.random().toString()
+                    item._id ? item._id : Math.random().toString()
                 }
             />
             <Button title="Sign Out" onPress={handleSignOut} />
