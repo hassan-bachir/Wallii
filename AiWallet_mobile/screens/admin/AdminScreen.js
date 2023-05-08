@@ -96,7 +96,9 @@ const Admin = ({ navigation }) => {
             <FlatList
                 data={filteredUsers}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) =>
+                    item.id ? item.id : Math.random().toString()
+                }
             />
             <Button title="Sign Out" onPress={handleSignOut} />
         </View>

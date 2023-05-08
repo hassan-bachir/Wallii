@@ -11,6 +11,16 @@ exports.getAllUsers = async (req, res) => {
         res.status(500).json({ message: "Server Error", error });
     }
 };
+
+exports.getInfoById = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const user = await User.findById(userId, "-password ");
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching user info", error });
+    }
+};
 exports.deleteUser = async (req, res) => {
     try {
         const { userId } = req.params;

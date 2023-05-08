@@ -24,7 +24,7 @@ function HomeStack() {
     const fetchUserRole = useCallback(async () => {
         try {
             const data = await getUserInfo();
-            console.log("User data:", data);
+
             setUserRole(data.role);
         } catch (error) {
             console.error("Error fetching user role:", error);

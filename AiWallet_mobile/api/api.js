@@ -68,7 +68,10 @@ export const updateUserByAdmin = (userId, userData) =>
 export const deleteUserByAdmin = (userId) =>
     makeRequest("delete", `/admin/users/${userId}`);
 
+export const getInfoByID = (userId) =>
+    makeRequest("get", `/admin/users/${userId}`);
 //USER
+
 export const getUserInfo = () => makeRequest("get", "/user");
 
 export const updateUserInfo = (data) => makeRequest("put", "/user", data);

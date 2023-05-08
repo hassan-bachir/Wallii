@@ -43,7 +43,6 @@ export default function Login({ navigation }) {
                 },
                 { abortEarly: false }
             );
-            console.log("Validation passed");
             setErrors({});
 
             try {
