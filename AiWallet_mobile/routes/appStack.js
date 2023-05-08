@@ -15,6 +15,7 @@ function AppStack() {
     const [userToken, setUserToken] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [userRole, setUserRole] = useState(null);
+    const [initialRoute, setInitialRoute] = useState("");
 
     useEffect(() => {
         const bootstrapAsync = async () => {
@@ -37,18 +38,27 @@ function AppStack() {
 
         bootstrapAsync();
     }, []);
-    if (isLoading) {
+
+    useEffect(() => {
+        const updateInitialRoute = () => {
+            if (!userToken) {
+                setInitialRoute(ROUTES.AUTH);
+            } else if (userRole === "admin") {
+                setInitialRoute(ROUTES.ADMIN_STACK);
+            } else if (userRole) {
+                setInitialRoute(ROUTES.HOME_STACK);
+            }
+        };
+        updateInitialRoute();
+    }, [userToken, userRole]);
+
+    if (isLoading || !initialRoute) {
         return null;
     }
 
-    const initialRoute = () => {
-        if (!userToken) return ROUTES.AUTH;
-        if (userRole === "admin") return ROUTES.ADMIN_STACK;
-        return ROUTES.HOME_STACK;
-    };
     return (
         <Stack.Navigator
-            initialRouteName={initialRoute()}
+            initialRouteName={initialRoute}
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
