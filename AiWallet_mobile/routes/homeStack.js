@@ -1,3 +1,5 @@
+import React, { useState, useCallback, useEffect } from "react";
+
 import { createStackNavigator } from "@react-navigation/stack";
 import {
     Home,
@@ -11,15 +13,49 @@ import {
 } from "../screens";
 import { COLORS, ROUTES } from "../constants";
 import BottomTabNavigator from "./bottomTabNavigator";
-
+import { getUserInfo } from "../api/api";
+import AdminStack from "./adminStack";
 const Stack = createStackNavigator();
 
 function HomeStack() {
+    const [userRole, setUserRole] = useState("");
+    const [loading, setLoading] = useState(true);
+
+    const fetchUserRole = useCallback(async () => {
+        try {
+            const data = await getUserInfo();
+            console.log("User data:", data);
+            setUserRole(data.role);
+        } catch (error) {
+            console.error("Error fetching user role:", error);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchUserRole();
+    }, [fetchUserRole]);
+
+    if (loading) {
+        return null;
+    }
     return (
-        <Stack.Navigator initialRouteName={ROUTES.HOME}>
+        <Stack.Navigator
+            initialRouteName={
+                userRole === "admin" ? ROUTES.ADMIN_STACK : ROUTES.HOME
+            }
+        >
             <Stack.Screen
                 name={ROUTES.HOME}
                 component={Home}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name={ROUTES.ADMIN_STACK}
+                component={AdminStack}
                 options={{
                     headerShown: false,
                 }}
