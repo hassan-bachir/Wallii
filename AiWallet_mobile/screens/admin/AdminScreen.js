@@ -12,6 +12,7 @@ import { getAllUsers } from "../../api/api";
 import { COLORS, ROUTES, SIZES } from "../../constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Button } from "../../components";
+
 const Admin = ({ navigation }) => {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("");

@@ -3,6 +3,20 @@ const User = require("../models/userModel");
 const Transaction = require("../models/transactionModel");
 const Wallet = require("../models/walletModel");
 
+exports.getUserById = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const user = await User.findById(userId);
+
+        if (user) {
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({ message: "User not found" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error });
+    }
+};
 exports.getAllUsers = async (req, res) => {
     try {
         const users = await User.find({});
