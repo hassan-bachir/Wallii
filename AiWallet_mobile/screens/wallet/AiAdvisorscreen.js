@@ -117,7 +117,7 @@ export default function AiAdvisor() {
                             {
                                 backgroundColor:
                                     aiAdvice.decision === "Disapprove"
-                                        ? COLORS.red
+                                        ? COLORS.secondary
                                         : COLORS.primary,
                             },
                         ]}
