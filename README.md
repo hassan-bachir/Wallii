@@ -44,7 +44,7 @@
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
 
-> Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
+> Using the wireframes and mockups as a guide, we implemented the Wallii app with the following features:
 
 ### User Screens (Mobile)
 
