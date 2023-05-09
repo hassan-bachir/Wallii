@@ -51,11 +51,15 @@
 
 ### User Screens (Mobile)
 
-| Welcome screen                              | Register screen                         | Landing screen                          | Loading screen                          |
+| Welcome screen                              | Advisor screen                         | Register screen                          | Login screen                          |
 | ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](./readme/) | ![fsdaf](./readme/) | ![fsdaf](./readme/) | ![fsdaf](./readme/) |
-| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
-| ![Landing](./readme/) | ![fsdaf](./readme/) | ![fsdaf](./readme/) | ![fsdaf](./readme/) |
+| ![Landing](./readme/implementation/welcome.png) | ![fsdaf](./readme/implementation/advisor.png) | ![fsdaf](./readme/implementation/register.png) | ![fsdaf](./readme/implementation/login.png) |
+| Home screen                               | Wallet Screen                             | Update Screen                            | Expense Screen                         |
+| ![Landing](./readme/implementation/home.png) | ![fsdaf](./readme/implementation/wallet.png) | ![fsdaf](./readme/implementation/add_income.png) | ![fsdaf](./readme/implementation/add_expense.png) |
+| Advisor screen                               | Advisor Screen                             | Calender Screen                            | Calender Screen                         |
+| ![Landing](./readme/implementation/bad_advisor.png) | ![fsdaf](./readme/implementation/good_advisor.png) | ![fsdaf](./readme/implementation/calender1.png) | ![fsdaf](./readme/implementation/calender2.png) |
+| Budget screen                               | Goals Screen                             | Admin Screen                            | Wallet settings Screen                         |
+| ![Landing](./readme/implementation/budget.png) | ![fsdaf](./readme/implementation/goals.png) | ![fsdaf](./readme/implementation/admin.png) | ![fsdaf](./readme/implementation/Wallet_settings.png) |
 
 ### Admin Screens (Web)
 
