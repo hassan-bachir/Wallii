@@ -33,11 +33,11 @@
 
 | Welcome screen                              | Advisor screen                              | SignUp screen                               |
 | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| ![Welcome](./readme/Wireframes/welcome.png) | ![fsdaf](./readme/Wireframes/register1.png) | ![fsdaf](./readme/Wireframes/register2.png) |
+| ![Welcome](./readme/wireframes/welcome.png) | ![fsdaf](./readme/wireframes/register1.png) | ![fsdaf](./readme/wireframes/register2.png) |
 
 | Login screen                              | Wallets Screen                            | transaction Screen                       |
 | ----------------------------------------- | ----------------------------------------- | ---------------------------------------- |
-| ![Landing](./readme/Wireframes/login.png) | ![fsdaf](./readme/Wireframes/landing.png) | ![fsdaf](./readme/Wireframes/wallet.png) |
+| ![Landing](./readme/wireframes/login.png) | ![fsdaf](./readme/wireframes/landing.png) | ![fsdaf](./readme/wireframes/wallet.png) |
 
 <br><br>
 
