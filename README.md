@@ -96,7 +96,6 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1.  Get a free API Key for OpenAI at https://openAi.com
 2.  Clone the repo
@@ -122,12 +121,12 @@ _Below is an example of how you can instruct your audience on installing and set
     ```
 6.  initialize App
 
-````js
-//mobile
-npm start
-//server
-nodemon index.js
-    ```
+    ````js
+    //mobile
+    npm start
+    //server
+    nodemon index.js
+    ````
 
 Now, you should be able to run Coffee Express locally and explore its features.
-````
+
