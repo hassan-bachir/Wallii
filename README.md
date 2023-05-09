@@ -21,7 +21,10 @@
 -   As a user, I want to be able to add budgets to my financial profile, so that I can receive personalized financial advice from the AI advisor that takes into account my spending habits and financial goals.
 -   As a user, I want to be able to access an AI-based financial advisor each time I record an expense in a wallet. The AI advisor should take all my financial data as input, including my chosen AI advisor for the AI to impersonate, and output an optimal decision on whether the expense is a good or bad financial decision. This will help me to make informed financial decisions and avoid overspending or making poor financial choices.
 -   As a user, I want to be able to track my incomes and expenses by date, so that I can have a clear picture of my financial transactions on any given day.
-
+- As an admin, I want to be able to view a list of all users, so I can effectively manage and monitor the user base.
+- As an admin, I want to be able to delete a user's account, so that I can maintain the integrity and safety of the platform by removing inappropriate or fraudulent users.
+- As an admin, I want to be able to update user information, so that I can assist users in case they need help with updating their account details or resolving any account issues.
+- As an admin, I want to be able to assign admin privileges to other users, so that I can delegate administrative tasks and ensure a smooth operation of the platform.
 <br><br>
 
 <!-- Prototyping -->
