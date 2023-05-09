@@ -69,7 +69,6 @@ export default function Register({ navigation }) {
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
                 console.error("Error registering user:", error);
-                // Handle error, e.g., show a message to the user
             }
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
