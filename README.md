@@ -61,13 +61,6 @@
 | Budget screen                               | Goals Screen                             | Admin Screen                            | Wallet settings Screen                         |
 | ![Landing](./readme/implementation/Budget.PNG) | ![fsdaf](./readme/implementation/goals.PNG) | ![fsdaf](./readme/implementation/admin.PNG) | ![fsdaf](./readme/implementation/Wallet_settings.PNG) |
 
-### Admin Screens (Web)
-
-| Login screen                            | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 <br><br>
 
