@@ -66,13 +66,15 @@
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
 
-### Coffee Express is built using the following technologies:
+### Wallii is built using the following technologies:
 
--   This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
--   For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
--   To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-    -   🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
--   The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+-   🚨 The Wallii app is built using a stack that includes Node.js, Express, and MongoDB for the backend and React Native for the frontend.
+-   For the user interface design, the app uses the material design principles for a clean and intuitive user experience.
+-   The app features custom animations and transitions to enhance the user experience and make it feel more fluid and natural.
+-    To facilitate seamless communication between the frontend and backend, the app uses RESTful APIs and JSON data exchange formats.
+-   Wallii offers robust security features to protect user data and ensure the privacy of their information.
+-   The app features a powerful search functionality that allows users to easily find what they're looking for within the app's content.
+-   Wallii offers a range of customization options, allowing users to personalize their experience and tailor the app to their preferences.
 
 <br><br>
 
