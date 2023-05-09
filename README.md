@@ -31,13 +31,13 @@
 
 ### Wireframes
 
-| Welcome screen                          | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Welcome screen                              | Advisor screen                              | SignUp screen                               |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| ![Welcome](./readme/Wireframes/welcome.png) | ![fsdaf](./readme/Wireframes/register1.png) | ![fsdaf](./readme/Wireframes/register2.png) |
 
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Login screen                              | Wallets Screen                            | transaction Screen                       |
+| ----------------------------------------- | ----------------------------------------- | ---------------------------------------- |
+| ![Landing](./readme/Wireframes/login.png) | ![fsdaf](./readme/Wireframes/landing.png) | ![fsdaf](./readme/Wireframes/wallet.png) |
 
 <br><br>
 
