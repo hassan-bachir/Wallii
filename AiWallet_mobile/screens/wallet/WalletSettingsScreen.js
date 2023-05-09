@@ -120,20 +120,10 @@ const WalletSettings = () => {
 
                     <View style={styles.formContainer}>
                         <View style={styles.inputContainer}>
-                            <Text style={styles.labelBlack}>
-                                Change Wallet Name
-                            </Text>
+                            <Text style={styles.label}>Change Wallet Name</Text>
 
                             <TextInput
-                                style={[
-                                    styles.descriptionInput,
-                                    {
-                                        borderBottomColor: isFocused
-                                            ? COLORS.secondary
-                                            : COLORS.white,
-                                        borderBottomWidth: isFocused ? 2 : 1,
-                                    },
-                                ]}
+                                style={styles.input}
                                 onChangeText={handleWalletNameChange}
                                 value={walletName}
                                 multiline={true}
@@ -141,19 +131,19 @@ const WalletSettings = () => {
                                 onBlur={handleBlur}
                             />
                         </View>
-                        <View style={styles.buttonContainer}>
-                            <Button
-                                onPress={handleSaveButtonPress}
-                                title="Save"
-                                style={styles.saveButton}
-                                disabled={isSaveButtonDisabled}
-                            />
-                            <Button
-                                onPress={handleDeleteButtonPress}
-                                title="Delete Wallet"
-                                style={styles.deleteButton}
-                            />
-                        </View>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <Button
+                            onPress={handleSaveButtonPress}
+                            title="Save"
+                            style={styles.saveButton}
+                            disabled={isSaveButtonDisabled}
+                        />
+                        <Button
+                            onPress={handleDeleteButtonPress}
+                            title="Delete Wallet"
+                            style={styles.deleteButton}
+                        />
                     </View>
                 </SafeAreaView>
             </TouchableWithoutFeedback>
@@ -165,6 +155,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
+        justifyContent: "space-between",
+        marginBottom: 150,
     },
     formContainer: {
         marginTop: 30,
@@ -203,6 +195,22 @@ const styles = StyleSheet.create({
     inputContainer: {
         alignItems: "center",
         padding: 10,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: COLORS.primary,
+        borderRadius: 5,
+        padding: 10,
+        color: COLORS.primary,
+        ...FONTS.body3,
+    },
+    inputContainer: {
+        marginBottom: 20,
+    },
+    label: {
+        ...FONTS.body2,
+        color: COLORS.primary,
+        marginBottom: 5,
     },
 });
 
