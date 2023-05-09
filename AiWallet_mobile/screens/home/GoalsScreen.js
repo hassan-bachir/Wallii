@@ -82,7 +82,9 @@ const Goals = () => {
 
         fetchGoals();
     }, []);
-
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
             <SafeAreaView style={styles.container}>
@@ -104,7 +106,8 @@ const Goals = () => {
                                     {item.description}
                                 </Text>
                                 <Text style={styles.goalAmount}>
-                                    Target Amount: ${item.targetAmount}
+                                    Target Amount: $
+                                    {numberWithCommas(item.targetAmount)}
                                 </Text>
                                 <Text style={styles.goalDate}>
                                     Target Date:{" "}

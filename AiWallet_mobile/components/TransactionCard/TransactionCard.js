@@ -4,12 +4,15 @@ import { COLORS, FONTS, SIZES } from "../../constants";
 
 const TransactionCard = ({ transaction, onPress }) => {
     const { date, category, amount, type, image } = transaction;
-    // Extract yyyy-mm-dd
+
     const formattedDate = new Date(date).toISOString().split("T")[0];
 
     const categoryBackgroundColor =
         type === "income" ? COLORS.primary : COLORS.secondary;
 
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.imageContainer}>
@@ -29,7 +32,7 @@ const TransactionCard = ({ transaction, onPress }) => {
                 >
                     <Text style={styles.category}>{category}</Text>
                 </View>
-                <Text style={styles.amount}>${amount}</Text>
+                <Text style={styles.amount}>${numberWithCommas(amount)}</Text>
             </View>
         </TouchableOpacity>
     );

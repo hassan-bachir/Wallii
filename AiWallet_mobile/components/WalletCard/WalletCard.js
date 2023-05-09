@@ -16,7 +16,12 @@ const WalletCard = ({
             onPress(walletId);
         }
     };
-
+    const numberWithCommas = (x) => {
+        if (x === undefined || x === null) {
+            return "0";
+        }
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
     return (
         <TouchableOpacity style={styles.container} onPress={handleOnPress}>
             <View style={styles.topSection}>
@@ -24,14 +29,14 @@ const WalletCard = ({
                     <Text style={styles.walletName}>{name}</Text>
                     <Text style={styles.totalDifference}>
                         {totalDifference >= 0 ? "Net Profit: " : "Net Loss: "}$
-                        {Math.abs(totalDifference)}
+                        {numberWithCommas(Math.abs(totalDifference))}
                     </Text>
                     <View style={styles.amountsContainer}>
                         <Text style={styles.totalIncome}>
-                            Income: ${totalIncome}
+                            Income: ${numberWithCommas(totalIncome)}
                         </Text>
                         <Text style={styles.totalExpenses}>
-                            Expenses: ${totalExpenses}
+                            Expenses: ${numberWithCommas(totalExpenses)}
                         </Text>
                     </View>
                 </View>
