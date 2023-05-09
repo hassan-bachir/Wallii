@@ -59,7 +59,7 @@
 | Advisor screen                               | Advisor Screen                             | Calender Screen                            | Calender Screen                         |
 | ![Landing](./readme/implementation/bad_advisor.jpg) | ![fsdaf](./readme/implementation/good_advisor.PNG) | ![fsdaf](./readme/implementation/calender1.PNG) | ![fsdaf](./readme/implementation/calender2.PNG) |
 | Budget screen                               | Goals Screen                             | Admin Screen                            | Wallet settings Screen                         |
-| ![Landing](./readme/implementation/budget.PNG) | ![fsdaf](./readme/implementation/goals.PNG) | ![fsdaf](./readme/implementation/admin.PNG) | ![fsdaf](./readme/implementation/Wallet_settings.PNG) |
+| ![Landing](./readme/implementation/Budget.PNG) | ![fsdaf](./readme/implementation/goals.PNG) | ![fsdaf](./readme/implementation/admin.PNG) | ![fsdaf](./readme/implementation/Wallet_settings.PNG) |
 
 ### Admin Screens (Web)
 
