@@ -4,76 +4,46 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet,
     SafeAreaView,
     TouchableWithoutFeedback,
     Keyboard,
     Alert,
 } from "react-native";
 import { Background, Container } from "../../components";
-import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
+import { COLORS, IMAGES } from "../../constants";
 import {
     getTransactionById,
     updateTransaction,
     deleteTransaction,
 } from "../../api/api";
-
+import styles from "./UpdateIncomeScreen.styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 import { useSelector } from "react-redux";
 
-//MAIN
-const UpdateIncome = ({ route, navigation }) => {
+const UpdateIncome = ({ navigation }) => {
     const transactionId = useSelector(
         (state) => state.wallet.currentTransactionId
     );
     const [transaction, setTransaction] = useState(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);
-
-    useEffect(() => {
-        const fetchTransaction = async () => {
-            try {
-                const fetchedTransaction = await getTransactionById(
-                    transactionId
-                );
-                setTransaction(fetchedTransaction);
-            } catch (error) {
-                console.error("Error fetching transaction:", error);
-            }
-        };
-
-        fetchTransaction();
-    }, [transactionId]);
-
-    useEffect(() => {
-        if (transaction) {
-            setCategory(transaction.category);
-            setAmount(transaction.amount.toString());
-            setDate(transaction.date.split("T")[0]);
-            setDescription(transaction.description);
-        }
-    }, [transaction]);
-
     const [category, setCategory] = useState("");
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
     const [description, setDescription] = useState("");
+
+    const formatNumberWithCommas = (number) => {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
 
     const handleDateChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShowDatePicker(false);
         setDate(currentDate.toISOString().split("T")[0]);
     };
-    useEffect(() => {
-        const amountIsValid = amount && !isNaN(parseFloat(amount));
-        setIsValidAmount(amountIsValid);
-    }, [amount]);
 
-    const formatNumberWithCommas = (number) => {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
     const handleAmountChange = (text) => {
         const unformattedAmount = text.replace(/,/g, "");
         if (!isNaN(parseFloat(unformattedAmount)) || unformattedAmount === "") {
@@ -81,9 +51,11 @@ const UpdateIncome = ({ route, navigation }) => {
             setAmount(formattedAmount);
         }
     };
+
     const handleDatePress = () => {
         setShowDatePicker(true);
     };
+
     const handleSubmit = async () => {
         try {
             const transactionData = {
@@ -100,6 +72,7 @@ const UpdateIncome = ({ route, navigation }) => {
             console.error("Error updating income:", error);
         }
     };
+
     const handleDelete = () => {
         Alert.alert(
             "Delete Income",
@@ -125,6 +98,35 @@ const UpdateIncome = ({ route, navigation }) => {
             { cancelable: false }
         );
     };
+
+    useEffect(() => {
+        const amountIsValid = amount && !isNaN(parseFloat(amount));
+        setIsValidAmount(amountIsValid);
+    }, [amount]);
+
+    useEffect(() => {
+        const fetchTransaction = async () => {
+            try {
+                const fetchedTransaction = await getTransactionById(
+                    transactionId
+                );
+                setTransaction(fetchedTransaction);
+            } catch (error) {
+                console.error("Error fetching transaction:", error);
+            }
+        };
+
+        fetchTransaction();
+    }, [transactionId]);
+
+    useEffect(() => {
+        if (transaction) {
+            setCategory(transaction.category);
+            setAmount(transaction.amount.toString());
+            setDate(transaction.date.split("T")[0]);
+            setDescription(transaction.description);
+        }
+    }, [transaction]);
 
     return (
         <Background image={IMAGES.INCOME_BACKGROUND}>
@@ -240,112 +242,5 @@ const UpdateIncome = ({ route, navigation }) => {
         </Background>
     );
 };
-
-const styles = StyleSheet.create({
-    Container: {
-        flex: 1,
-    },
-    greenSection: {
-        height: 200,
-        paddingHorizontal: 20,
-        paddingTop: 20,
-        backgroundColor: COLORS.primary,
-        justifyContent: "space-between",
-    },
-    whiteSection: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-
-        paddingHorizontal: 20,
-    },
-    title: {
-        ...FONTS.h1,
-        color: COLORS.white,
-        marginBottom: 20,
-    },
-    label: {
-        ...FONTS.body3,
-        color: COLORS.white,
-        marginBottom: 5,
-    },
-    Amountlabel: {
-        ...FONTS.h3,
-        color: COLORS.white,
-        marginBottom: 5,
-    },
-    labelBlack: {
-        ...FONTS.body3,
-        color: COLORS.black,
-        marginBottom: 5,
-    },
-
-    amountinput: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        height: 40,
-    },
-    inputBlack: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        borderColor: COLORS.gray,
-        borderWidth: 1,
-        height: 40,
-    },
-    descriptionInput: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        borderColor: "black",
-        borderWidth: 1,
-        height: 80,
-    },
-    submitButton: {
-        backgroundColor: COLORS.darkgreen,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    submitButtonText: {
-        ...FONTS.body3,
-        color: COLORS.white,
-    },
-    deleteButton: {
-        marginTop: 10,
-        backgroundColor: COLORS.red,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    deleteButtonText: {
-        ...FONTS.body3,
-        color: COLORS.white,
-    },
-    picker: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-
-        marginBottom: 20,
-        borderColor: COLORS.gray,
-        borderWidth: 1,
-    },
-    disabledButton: {
-        backgroundColor: COLORS.gray,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-});
 
 export default UpdateIncome;
