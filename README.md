@@ -40,7 +40,7 @@
 ### Mockups
 | Welcome Mockup                             | Login Mockup                              | Expense Mockup                               | Wallet Mockup                                      |
 | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| ![Welcome](./readme/wireframes/mockupwelcome.png) | ![Advisor](./readme/wireframes/mockuplogin.png) | ![SignUp1](./readme/wireframes/mockupadd.png) | ![SignUp2](./readme/wireframes/mockuowallet.png) |
+| ![Welcome](./readme/implementation/mockupwelcome.png) | ![Advisor](./readme/implementation/mockuplogin.png) | ![SignUp1](./readme/implementation/mockupadd.png) | ![SignUp2](./readme/implementation/mockuowallet.png) |
 
 
 <br><br>
