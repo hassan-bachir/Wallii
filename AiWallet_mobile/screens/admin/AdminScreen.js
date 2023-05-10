@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    FlatList,
-    Alert,
-} from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, FlatList, Alert } from "react-native";
 import { Card, SearchBar } from "react-native-elements";
 import { getAllUsers } from "../../api/api";
-import { COLORS, ROUTES, SIZES } from "../../constants";
+import { ROUTES } from "../../constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Button } from "../../components";
 import { useFocusEffect } from "@react-navigation/native";
+import styles from "./AdminScreen.styles";
 
 const Admin = ({ navigation }) => {
     const [users, setUsers] = useState([]);
@@ -28,12 +22,7 @@ const Admin = ({ navigation }) => {
         setUsers(nonAdminUsers);
         setFilteredUsers(nonAdminUsers);
     };
-    useFocusEffect(
-        React.useCallback(() => {
-            fetchData();
-            return () => {};
-        }, [])
-    );
+
     const handleSignOut = async () => {
         Alert.alert("Confirm Sign Out", "Are you sure you want to sign out?", [
             {
@@ -57,6 +46,7 @@ const Admin = ({ navigation }) => {
             },
         ]);
     };
+
     const handleSearch = (text) => {
         setSearch(text);
         if (text === "") {
@@ -88,6 +78,13 @@ const Admin = ({ navigation }) => {
         );
     };
 
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchData();
+            return () => {};
+        }, [])
+    );
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>ADMIN SCREEN</Text>
@@ -109,25 +106,5 @@ const Admin = ({ navigation }) => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-        padding: SIZES.padding,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 16,
-        textAlign: "center",
-    },
-    email: {
-        fontSize: 16,
-        marginBottom: 8,
-        color: COLORS.darkGray,
-        textAlign: "center",
-    },
-});
 
 export default Admin;
