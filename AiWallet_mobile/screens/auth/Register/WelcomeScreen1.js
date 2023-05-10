@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-
-import { ROUTES, FONTS, COLORS } from "../../../constants";
+import { View, Text, SafeAreaView } from "react-native";
+import { ROUTES } from "../../../constants";
 import { Background, Button, Logo, Container } from "../../../components";
+import styles from "./WelcomeScreen1.styles";
 
 export default function Welcome({ navigation }) {
     const navigateToLogin = () => {
@@ -12,6 +12,7 @@ export default function Welcome({ navigation }) {
     const navigateToChooseAdvisor = () => {
         navigation.navigate(ROUTES.CHOOSE_ADVISOR);
     };
+
     return (
         <Background>
             <SafeAreaView style={styles.safeArea}>
@@ -42,36 +43,3 @@ export default function Welcome({ navigation }) {
         </Background>
     );
 }
-const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-    },
-    logoContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    sloganContainer: {
-        flex: 1,
-        justifyContent: "center",
-    },
-    buttonsContainer: {
-        flex: 1,
-        justifyContent: "center",
-        marginBottom: 20,
-    },
-    slogan: {
-        ...FONTS.h3,
-        color: COLORS.white,
-        textAlign: "center",
-        paddingHorizontal: 20,
-        marginBottom: 20,
-    },
-    loginLink: {
-        ...FONTS.body3,
-        color: COLORS.white,
-        textAlign: "center",
-        textDecorationLine: "underline",
-        marginTop: 10,
-    },
-});
