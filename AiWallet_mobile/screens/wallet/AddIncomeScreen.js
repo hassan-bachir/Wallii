@@ -4,27 +4,23 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet,
     SafeAreaView,
     TouchableWithoutFeedback,
     Keyboard,
 } from "react-native";
 import { Background, Container } from "../../components";
-import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
+import { COLORS, IMAGES } from "../../constants";
 import { addTransaction } from "../../api/api";
-
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 import { useSelector } from "react-redux";
+import styles from "./AddIncomeScreen.styles";
 
-//MAIN
-const AddIncome = ({ route, navigation }) => {
+const AddIncome = ({ navigation }) => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
-
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);
-
     const [category, setCategory] = useState("other");
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
@@ -35,10 +31,6 @@ const AddIncome = ({ route, navigation }) => {
         setShowDatePicker(false);
         setDate(currentDate.toISOString().split("T")[0]);
     };
-    useEffect(() => {
-        const amountIsValid = amount && !isNaN(parseFloat(amount));
-        setIsValidAmount(amountIsValid);
-    }, [amount]);
 
     const formatNumberWithCommas = (number) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -69,6 +61,11 @@ const AddIncome = ({ route, navigation }) => {
             console.error("Error adding income:", error);
         }
     };
+
+    useEffect(() => {
+        const amountIsValid = amount && !isNaN(parseFloat(amount));
+        setIsValidAmount(amountIsValid);
+    }, [amount]);
 
     return (
         <Background image={IMAGES.INCOME_BACKGROUND}>
@@ -176,100 +173,5 @@ const AddIncome = ({ route, navigation }) => {
         </Background>
     );
 };
-
-const styles = StyleSheet.create({
-    Container: {
-        flex: 1,
-    },
-    greenSection: {
-        height: 200,
-        paddingHorizontal: 20,
-        paddingTop: 20,
-        backgroundColor: COLORS.primary,
-        justifyContent: "space-between",
-    },
-    whiteSection: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-
-        paddingHorizontal: 20,
-    },
-    title: {
-        ...FONTS.h1,
-        color: COLORS.white,
-        marginBottom: 20,
-    },
-    label: {
-        ...FONTS.body3,
-        color: COLORS.white,
-        marginBottom: 5,
-    },
-    Amountlabel: {
-        ...FONTS.h3,
-        color: COLORS.white,
-        marginBottom: 5,
-    },
-    labelBlack: {
-        ...FONTS.body3,
-        color: COLORS.black,
-        marginBottom: 5,
-    },
-
-    amountinput: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        height: 40,
-    },
-    inputBlack: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        borderColor: COLORS.gray,
-        borderWidth: 1,
-        height: 40,
-    },
-    descriptionInput: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        borderColor: "black",
-        borderWidth: 1,
-        height: 80,
-    },
-    submitButton: {
-        backgroundColor: COLORS.darkgreen,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    submitButtonText: {
-        ...FONTS.body3,
-        color: COLORS.white,
-    },
-    picker: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-
-        marginBottom: 20,
-        borderColor: COLORS.gray,
-        borderWidth: 1,
-    },
-    disabledButton: {
-        backgroundColor: COLORS.gray,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-});
 
 export default AddIncome;
