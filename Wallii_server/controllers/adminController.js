@@ -1,4 +1,3 @@
-const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const Transaction = require("../models/transactionModel");
 const Wallet = require("../models/walletModel");
@@ -25,7 +24,6 @@ exports.deleteUser = async (req, res) => {
     try {
         const { userId } = req.params;
 
-        // Find and delete all wallets and transactions associated with the user
         const user = await User.findById(userId);
         const walletIds = user.wallets;
 
@@ -39,7 +37,6 @@ exports.deleteUser = async (req, res) => {
 
         await Wallet.deleteMany({ _id: { $in: walletIds } });
 
-        // Delete the user
         await User.findByIdAndDelete(userId);
 
         res.status(200).json({

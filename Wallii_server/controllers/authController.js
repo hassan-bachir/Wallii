@@ -39,7 +39,6 @@ const register = async (req, res) => {
             token,
         });
     } catch (error) {
-        console.error("Server error:", error); // Added for debugging, might delete later :')
         res.status(500).json({ message: "Server error", error });
     }
 };
@@ -47,10 +46,9 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log("Login request received:", { email, password }); // debug
+
         const user = await User.findOne({ email });
         if (!user) {
-            console.log("User not found:", email); // debugg
             return res
                 .status(400)
                 .json({ message: "Invalid email or password" });
@@ -58,7 +56,6 @@ const login = async (req, res) => {
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            console.log("Invalid password for email:", email); // debugg
             return res
                 .status(400)
                 .json({ message: "Invalid email or password" });
