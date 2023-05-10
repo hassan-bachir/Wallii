@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import {
-    View,
-    TextInput,
-    TouchableOpacity,
-    StyleSheet,
-    Modal,
-    Text,
-} from "react-native";
-import { COLORS, FONTS, SIZES } from "../../constants";
+import { View, TextInput, TouchableOpacity, Modal, Text } from "react-native";
+import { COLORS } from "../../constants";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import styles from "./AddGoalModal.styles";
 
 const AddGoalModal = ({ visible, setModalVisible, handleSaveGoal }) => {
     const [goalDescription, setGoalDescription] = useState("");
@@ -32,7 +26,7 @@ const AddGoalModal = ({ visible, setModalVisible, handleSaveGoal }) => {
         }
     };
 
-    const handleDateChange = (selectedDate) => {
+    const handleDateChange = (event, selectedDate) => {
         const currentDate = selectedDate || goalDate;
         setShowDatePicker(false);
         setGoalDate(currentDate);
@@ -101,75 +95,5 @@ const AddGoalModal = ({ visible, setModalVisible, handleSaveGoal }) => {
         </Modal>
     );
 };
-
-const styles = StyleSheet.create({
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22,
-    },
-    modalView: {
-        width: "90%",
-        backgroundColor: "white",
-        borderRadius: 20,
-        paddingVertical: 35,
-        paddingHorizontal: 0,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    input: {
-        height: 40,
-        borderBottomColor: COLORS.secondary,
-        borderBottomWidth: 1,
-        width: "90%",
-        borderRadius: 0,
-        marginBottom: 30,
-        paddingHorizontal: SIZES.padding,
-    },
-    datePickerButton: {
-        width: "90%",
-        height: 40,
-        borderBottomColor: COLORS.secondary,
-        borderBottomWidth: 1,
-        marginBottom: 30,
-        paddingHorizontal: SIZES.padding,
-        justifyContent: "center",
-    },
-    datePickerButtonText: {
-        ...FONTS.body3,
-        color: COLORS.black,
-    },
-    saveButton: {
-        width: "90%",
-        backgroundColor: COLORS.primary,
-        paddingVertical: SIZES.base,
-        borderRadius: SIZES.radius,
-        alignItems: "center",
-        marginBottom: 10,
-    },
-    saveButtonText: {
-        ...FONTS.h3,
-        color: COLORS.white,
-    },
-    cancelButton: {
-        width: "90%",
-        backgroundColor: COLORS.secondary,
-        paddingVertical: SIZES.base,
-        borderRadius: SIZES.radius,
-        alignItems: "center",
-    },
-    cancelButtonText: {
-        ...FONTS.h3,
-        color: COLORS.white,
-    },
-});
 
 export default AddGoalModal;
