@@ -3,18 +3,10 @@ import * as Yup from "yup";
 import { loginUser } from "../../api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setAuthToken } from "../../api/api";
-
-import {
-    View,
-    SafeAreaView,
-    StyleSheet,
-    TouchableOpacity,
-    Text,
-} from "react-native";
+import { View, SafeAreaView, TouchableOpacity, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { setEmail, setPassword } from "../../store/slices/loginSlice";
-
-import { ROUTES, FONTS, COLORS, SIZES } from "../../constants";
+import { ROUTES } from "../../constants";
 import {
     Background,
     Button,
@@ -23,6 +15,7 @@ import {
     Logo,
 } from "../../components";
 import { loginValidationSchema } from "../../validations/validationSchema";
+import styles from "./LoginScreen.styles";
 
 export default function Login({ navigation }) {
     const dispatch = useDispatch();
@@ -106,28 +99,3 @@ export default function Login({ navigation }) {
         </Background>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    centeredContainer: {
-        justifyContent: "center",
-    },
-
-    buttonsContainer: {
-        justifyContent: "center",
-        marginTop: 10,
-        marginBottom: 20,
-    },
-    goBackLink: {
-        ...FONTS.body3,
-        color: COLORS.white,
-        textAlign: "center",
-        textDecorationLine: "underline",
-        marginTop: 10,
-    },
-    inputsGroup: {
-        marginBottom: SIZES.padding * 2,
-        marginTop: SIZES.padding * 2,
-    },
-});
