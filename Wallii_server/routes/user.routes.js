@@ -5,11 +5,9 @@ const {
     authMiddleware: checkToken,
 } = require("../middlewares/auth.middleware");
 
-//get user info
 // (/user/) GET
 router.get("/", checkToken, userController.readUserInfo);
 
-//get financial summary
 // (/user/financial-summary) GET
 router.get(
     "/financial-summary",
@@ -17,23 +15,18 @@ router.get(
     userController.getFinancialSummary
 );
 
-//update user info
 // (/user/) PUT
 router.put("/", checkToken, userController.updateUser);
 
-//add goal
 // (/user/goals) POST
 router.post("/goals", checkToken, userController.addGoal);
 
-// Delete goal
 // (/user/goals/:goalId) DELETE
 router.delete("/goals/:goalId", checkToken, userController.deleteGoal);
 
-// Get all goals
 // (/user/goals) GET
 router.get("/goals", checkToken, userController.getAllGoals);
 
-// Get goal by ID
 // (/user/goals/:goalId) GET
 router.get("/goals/:goalId", checkToken, userController.getGoalById);
 

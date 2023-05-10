@@ -5,6 +5,7 @@ const {
     authMiddleware: checkToken,
 } = require("../middlewares/auth.middleware");
 
+// (/ai/) POST
 router.post("/", checkToken, aiAdvisorController.getAdvice);
 
 module.exports = router;

@@ -5,15 +5,12 @@ const {
     authMiddleware: checkToken,
 } = require("../middlewares/auth.middleware");
 
-// Add transaction
 // (/transaction/:walletId) POST
 router.post("/:walletId", checkToken, transactionController.addTransaction);
 
-//get all transactions
 // (/transaction/:walletId) GET
 router.get("/:walletId", checkToken, transactionController.getAllTransactions);
 
-//get transaction by ID
 // (/transaction/byid/:transactionId) GET
 router.get(
     "/byid/:transactionId",
@@ -21,7 +18,6 @@ router.get(
     transactionController.getTransactionById
 );
 
-//update transaction
 // (/transaction/:transactionId) PUT
 router.put(
     "/:transactionId",
@@ -29,7 +25,6 @@ router.put(
     transactionController.updateTransaction
 );
 
-//delete transaction
 // (/transaction/:transactionId) DELETE
 router.delete(
     "/:transactionId",
@@ -37,7 +32,6 @@ router.delete(
     transactionController.deleteTransaction
 );
 
-// Get transactions grouped by date
 // (/transaction/:walletId/by-date) GET
 router.get(
     "/:walletId/by-date",
@@ -45,7 +39,6 @@ router.get(
     transactionController.getTransactionsByDate
 );
 
-// Add the new route for getTotalByDateRange
 // (/transaction/:walletId/total-by-date-range) GET
 router.get(
     "/:walletId/total-by-date-range",
