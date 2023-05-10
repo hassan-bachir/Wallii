@@ -4,7 +4,6 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet,
     Alert,
     TouchableWithoutFeedback,
     Keyboard,
@@ -14,23 +13,11 @@ import {
     updateUserByAdmin,
     deleteUserByAdmin,
 } from "../../api/api";
+import styles from "./userScreen.styles";
 
 const User = ({ route, navigation }) => {
     const { userId } = route.params;
     const [userInfo, setUserInfo] = useState(null);
-
-    useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const data = await getInfoByID(userId);
-                setUserInfo(data);
-            } catch (error) {
-                console.error("Error fetching user data:", error);
-            }
-        };
-
-        fetchUserData();
-    }, [userId]);
 
     const handleChange = (field, value) => {
         setUserInfo({
@@ -95,6 +82,19 @@ const User = ({ route, navigation }) => {
         );
     };
 
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const data = await getInfoByID(userId);
+                setUserInfo(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUserData();
+    }, [userId]);
+
     if (!userInfo) {
         return (
             <View style={styles.container}>
@@ -151,59 +151,5 @@ const User = ({ route, navigation }) => {
         </TouchableWithoutFeedback>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#fff",
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 16,
-    },
-    input: {
-        width: "90%",
-        padding: 10,
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 5,
-        marginBottom: 16,
-    },
-    submitButton: {
-        backgroundColor: "#4CAF50",
-        padding: 10,
-        borderRadius: 5,
-        marginBottom: 10,
-    },
-    submitButtonText: {
-        color: "#fff",
-        fontSize: 16,
-        textAlign: "center",
-    },
-    deleteButton: {
-        backgroundColor: "#f44336",
-        padding: 10,
-        borderRadius: 5,
-    },
-    deleteButtonText: {
-        color: "#fff",
-        fontSize: 16,
-        textAlign: "center",
-    },
-    assignAdminButton: {
-        backgroundColor: "#FF9800",
-        padding: 10,
-        borderRadius: 5,
-        marginBottom: 10,
-    },
-    assignAdminButtonText: {
-        color: "#fff",
-        fontSize: 16,
-        textAlign: "center",
-    },
-});
 
 export default User;
