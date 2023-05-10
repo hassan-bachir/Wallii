@@ -3,12 +3,11 @@ import {
     View,
     Text,
     Image,
-    TouchableOpacity,
     StyleSheet,
     TouchableWithoutFeedback,
     Animated,
 } from "react-native";
-import { COLORS, FONTS, SIZES } from "../../constants";
+import { COLORS, FONTS } from "../../constants";
 import { Dimensions } from "react-native";
 const { width } = Dimensions.get("window");
 

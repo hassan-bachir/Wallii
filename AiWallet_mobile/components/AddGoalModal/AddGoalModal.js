@@ -32,7 +32,7 @@ const AddGoalModal = ({ visible, setModalVisible, handleSaveGoal }) => {
         }
     };
 
-    const handleDateChange = (event, selectedDate) => {
+    const handleDateChange = (selectedDate) => {
         const currentDate = selectedDate || goalDate;
         setShowDatePicker(false);
         setGoalDate(currentDate);

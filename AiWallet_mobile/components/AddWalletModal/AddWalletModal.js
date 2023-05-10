@@ -9,10 +9,6 @@ import {
 } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants";
 
-const handleCancel = () => {
-    setModalVisible(false);
-};
-
 const AddWalletModal = ({
     isModalVisible,
     setModalVisible,
