@@ -24,4 +24,10 @@ export default styles = StyleSheet.create({
         marginBottom: SIZES.padding * 2,
         marginTop: SIZES.padding * 2,
     },
+    errorMessage: {
+        color: COLORS.red,
+        ...FONTS.body4,
+        textAlign: "center",
+        marginTop: SIZES.padding,
+    },
 });

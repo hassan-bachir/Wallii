@@ -20,6 +20,7 @@ import styles from "./LoginScreen.styles";
 export default function Login({ navigation }) {
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
+    const [apiError, setApiError] = useState("");
 
     const email = useSelector((state) => state.login.email);
     const password = useSelector((state) => state.login.password);
@@ -49,8 +50,7 @@ export default function Login({ navigation }) {
                 await setAuthToken();
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
-                console.error("Error logging in user:", error);
-                // Handle error,
+                setApiError("Invalid credentials.");
             }
         } catch (err) {
             console.log("Error caught:", err);
@@ -85,6 +85,9 @@ export default function Login({ navigation }) {
                             onChangeText={(text) => dispatch(setPassword(text))}
                             errorMessage={errors.password}
                         />
+                        {apiError ? (
+                            <Text style={styles.errorMessage}>{apiError}</Text>
+                        ) : null}
                     </View>
                     <View style={styles.buttonsContainer}>
                         <Button title="Login" onPress={handleLogin} />

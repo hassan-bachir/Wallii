@@ -62,7 +62,7 @@ export default function Register({ navigation }) {
                 await setAuthToken();
                 navigation.navigate(ROUTES.HOME_STACK);
             } catch (error) {
-                console.error("Error registering user:", error);
+                setApiError("Invalid credentials.");
             }
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
@@ -113,6 +113,9 @@ export default function Register({ navigation }) {
                             onChangeText={(text) => dispatch(setPassword(text))}
                             errorMessage={errors.password}
                         />
+                        {apiError ? (
+                            <Text style={styles.errorMessage}>{apiError}</Text>
+                        ) : null}
                     </View>
 
                     <View style={styles.buttonsContainer}>
