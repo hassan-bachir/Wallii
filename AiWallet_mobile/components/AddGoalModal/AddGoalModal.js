@@ -42,7 +42,7 @@ const AddGoalModal = ({ visible, setModalVisible, handleSaveGoal }) => {
         <Modal
             animationType="slide"
             transparent={true}
-            visible={visible} // Make sure to use 'visible' prop
+            visible={visible}
             onRequestClose={() => {
                 setModalVisible(false);
             }}
