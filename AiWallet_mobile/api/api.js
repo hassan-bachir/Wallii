@@ -48,7 +48,7 @@ const makeRequest = async (method, endpoint, data) => {
         throw error;
     }
 };
-//AI
+
 // AI
 export const getAiAdvice = (data) => makeRequest("post", "/ai", data);
 
@@ -70,8 +70,8 @@ export const deleteUserByAdmin = (userId) =>
 
 export const getInfoByID = (userId) =>
     makeRequest("get", `/admin/users/${userId}`);
-//USER
 
+//USER
 export const getUserInfo = () => makeRequest("get", "/user");
 
 export const updateUserInfo = (data) => makeRequest("put", "/user", data);
@@ -114,7 +114,6 @@ export const getWalletSummary = (walletId) =>
     makeRequest("get", `/wallet/${walletId}/summary`);
 
 //transactions
-
 export const addTransaction = (walletId, transactionData) =>
     makeRequest("post", `/transaction/${walletId}`, transactionData);
 
