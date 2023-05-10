@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect } from "react";
-
 import { createStackNavigator } from "@react-navigation/stack";
 import {
     Home,

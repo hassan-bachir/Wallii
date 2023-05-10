@@ -1,12 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-
-import {
-    Login,
-    Welcome,
-    ChooseAdvisor,
-    ChooseName,
-    Register,
-} from "../screens";
+import { Login, Welcome, ChooseAdvisor, Register } from "../screens";
 import { ROUTES } from "../constants";
 
 const Stack = createStackNavigator();

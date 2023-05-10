@@ -1,14 +1,13 @@
 import React from "react";
-import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import WalletScreen from "../screens/wallet/WalletScreen";
 import WalletBudget from "../screens/wallet/WalletBudgetScreen";
 import WalletStats from "../screens/wallet/WalletStatsScreen";
 import WalletSettings from "../screens/wallet/WalletSettingsScreen";
 import { ROUTES } from "../constants";
-import { Ionicons } from "@expo/vector-icons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Icon from "react-native-vector-icons/FontAwesome"; // Example: using FontAwesome icons
+import Icon from "react-native-vector-icons/FontAwesome";
+
 const BottomTab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
