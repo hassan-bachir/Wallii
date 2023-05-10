@@ -5,14 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setAuthToken } from "../../../api/api";
 
 import { registerValidationSchema } from "../../../validations/validationSchema";
-import {
-    View,
-    SafeAreaView,
-    StyleSheet,
-    TouchableOpacity,
-    Text,
-    TextInput,
-} from "react-native";
+import { View, SafeAreaView, TouchableOpacity, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setFirstName,
@@ -20,7 +13,7 @@ import {
     setEmail,
     setPassword,
 } from "../../../store/slices/registrationSlice";
-import { ROUTES, FONTS, COLORS, SIZES } from "../../../constants";
+import { ROUTES } from "../../../constants";
 import {
     Background,
     Button,
@@ -28,6 +21,7 @@ import {
     CustomTextInput,
     Logo,
 } from "../../../components";
+import styles from "./RegisterScreen.styles";
 
 export default function Register({ navigation }) {
     const dispatch = useDispatch();
@@ -83,6 +77,7 @@ export default function Register({ navigation }) {
     const navigateBackToChooseAdvisor = () => {
         navigation.goBack();
     };
+
     return (
         <Background>
             <SafeAreaView style={styles.container}>
@@ -133,28 +128,3 @@ export default function Register({ navigation }) {
         </Background>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    centeredContainer: {
-        justifyContent: "center",
-    },
-
-    buttonsContainer: {
-        justifyContent: "center",
-        marginTop: 10,
-        marginBottom: 20,
-    },
-    goBackLink: {
-        ...FONTS.body3,
-        color: COLORS.white,
-        textAlign: "center",
-        textDecorationLine: "underline",
-        marginTop: 10,
-    },
-    inputsGroup: {
-        marginBottom: SIZES.padding * 2,
-        marginTop: SIZES.padding * 2,
-    },
-});
