@@ -62,6 +62,13 @@ function HomeStack() {
             <Stack.Screen
                 name={ROUTES.HOME_SETTINGS}
                 component={HomeSettings}
+                options={{
+                    headerTitle: "Update User Info",
+                    headerTintColor: COLORS.primary,
+                    headerStyle: {
+                        backgroundColor: COLORS.lightGray,
+                    },
+                }}
             />
             <Stack.Screen
                 name={ROUTES.BOTTOM_TAB}
