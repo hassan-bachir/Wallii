@@ -4,14 +4,14 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet,
     SafeAreaView,
     TouchableWithoutFeedback,
     Keyboard,
 } from "react-native";
 import { Background, Container } from "../../components";
-import { COLORS, FONTS, IMAGES, ROUTES } from "../../constants";
+import { COLORS, IMAGES, ROUTES } from "../../constants";
 import { addTransaction } from "../../api/api";
+import styles from "./AddExpenseScreen.styles";
 
 import Icon from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -19,32 +19,31 @@ import { Picker } from "@react-native-picker/picker";
 import { useSelector, useDispatch } from "react-redux";
 import { setExpenseData } from "../../store/slices/expenseSlice";
 
-//MAIN
-const AddExpense = ({ route, navigation }) => {
+const AddExpense = ({ navigation }) => {
     const dispatch = useDispatch();
     const walletId = useSelector((state) => state.wallet.currentWalletId);
 
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isValidAmount, setIsValidAmount] = useState(false);
-
     const [category, setCategory] = useState("other");
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
     const [description, setDescription] = useState("");
 
-    const handleDateChange = (event, selectedDate) => {
+    const handleDateChange = (selectedDate) => {
         const currentDate = selectedDate || date;
         setShowDatePicker(false);
         setDate(currentDate.toISOString().split("T")[0]);
     };
-    useEffect(() => {
-        const amountIsValid = amount && !isNaN(parseFloat(amount));
-        setIsValidAmount(amountIsValid);
-    }, [amount]);
+
+    const handleDatePress = () => {
+        setShowDatePicker(true);
+    };
 
     const formatNumberWithCommas = (number) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
+
     const handleAmountChange = (text) => {
         const unformattedAmount = text.replace(/,/g, "");
         if (!isNaN(parseFloat(unformattedAmount)) || unformattedAmount === "") {
@@ -52,6 +51,7 @@ const AddExpense = ({ route, navigation }) => {
             setAmount(formattedAmount);
         }
     };
+
     const navigateToAiAdvisor = () => {
         dispatch(
             setExpenseData({
@@ -63,9 +63,7 @@ const AddExpense = ({ route, navigation }) => {
         );
         navigation.navigate(ROUTES.AI_ADVISOR);
     };
-    const handleDatePress = () => {
-        setShowDatePicker(true);
-    };
+
     const handleSubmit = async () => {
         try {
             const transactionData = {
@@ -82,6 +80,11 @@ const AddExpense = ({ route, navigation }) => {
             console.error("Error adding expense:", error);
         }
     };
+
+    useEffect(() => {
+        const amountIsValid = amount && !isNaN(parseFloat(amount));
+        setIsValidAmount(amountIsValid);
+    }, [amount]);
 
     return (
         <Background image={IMAGES.EXPENSE_BACKGROUND}>
@@ -206,104 +209,5 @@ const AddExpense = ({ route, navigation }) => {
         </Background>
     );
 };
-
-const styles = StyleSheet.create({
-    Container: {
-        flex: 1,
-    },
-    redSection: {
-        height: 200,
-        paddingHorizontal: 20,
-        paddingTop: 20,
-        backgroundColor: COLORS.secondary,
-        justifyContent: "space-between",
-    },
-    whiteSection: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-        paddingHorizontal: 20,
-    },
-    title: {
-        ...FONTS.h1,
-        color: COLORS.white,
-        marginBottom: 20,
-    },
-    Amountlabel: {
-        ...FONTS.h3,
-        color: COLORS.white,
-        marginBottom: 5,
-    },
-    labelBlack: {
-        ...FONTS.body3,
-        color: COLORS.black,
-        marginBottom: 5,
-    },
-    amountinput: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        height: 40,
-    },
-    inputBlack: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        borderColor: COLORS.gray,
-        borderWidth: 1,
-        height: 40,
-    },
-    descriptionInput: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginBottom: 20,
-        borderColor: "black",
-        borderWidth: 1,
-        height: 80,
-    },
-    submitButton: {
-        backgroundColor: COLORS.red,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    submitButtonText: {
-        ...FONTS.body3,
-        color: COLORS.white,
-    },
-    picker: {
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        marginBottom: 20,
-        borderColor: COLORS.gray,
-        borderWidth: 1,
-    },
-    disabledButton: {
-        backgroundColor: COLORS.gray,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    advisorButton: {
-        backgroundColor: COLORS.primary,
-        borderRadius: 5,
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 10,
-    },
-    advisorButtonText: {
-        ...FONTS.body3,
-        color: COLORS.white,
-    },
-});
 
 export default AddExpense;
