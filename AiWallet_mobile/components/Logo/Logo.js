@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image } from "react-native";
 import { IMAGES } from "../../constants";
+import styles from "./Logo.styles";
 
 const Logo = (props) => {
     return (
@@ -13,17 +14,5 @@ const Logo = (props) => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: 20,
-    },
-    logo: {
-        width: 181,
-        height: 82,
-    },
-});
 
 export default Logo;
