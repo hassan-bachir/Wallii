@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useSelector, useDispatch } from "react-redux";
-import { setRole } from "../store/slices/userSlice";
 import HomeStack from "./homeStack";
 import AuthStack from "./authStack";
-import AdminStack from "./adminStack";
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ROUTES } from "../constants";
-import { setAuthToken, getUserInfo } from "../api/api";
+import { setAuthToken } from "../api/api";
 
 const Stack = createStackNavigator();
 
 function AppStack() {
     const [userToken, setUserToken] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-
-    const dispatch = useDispatch();
 
     useEffect(() => {
         const bootstrapAsync = async () => {
