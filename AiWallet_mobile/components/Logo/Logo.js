@@ -3,7 +3,7 @@ import { View, Image } from "react-native";
 import { IMAGES } from "../../constants";
 import styles from "./Logo.styles";
 
-const Logo = (props) => {
+const Logo = () => {
     return (
         <View style={styles.container}>
             <Image
