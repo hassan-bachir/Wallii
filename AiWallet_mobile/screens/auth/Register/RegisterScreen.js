@@ -32,6 +32,7 @@ export default function Register({ navigation }) {
     const aiAdvisorName = useSelector(
         (state) => state.registration.aiAdvisorName
     );
+    const [apiError, setApiError] = useState("");
 
     const [errors, setErrors] = useState({});
 
