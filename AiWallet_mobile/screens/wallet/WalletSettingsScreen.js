@@ -2,23 +2,16 @@ import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
-    StyleSheet,
     Alert,
     TouchableWithoutFeedback,
     Keyboard,
     SafeAreaView,
     TextInput,
 } from "react-native";
-import {
-    Background,
-    WalletCard,
-    Container,
-    Button,
-    CustomTextInput,
-} from "../../components";
-import { COLORS, FONTS, IMAGES, SIZES, ROUTES } from "../../constants";
+import { Background, WalletCard, Button } from "../../components";
+import { IMAGES, ROUTES } from "../../constants";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-
+import styles from "./WalletSettingsScreen.styles";
 import { getWalletSummary, updateWallet, deleteWallet } from "../../api/api";
 import { useSelector } from "react-redux";
 
@@ -29,7 +22,15 @@ const WalletSettings = () => {
     const [wallet, setWallet] = useState(null);
     const [walletName, setWalletName] = useState("");
     const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
-    const [isFocused, setIsFocused] = useState(false);
+
+    const loadData = async () => {
+        try {
+            const fetchedWallet = await getWalletSummary(walletId);
+            setWallet(fetchedWallet);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     const navigateToHome = () => {
         navigation.navigate(ROUTES.HOME);
@@ -41,27 +42,6 @@ const WalletSettings = () => {
     const handleBlur = () => {
         setIsFocused(false);
     };
-
-    const loadData = async () => {
-        try {
-            const fetchedWallet = await getWalletSummary(walletId);
-            setWallet(fetchedWallet);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
-    useFocusEffect(
-        React.useCallback(() => {
-            loadData();
-            return () => {};
-        }, [walletId])
-    );
-
-    useEffect(() => {
-        if (wallet) {
-            setWalletName(wallet.name);
-        }
-    }, [wallet]);
 
     const handleWalletNameChange = (text) => {
         setWalletName(text);
@@ -102,6 +82,19 @@ const WalletSettings = () => {
             { cancelable: true }
         );
     };
+
+    useFocusEffect(
+        React.useCallback(() => {
+            loadData();
+            return () => {};
+        }, [walletId])
+    );
+
+    useEffect(() => {
+        if (wallet) {
+            setWalletName(wallet.name);
+        }
+    }, [wallet]);
 
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
@@ -150,68 +143,5 @@ const WalletSettings = () => {
         </Background>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
-        justifyContent: "space-between",
-        marginBottom: 150,
-    },
-    formContainer: {
-        marginTop: 30,
-
-        margin: 10,
-
-        justifyContent: "space-between",
-        paddingTop: 20,
-    },
-    text: {
-        fontSize: 24,
-        fontWeight: "bold",
-    },
-    walletCard: {
-        marginHorizontal: 10,
-        marginTop: 5,
-    },
-    deleteButton: {
-        backgroundColor: COLORS.red,
-        marginTop: 15,
-    },
-    labelBlack: {
-        ...FONTS.h3,
-    },
-    descriptionInput: {
-        marginVertical: SIZES.padding,
-        borderBottomColor: COLORS.white,
-        borderBottomWidth: 1,
-        height: 45,
-        color: COLORS.black,
-        ...FONTS.body1,
-        backgroundColor: "#B2FFFA",
-        borderRadius: 3,
-        width: "100%",
-    },
-    inputContainer: {
-        alignItems: "center",
-        padding: 10,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: COLORS.primary,
-        borderRadius: 5,
-        padding: 10,
-        color: COLORS.primary,
-        ...FONTS.body3,
-    },
-    inputContainer: {
-        marginBottom: 20,
-    },
-    label: {
-        ...FONTS.body2,
-        color: COLORS.primary,
-        marginBottom: 5,
-    },
-});
 
 export default WalletSettings;
