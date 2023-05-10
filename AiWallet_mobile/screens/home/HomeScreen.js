@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import {
-    StyleSheet,
     View,
     Text,
     SafeAreaView,
@@ -8,24 +7,24 @@ import {
     TouchableOpacity,
 } from "react-native";
 import {
-    Button,
     Background,
     FinanceSummaryBanner,
     AddWalletButton,
     WalletCard,
     AddWalletModal,
 } from "../../components";
-import { Ionicons } from "@expo/vector-icons";
-import { ROUTES, FONTS, COLORS, SIZES, IMAGES } from "../../constants";
+import { ROUTES, COLORS, IMAGES } from "../../constants";
 import {
     getUserWallets,
     getWalletSummary,
     addWallet,
     getFinancialSummary,
 } from "../../api/api";
+import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { setCurrentWalletId } from "../../store/slices/walletSlice";
+import styles from "./HomeScreen.styles";
 
 export default function Home({ navigation }) {
     const dispatch = useDispatch();
@@ -59,20 +58,6 @@ export default function Home({ navigation }) {
         }
     }, []);
 
-    useFocusEffect(
-        useCallback(() => {
-            fetchData();
-            fetchFinancialSummaryData();
-            return () => {};
-        }, [fetchData, fetchFinancialSummaryData])
-    );
-
-    const navigateToHomeSettings = () => {
-        navigation.navigate(ROUTES.HOME_SETTINGS);
-    };
-    const navigateToGoals = () => {
-        navigation.navigate(ROUTES.GOALS);
-    };
     const handleSaveWallet = async () => {
         try {
             await addWallet({ name: newWalletName });
@@ -83,9 +68,25 @@ export default function Home({ navigation }) {
             console.error("Error adding wallet:", error);
         }
     };
+
+    const navigateToHomeSettings = () => {
+        navigation.navigate(ROUTES.HOME_SETTINGS);
+    };
+    const navigateToGoals = () => {
+        navigation.navigate(ROUTES.GOALS);
+    };
+
     const handleAddWalletPress = () => {
         setModalVisible(true);
     };
+
+    useFocusEffect(
+        useCallback(() => {
+            fetchData();
+            fetchFinancialSummaryData();
+            return () => {};
+        }, [fetchData, fetchFinancialSummaryData])
+    );
 
     return (
         <Background image={IMAGES.HOMEBACKGROUND}>
@@ -136,43 +137,3 @@ export default function Home({ navigation }) {
         </Background>
     );
 }
-
-const styles = StyleSheet.create({
-    Safe: {
-        paddingTop: 20,
-    },
-    header: {
-        marginTop: 20,
-        marginHorizontal: 10,
-        flexDirection: "row",
-        justifyContent: "space-between",
-    },
-    headerText: {
-        ...FONTS.h1,
-        color: COLORS.white,
-    },
-    headerText: {
-        ...FONTS.h1,
-        color: COLORS.white,
-    },
-    walletList: {
-        paddingHorizontal: SIZES.padding,
-        paddingTop: SIZES.base,
-    },
-    roundButton: {
-        flexDirection: "row",
-        position: "absolute",
-        bottom: 70,
-        left: 20,
-        borderRadius: 50,
-        backgroundColor: COLORS.primary,
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 10,
-    },
-
-    goalButton: {
-        ...FONTS.h4,
-        color: COLORS.white,
-    },
-});
