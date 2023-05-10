@@ -30,7 +30,6 @@ const register = async (req, res) => {
         });
 
         await newUser.save();
-
         const token = generateToken(newUser);
 
         res.status(201).json({
@@ -53,14 +52,12 @@ const login = async (req, res) => {
                 .status(400)
                 .json({ message: "Invalid email or password" });
         }
-
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             return res
                 .status(400)
                 .json({ message: "Invalid email or password" });
         }
-
         const token = generateToken(user);
 
         res.status(200).json({

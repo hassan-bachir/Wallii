@@ -1,4 +1,3 @@
-const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const Transaction = require("../models/transactionModel");
@@ -6,7 +5,6 @@ const Transaction = require("../models/transactionModel");
 const getFinancialSummary = async (req, res) => {
     try {
         const userId = req.userId;
-
         const user = await User.findById(userId).populate("wallets");
 
         if (!user) {
@@ -18,6 +16,7 @@ const getFinancialSummary = async (req, res) => {
         const transactions = await Transaction.find({
             walletId: { $in: walletIds },
         });
+
         let totalIncome = 0;
         let totalExpenses = 0;
 
@@ -37,6 +36,7 @@ const getFinancialSummary = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };
+
 const updateUser = async (req, res) => {
     try {
         const { userId } = req;
@@ -120,6 +120,7 @@ const getGoalById = async (req, res) => {
         res.status(500).json({ message: "Error fetching goal", error });
     }
 };
+
 const deleteGoal = async (req, res) => {
     try {
         const { userId } = req;

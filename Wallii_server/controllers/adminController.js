@@ -23,7 +23,6 @@ exports.getInfoById = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     try {
         const { userId } = req.params;
-
         const user = await User.findById(userId);
         const walletIds = user.wallets;
 
@@ -34,9 +33,7 @@ exports.deleteUser = async (req, res) => {
                 await Transaction.deleteMany({ _id: { $in: transactionIds } });
             })
         );
-
         await Wallet.deleteMany({ _id: { $in: walletIds } });
-
         await User.findByIdAndDelete(userId);
 
         res.status(200).json({

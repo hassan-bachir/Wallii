@@ -14,7 +14,6 @@ const addTransaction = async (req, res) => {
             recurringPeriod,
             receiptImageUrl,
         } = req.body;
-
         const newTransaction = new Transaction({
             walletId,
             type,
@@ -50,10 +49,12 @@ const getAllTransactions = async (req, res) => {
         res.status(500).json({ message: "Error fetching transactions", error });
     }
 };
+
 const updateTransaction = async (req, res) => {
     try {
         const { transactionId } = req.params;
         const oldTransaction = await Transaction.findById(transactionId);
+
         const updatedTransaction = await Transaction.findByIdAndUpdate(
             transactionId,
             req.body,
@@ -61,6 +62,7 @@ const updateTransaction = async (req, res) => {
                 new: true,
             }
         );
+
         if (
             req.body.walletId &&
             oldTransaction.walletId.toString() !== req.body.walletId.toString()
@@ -96,6 +98,7 @@ const getTransactionById = async (req, res) => {
         res.status(500).json({ message: "Error getting transaction", error });
     }
 };
+
 const deleteTransaction = async (req, res) => {
     try {
         const { transactionId } = req.params;
@@ -117,6 +120,7 @@ const deleteTransaction = async (req, res) => {
         res.status(500).json({ message: "Error deleting transaction", error });
     }
 };
+
 const getTotalAmountByCategory = async (req, res) => {
     try {
         const { walletId, category } = req.params;

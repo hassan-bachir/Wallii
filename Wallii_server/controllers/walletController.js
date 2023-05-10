@@ -59,7 +59,6 @@ const deleteWallet = async (req, res) => {
         const userId = req.userId;
 
         const wallet = await Wallet.findOne({ _id: walletId, userId });
-
         if (!wallet) {
             return res.status(404).json({ message: "Wallet not found" });
         }
@@ -80,6 +79,7 @@ const deleteWallet = async (req, res) => {
 const updateWallet = async (req, res) => {
     try {
         const { walletId } = req.params;
+
         const updatedWallet = await Wallet.findByIdAndUpdate(
             walletId,
             req.body,
@@ -100,7 +100,6 @@ const addBudget = async (req, res) => {
         const { name, amount, startDate, endDate } = req.body;
 
         const wallet = await Wallet.findById(walletId);
-
         if (!wallet) {
             return res.status(404).json({ message: "Wallet not found" });
         }
