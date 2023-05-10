@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, FlatList } from "react-native";
 import {
     Background,
     WalletCard,
     AddWalletButton,
     TransactionCard,
-    Container,
 } from "../../components";
 import { COLORS, IMAGES, ROUTES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, getAllTransactions } from "../../api/api";
 import { useSelector } from "react-redux";
-
 import { useDispatch } from "react-redux";
 import { setCurrentTransactionId } from "../../store/slices/walletSlice";
 
-// MAIN
-const WalletScreen = ({ route, navigation }) => {
+const WalletScreen = ({ navigation }) => {
     const dispatch = useDispatch();
-
     const walletId = useSelector((state) => state.wallet.currentWalletId);
 
     const [wallet, setWallet] = useState(null);
@@ -38,7 +34,7 @@ const WalletScreen = ({ route, navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             loadData();
-            return () => {}; // cleaning function (krmel el error)
+            return () => {};
         }, [walletId])
     );
 
@@ -95,6 +91,7 @@ const WalletScreen = ({ route, navigation }) => {
         </Background>
     );
 };
+
 const styles = StyleSheet.create({
     walletCard: {
         marginHorizontal: 10,
