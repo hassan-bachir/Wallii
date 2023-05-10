@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { COLORS } from "../../constants";
+import styles from "./CalenderItem.styles";
 
 const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -21,17 +22,5 @@ class CalenderItem extends PureComponent {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    dayContent: {
-        alignItems: "center",
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        padding: 10,
-        marginTop: 10,
-        marginRight: 10,
-        marginLeft: 10,
-    },
-});
 
 export default CalenderItem;
