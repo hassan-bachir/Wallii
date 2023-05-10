@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View } from "react-native";
 import { Background, WalletCard, CalenderItem } from "../../components";
-import { COLORS, IMAGES, ROUTES } from "../../constants";
+import { COLORS, IMAGES } from "../../constants";
 import { useFocusEffect } from "@react-navigation/native";
 import { getWalletSummary, getTransactionsByDate } from "../../api/api";
 import { useSelector } from "react-redux";
-import { Calendar, Agenda } from "react-native-calendars";
-import { LogBox } from "react-native";
+import { Agenda } from "react-native-calendars";
+import styles from "./WalletStatsScreen.styles";
 
 const WalletStats = () => {
     const walletId = useSelector((state) => state.wallet.currentWalletId);
+
     const [wallet, setWallet] = useState(null);
     const [transactionsByDate, setTransactionsByDate] = useState({});
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const handleMonthChange = (month) => {
-        setCurrentMonth(month.dateString);
-    };
 
     const loadData = async () => {
         try {
@@ -28,6 +26,10 @@ const WalletStats = () => {
         } catch (error) {
             console.error("Error fetching data:", error);
         }
+    };
+
+    const handleMonthChange = (month) => {
+        setCurrentMonth(month.dateString);
     };
 
     useFocusEffect(
@@ -88,26 +90,5 @@ const WalletStats = () => {
         </Background>
     );
 };
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    walletCard: {
-        marginHorizontal: 10,
-        marginTop: 5,
-    },
-    dayContent: {
-        alignItems: "center",
-        backgroundColor: COLORS.lightGray,
-        borderRadius: 5,
-        padding: 10,
-        marginTop: 10,
-        marginRight: 10,
-        marginLeft: 10,
-    },
-    calendarContainer: {
-        height: "100%",
-    },
-});
 
 export default WalletStats;
