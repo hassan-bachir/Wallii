@@ -122,7 +122,7 @@ const getGoalById = async (req, res) => {
 };
 const deleteGoal = async (req, res) => {
     try {
-        const { userId } = req; //.user
+        const { userId } = req;
         const { goalId } = req.params;
 
         const user = await User.findById(userId);

@@ -82,7 +82,7 @@ const updateWallet = async (req, res) => {
         const { walletId } = req.params;
         const updatedWallet = await Wallet.findByIdAndUpdate(
             walletId,
-            req.body, //better to destruct for security
+            req.body,
             {
                 new: true,
             }
@@ -122,7 +122,6 @@ const deleteBudget = async (req, res) => {
     try {
         const { walletId } = req.params;
 
-        // Find the wallet by its ID and unset the budget
         const updatedWallet = await Wallet.findByIdAndUpdate(
             walletId,
             {
