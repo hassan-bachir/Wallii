@@ -1,21 +1,15 @@
 import React from "react";
-import {
-    View,
-    TouchableOpacity,
-    StyleSheet,
-    SafeAreaView,
-    Text,
-    Image,
-} from "react-native";
+import { View, TouchableOpacity, SafeAreaView, Text } from "react-native";
 import {
     Background,
     Button,
     AdvisorCard,
     Container,
 } from "../../../components";
-import { ROUTES, FONTS, COLORS, IMAGES } from "../../../constants";
+import { ROUTES, IMAGES } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAdvisor } from "../../../store/slices/registrationSlice";
+import styles from "./ChooseAdvisorScreen2.styles";
 
 const advisors = [
     { id: 1, name: "Elon Musk", image: IMAGES.ELONMUSK },
@@ -77,35 +71,3 @@ export default function ChooseAdvisor({ navigation }) {
         </Background>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    cardsContainer: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingBottom: 20,
-    },
-    buttonsContainer: {
-        justifyContent: "center",
-        marginTop: 10,
-        marginBottom: 20,
-    },
-    goBackLink: {
-        ...FONTS.body3,
-        color: COLORS.white,
-        textAlign: "center",
-        textDecorationLine: "underline",
-        marginTop: 10,
-    },
-    chooseAdvisorText: {
-        ...FONTS.h2,
-        color: COLORS.white,
-        textAlign: "center",
-        marginTop: 20,
-        marginBottom: 30,
-    },
-});
