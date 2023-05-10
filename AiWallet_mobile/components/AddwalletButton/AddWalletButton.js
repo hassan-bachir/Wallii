@@ -1,6 +1,7 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import { COLORS, FONTS, SIZES } from "../../constants";
+import { TouchableOpacity, Text } from "react-native";
+import { COLORS } from "../../constants";
+import styles from "./AddWalletButton.styles";
 
 const AddWalletButton = ({
     onPress,
@@ -16,21 +17,5 @@ const AddWalletButton = ({
         </TouchableOpacity>
     );
 };
-
-const styles = StyleSheet.create({
-    button: {
-        marginHorizontal: SIZES.padding,
-        marginTop: SIZES.padding,
-        width: "40%",
-        borderRadius: SIZES.radius,
-        padding: SIZES.base,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    buttonText: {
-        ...FONTS.body3,
-        color: COLORS.white,
-    },
-});
 
 export default AddWalletButton;
