@@ -51,13 +51,13 @@
 > Using the wireframes and mockups as a guide, we implemented the Wallii app with the following features:
 
 
-### UX Demo:  (Mobile)
+### UX Demo:
 | Welcome stack                                      | login and expense                                     | wallet options                                  | advisor demo                                          |
 | --------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
 | ![Landing](./readme/gifs/signup-login.gif)     | ![fsdaf](./readme/gifs/login-trim.gif)      | ![fsdaf](./readme/gifs/bottom-tab.gif)   | ![fsdaf](./readme/gifs/rejected-expense.gif)           |
 
 
-### User Screens (Mobile)
+### User Screens 
 
 | Welcome screen                                      | Advisor screen                                     | Register screen                                  | Login screen                                          |
 | --------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
