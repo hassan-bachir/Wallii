@@ -33,14 +33,15 @@
 > We designed Wallii using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
+| Wallets WireFrame                             | Advisor WireFrame                              | Transactions WireFrame                               | Login WireFrame                                      |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| ![Welcome](./readme/wireframes/landing.png) | ![Advisor](./readme/wireframes/register1.png) | ![SignUp1](./readme/wireframes/wallet.png) | ![SignUp2](./readme/wireframes/login.png) |
 
-| Welcome screen                              | Advisor screen                              | SignUp screen                               |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| ![Welcome](./readme/wireframes/welcome.png) | ![fsdaf](./readme/wireframes/register1.png) | ![fsdaf](./readme/wireframes/register2.png) |
+### Mockups
+| Welcome Mockup                             | Login Mockup                              | Expense Mockup                               | Wallet Mockup                                      |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| ![Welcome](./readme/implementation/mockupwelcome.png) | ![Advisor](./readme/implementation/mockuplogin.png) | ![SignUp1](./readme/implementation/mockupadd.png) | ![SignUp2](./readme/implementation/mockuowallet.png) |
 
-| Login screen                              | Wallets Screen                            | transaction Screen                       |
-| ----------------------------------------- | ----------------------------------------- | ---------------------------------------- |
-| ![Landing](./readme/wireframes/login.png) | ![fsdaf](./readme/wireframes/landing.png) | ![fsdaf](./readme/wireframes/wallet.png) |
 
 <br><br>
 
