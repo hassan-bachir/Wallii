@@ -64,12 +64,12 @@
 
 <br><br>
 ### UX Demo:  (Mobile)
-| Welcome stack                                      | Advisor screen                                     | Register screen                                  | Login screen                                          |
+| Welcome stack                                      | login and expense                                     | wallet options                                  | advisor demo                                          |
 | --------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
-| ![Landing](./readme/gifs/signup-login.gif)     | ![fsdaf](./readme/gifs/advisor.PNG)      | ![fsdaf](./readme/gifs/register.PNG)   | ![fsdaf](./readme/gifs/login.PNG)           |
+| ![Landing](./readme/gifs/signup-login.gif)     | ![fsdaf](./readme/gifs/login-trim.gif)      | ![fsdaf](./readme/gifs/bottom-tab.gif)   | ![fsdaf](./readme/gifs/login.PNG)           |
 
 <!-- Tech stack -->
-<img src="./readme/title5.svg"/>
+<img src="./readme/rejected-expense.gif"/>
 
 
 
