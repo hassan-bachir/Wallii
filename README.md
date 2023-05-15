@@ -50,6 +50,13 @@
 
 > Using the wireframes and mockups as a guide, we implemented the Wallii app with the following features:
 
+
+### UX Demo:  (Mobile)
+| Welcome stack                                      | login and expense                                     | wallet options                                  | advisor demo                                          |
+| --------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
+| ![Landing](./readme/gifs/signup-login.gif)     | ![fsdaf](./readme/gifs/login-trim.gif)      | ![fsdaf](./readme/gifs/bottom-tab.gif)   | ![fsdaf](./readme/gifs/rejected-expense.gif)           |
+
+
 ### User Screens (Mobile)
 
 | Welcome screen                                      | Advisor screen                                     | Register screen                                  | Login screen                                          |
@@ -62,12 +69,8 @@
 | Budget screen                                       | Goals Screen                                       | Admin Screen                                     | Wallet settings Screen                                |
 | ![Landing](./readme/implementation/Budget.PNG)      | ![fsdaf](./readme/implementation/goals.PNG)        | ![fsdaf](./readme/implementation/admin.PNG)      | ![fsdaf](./readme/implementation/Wallet_settings.PNG) |
 
-<br><br>
-### UX Demo:  (Mobile)
-| Welcome stack                                      | login and expense                                     | wallet options                                  | advisor demo                                          |
-| --------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
-| ![Landing](./readme/gifs/signup-login.gif)     | ![fsdaf](./readme/gifs/login-trim.gif)      | ![fsdaf](./readme/gifs/bottom-tab.gif)   | ![fsdaf](./readme/gifs/login.PNG)           |
 
+<br><br>
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
 
