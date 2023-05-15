@@ -63,9 +63,15 @@
 | ![Landing](./readme/implementation/Budget.PNG)      | ![fsdaf](./readme/implementation/goals.PNG)        | ![fsdaf](./readme/implementation/admin.PNG)      | ![fsdaf](./readme/implementation/Wallet_settings.PNG) |
 
 <br><br>
+### UX Demo:  (Mobile)
+| Welcome stack                                      | Advisor screen                                     | Register screen                                  | Login screen                                          |
+| --------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
+| ![Landing](./readme/gifs/signup-login.gif)     | ![fsdaf](./readme/gifs/advisor.PNG)      | ![fsdaf](./readme/gifs/register.PNG)   | ![fsdaf](./readme/gifs/login.PNG)           |
 
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
+
+
 
 ### Wallii is built using the following technologies:
 
