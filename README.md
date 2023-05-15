@@ -69,7 +69,7 @@
 | ![Landing](./readme/gifs/signup-login.gif)     | ![fsdaf](./readme/gifs/login-trim.gif)      | ![fsdaf](./readme/gifs/bottom-tab.gif)   | ![fsdaf](./readme/gifs/login.PNG)           |
 
 <!-- Tech stack -->
-<img src="./readme/rejected-expense.gif"/>
+<img src="./readme/title5.svg"/>
 
 
 
