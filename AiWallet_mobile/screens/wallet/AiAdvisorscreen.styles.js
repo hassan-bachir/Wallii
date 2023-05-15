@@ -32,7 +32,7 @@ export default styles = StyleSheet.create({
         textAlign: "center",
     },
     adviceExplanationContainer: {
-        backgroundColor: COLORS.primary,
+        // backgroundColor: COLORS.primary,
         borderRadius: SIZES.radius,
         padding: SIZES.padding,
         marginBottom: SIZES.base,

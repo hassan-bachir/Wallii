@@ -41,7 +41,7 @@ and the new expense they want to make, should the user proceed with the new expe
 If yes, give the user a financial advise or a qoute about living your life to the fullest,
 If not, provide a brief explanation.Always Start your response with either " Approve " or " Disapprove "
 followed by "|||" and limit your explanation to a maximum of 60 words,and talk directly to the user.
-neglect any empty key-values in the JSON files. 
+neglect any empty key-values in the JSON files. If the new expense amount is larger than the user's monthly salary you should always disapprove
 `;
 
     try {

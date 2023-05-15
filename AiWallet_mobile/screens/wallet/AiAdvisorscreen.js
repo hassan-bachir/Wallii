@@ -124,7 +124,17 @@ export default function AiAdvisor() {
                         </Text>
                     </View>
 
-                    <View style={styles.adviceExplanationContainer}>
+                    <View
+                        style={[
+                            styles.adviceExplanationContainer,
+                            {
+                                backgroundColor:
+                                    aiAdvice.decision === "Disapprove"
+                                        ? COLORS.secondary
+                                        : COLORS.primary,
+                            },
+                        ]}
+                    >
                         <Text style={styles.adviceExplanation}>
                             {aiAdvice.explanation}
                         </Text>
